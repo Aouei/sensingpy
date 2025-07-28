@@ -7,6 +7,7 @@ import rasterio
 import sensingpy.selector as selector
 import pyproj
 import sensingpy.enums as enums
+from rasterio.transform import rowcol
 
 
 from rasterio.warp import reproject, Resampling, calculate_default_transform
@@ -581,10 +582,17 @@ class Image(object):
             
         dst_x, _ = rasterio.transform.xy(new_transform, np.zeros(dst_width), np.arange(dst_width))
         _, dst_y = rasterio.transform.xy(new_transform, np.arange(dst_height), np.zeros(dst_height))
-        x_meta, y_meta = self.crs.cs_to_cf()
         
-        if x_meta['standard_name'] == 'latitude':
-            x_meta, y_meta = y_meta, x_meta
+        try:
+            x_meta, y_meta = dst_crs.cs_to_cf()
+            
+            # Ensure proper coordinate order for geographic vs projected CRS
+            if x_meta.get('standard_name') == 'latitude':
+                x_meta, y_meta = y_meta, x_meta
+        except Exception:
+            # Fallback for CRS that don't support cs_to_cf()
+            x_meta = {'units': 'degrees_east' if dst_crs.is_geographic else 'm', 'standard_name': 'longitude' if dst_crs.is_geographic else 'projection_x_coordinate'}
+            y_meta = {'units': 'degrees_north' if dst_crs.is_geographic else 'm', 'standard_name': 'latitude' if dst_crs.is_geographic else 'projection_y_coordinate'}
         
         wkt_meta = dst_crs.to_cf()
         
@@ -950,7 +958,7 @@ class Image(object):
         return (b1 - b2) / (b1 + b2)
 
 
-    def extract_values(self, xs: np.ndarray, ys: np.ndarray, bands: List[str] = None, is_1D: bool = False) -> np.ndarray:
+    def extract_values(self, xs: np.ndarray, ys: np.ndarray, bands: List[str] = None) -> np.ndarray:
         """
         Extract values at specified coordinates from the image.
         
@@ -963,52 +971,37 @@ class Image(object):
         bands : List[str], optional
             List of band names to extract values from.
             If None, extracts from all bands, by default None
-        is_1D : bool, optional
-            If True, treats xs and ys as paired 1D arrays of points.
-            If False, treats xs and ys as meshgrid arrays, by default False
         
         Returns
         -------
         np.ndarray
             Array of extracted values with shape:
-            - If is_1D=True: (n_bands, n_points)
-            - If is_1D=False: (n_bands, xs.shape[0], xs.shape[1])
-        
-        Notes
-        -----
-        This method uses xarray's 'nearest' method for coordinate selection, which
-        finds the closest pixel to each requested coordinate.
-        
-        Examples
-        --------
-        >>> # Extract values at specific points
-        >>> import numpy as np
-        >>> from rasterio.transform import xy
-        >>> 
-        >>> # Create sample points (e.g., along a transect)
-        >>> row_indices = np.array([100, 120, 140, 160, 180])
-        >>> col_indices = np.array([200, 210, 220, 230, 240])
-        >>> 
-        >>> # Convert pixel coordinates to CRS coordinates
-        >>> xs, ys = xy(image.transform, row_indices, col_indices)
-        >>> xs = np.array(xs)
-        >>> ys = np.array(ys)
-        >>> 
-        >>> # Extract values from 'red' and 'nir' bands
-        >>> values = image.extract_values(xs, ys, bands=['red', 'nir'], is_1D=True)
-        >>> print(f"Shape of extracted values: {values.shape}")  # (2, 5)
-        >>> print(f"Red values: {values[0]}")
-        >>> print(f"NIR values: {values[1]}")
         """
         
         bands = self.band_names if bands is None else bands
-        filtered = self.data.sel({'x' : xs, 'y' : ys}, method = 'nearest')
-        values = np.array( [ filtered[band].values.copy() for band in bands ] )
+        rows, cols = rowcol(self.transform, xs, ys)
+        
+        # Verificar que las coordenadas estén dentro del raster
+        valid_mask = (
+            (rows >= 0) & (rows < self.height) & 
+            (cols >= 0) & (cols < self.width)
+        )
+        
+        results = []
+        for band in bands:
+            band_data = self.select(band)
+            values = np.full(len(xs), np.nan, dtype=band_data.dtype)
 
-        if xs.ndim == ys.ndim and is_1D:
-            values = values[:, np.arange(len(xs)), np.arange(len(xs))]
+            if np.any(valid_mask):
+                values[valid_mask] = band_data[rows[valid_mask], cols[valid_mask]]
             
-        return values
+            results.append(values)
+        
+        if len(bands) == 1:
+            return results[0]
+        
+        return np.array(results)
+        
 
     def interval_choice(self, band: str, size: int, intervals: Iterable, replace: bool = True) -> np.ndarray:
         """
