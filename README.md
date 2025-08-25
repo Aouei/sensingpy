@@ -24,5 +24,5 @@ pip install ./sensingpy
 You can also install directly from the repository URL:
 
 ```bash
-pip install git+https://github.com/Aouei/sensingpy.git
+pip install sensingpy
 ```
