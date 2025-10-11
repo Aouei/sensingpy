@@ -1,4 +1,4 @@
-# geopy
+# sensingpy
 
 A Python package for geospatial image processing and analysis.
 
@@ -26,3 +26,7 @@ You can also install directly from the repository URL:
 ```bash
 pip install sensingpy
 ```
+
+
+## DOI
+[![DOI](https://zenodo.org/badge/961844693.svg)](https://doi.org/10.5281/zenodo.17323652)
