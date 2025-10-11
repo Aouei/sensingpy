@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/961844693.svg)](https://doi.org/10.5281/zenodo.17323652)
+
 # sensingpy
 
 A Python package for geospatial image processing and analysis.
@@ -11,7 +13,7 @@ A Python package for geospatial image processing and analysis.
 
 ## Installation
 
-Python >= 3.11 in required.
+Python >= 3.11 is required.
 
 ```bash
 # 1. Clone the repository from GitHub
@@ -26,7 +28,3 @@ You can also install directly from the repository URL:
 ```bash
 pip install sensingpy
 ```
-
-
-## DOI
-[![DOI](https://zenodo.org/badge/961844693.svg)](https://doi.org/10.5281/zenodo.17323652)
