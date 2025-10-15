@@ -7,7 +7,7 @@ import rasterio
 import sensingpy.selector as selector
 import pyproj
 import sensingpy.enums as enums
-from rasterio.transform import rowcol
+from rasterio.transform import rowcol, xy
 
 
 from rasterio.warp import reproject, Resampling, calculate_default_transform
@@ -481,6 +481,98 @@ class Image(object):
 
         return self
     
+    def merge(self, other: Image) -> Image:
+        """
+        Merge two images into a new Image covering the union of their extents.
+        
+        Creates a new image that encompasses both images' geographic extents.
+        If images have different sizes or extents, a new matrix is created and
+        filled with data from each image at their respective positions.
+        
+        Parameters
+        ----------
+        other : Image
+            The other image to merge with this one. Must have the same CRS and bands.
+        
+        Returns
+        -------
+        Image
+            New merged image covering both input images
+            
+        Raises
+        ------
+        ValueError
+            If the CRS of the two images do not match
+            If the bands of the two images do not match
+            
+        Examples
+        --------
+        >>> # Merge two adjacent images
+        >>> merged = image1.merge(image2)
+        >>> print(f"Original sizes: {image1.width}x{image1.height}, {image2.width}x{image2.height}")
+        >>> print(f"Merged size: {merged.width}x{merged.height}")
+        """
+        
+        # Check CRS compatibility
+        if self.crs != other.crs:
+            raise ValueError(
+                f"CRS mismatch: self.crs is {self.crs.to_string()}, "
+                f"but other.crs is {other.crs.to_string()}. "
+                "Images must have the same CRS to merge."
+            )
+        
+        # Check bands compatibility
+        if set(self.band_names).difference(set(other.band_names)) != set():
+            raise ValueError("Images must have the same bands to merge.")
+
+        left = min(self.left, other.left)
+        top = max(self.top, other.top)
+        right = max(self.right, other.right)
+        bottom = min(self.bottom, other.bottom)
+
+        transform = other.transform
+        if self.x_res < other.x_res or self.y_res < other.y_res:
+            transform = self.transform
+
+        W = abs(rasterio.transform.rowcol(transform, left, top)[1] - rasterio.transform.rowcol(transform, right, top)[1]) + 1
+        H = abs(rasterio.transform.rowcol(transform, left, top)[0] - rasterio.transform.rowcol(transform, left, bottom)[0]) + 1
+        transform = Affine(transform.a, transform.b, left, transform.d, transform.e, top)
+
+        new_x = xy(transform, np.zeros((W)), range(W))[0]
+        new_y = xy(transform, range(H), np.zeros((H)))[1]
+
+        new_data_vars = {}
+        for band in self.band_names:
+            data = np.zeros((H, W), dtype=np.float32)
+            data[:] = np.nan
+
+            rows, cols = rasterio.transform.rowcol(transform, *self.xs_ys)
+            data[rows, cols] = self.select(band).ravel()
+            rows, cols = rasterio.transform.rowcol(transform, *other.xs_ys)
+            data[rows, cols] = other.select(band).ravel()
+            
+            new_data_vars[band] = xr.DataArray(
+                data=data,
+                dims=('y', 'x'),
+                coords={'y': new_y, 'x': new_x},
+                attrs={'grid_mapping': self.grid_mapping}
+            )
+        
+        self.data = xr.Dataset(
+            data_vars=new_data_vars,
+            coords={
+                'x': new_x.copy(),
+                'y': new_y.copy(),
+                self.grid_mapping: xr.DataArray(
+                    data=0,
+                    attrs=self.crs.to_cf()
+                )
+            },
+            attrs=self.data.attrs
+        )
+
+        return self
+
     def resample(self, scale: int, downscale: bool = True, interpolation: Resampling = Resampling.nearest) -> Self:        
         """
         Resample image by scaling factor to change spatial resolution.
