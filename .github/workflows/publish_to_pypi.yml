@@ -1,6 +1,12 @@
 name: Release to PyPI
 
 on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Versión a publicar"
+        required: true
+        default: "v1.0.0"
   push:
     tags:
       - "v*.*.*"   # v1.2.3
@@ -29,6 +35,6 @@ jobs:
         run: python -m build
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.12.2
+        uses: __token__
         with:
           password: ${{ secrets.PYPI_API_TOKEN }}
