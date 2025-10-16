@@ -5,6 +5,9 @@ on:
     tags:
       - "v*.*.*"   # v1.2.3
 
+permissions:
+  id-token: write
+  
 jobs:
   build-publish:
     runs-on: ubuntu-latest
