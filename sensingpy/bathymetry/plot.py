@@ -7,6 +7,7 @@ from matplotlib.colors import Normalize
 from scipy.interpolate import interpn
 from scipy.stats import gaussian_kde
 from matplotlib.axes import Axes
+from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
 from sensingpy.bathymetry.metrics import ValidationSummary
@@ -150,7 +151,6 @@ class CalibrationPlot(object):
 
         return ax
 
-
 class ValidationPlot(object):
     """
     Class for creating standardized bathymetry validation plots.
@@ -185,6 +185,7 @@ class ValidationPlot(object):
 
     def add_densed_scatter(self, summary: ValidationSummary, ax: Axes, s: float = 5, 
                           cmap: str = 'viridis_r', vmin: float = None, vmax: float = None, 
+                          limits: Tuple[float, float] | None = None,
                           density: Mapping[str, Any] = None) -> Tuple[Axes, Any]:
         """
         Create a density-colored scatter plot comparing modeled vs. in-situ depths.
@@ -220,12 +221,29 @@ class ValidationPlot(object):
         """
 
         x, y, z, norm = self.__select_density_method(summary, density)
+
+        if limits is None:
+            minn = np.floor(min(x.min(), y.min()))
+            maxx = np.ceil(max(x.max(), y.max()))
+        else:
+            minn, maxx = limits
+
+        ax.set_aspect('equal', adjustable='box')
+        ticks = np.arange(minn, maxx, 2)
+        ax.set_xticks(ticks)
+        ax.set_yticks(ticks)
         
         mappable = ax.scatter(x, y, c = z, s = s, cmap = cmap, vmin = vmin, vmax = vmax, norm = norm)
-        ax.plot([x.min(), x.max()], [x.min(), x.max()], '--k', alpha = 0.75, zorder = 9)
+        ax.plot([minn, maxx], [minn, maxx], '--k', alpha = 0.75, zorder = 9)
+        ax.set_xlim(minn, maxx)
+        ax.set_ylim(minn, maxx)
         self.add_labels(ax, title = 'SDB vs In Situ', xlabel = 'In Situ (m)', ylabel = 'SDB (m)')
 
-        colorbar = plt.colorbar(mappable, ax = ax)
+        fig = ax.figure
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="4%", pad=0.08)  # ancho y separación ajustables
+        colorbar = fig.colorbar(mappable, cax=cax)
+
         colorbar.ax.tick_params(axis = 'both', which = 'major', labelsize = self.tick_font_size)
         colorbar.ax.tick_params(axis = 'both', which = 'minor', labelsize = self.tick_font_size)
 
@@ -263,12 +281,12 @@ class ValidationPlot(object):
         """
 
         if density is None:
-            x, y, z, norm = self.__get_precise_density(summary.in_situ, summary.model)
+            x, y, z, norm = get_precise_density(summary.in_situ, summary.model)
         else:
             if density['method'] == 'precise':
-                x, y, z, norm = self.__get_precise_density(summary.in_situ, summary.model)
+                x, y, z, norm = get_precise_density(summary.in_situ, summary.model)
             elif density['method'] == 'approximate':
-                x, y, z, norm = self.__get_approximate_density(summary.in_situ, summary.model, bins = density.get('bins', 10))
+                x, y, z, norm = get_approximate_density(summary.in_situ, summary.model, bins = density.get('bins', 10))
             else:
                 raise ValueError(f"Unknown density method: {density['method']}")
             
@@ -357,73 +375,84 @@ class ValidationPlot(object):
 
         return ax
 
-    def __get_precise_density(self, X: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray, Any]:
-        """
-        Calculate accurate point density using Gaussian kernel density estimation.
+
+def get_precise_density(X: np.ndarray, y: np.ndarray) -> Tuple[np.ndarray, np.ndarray, np.ndarray, Any]:
+    """
+    Calculate accurate point density using Gaussian kernel density estimation.
+    
+    Parameters
+    ----------
+    X : np.ndarray
+        x-coordinates (in-situ depth values)
+    y : np.ndarray
+        y-coordinates (modeled depth values)
         
-        Parameters
-        ----------
-        X : np.ndarray
-            x-coordinates (in-situ depth values)
-        y : np.ndarray
-            y-coordinates (modeled depth values)
-            
-        Returns
-        -------
-        Tuple[np.ndarray, np.ndarray, np.ndarray, Any]
-            x-values, y-values, density values, and colormap normalization
-            
-        Notes
-        -----
-        This method uses scipy's gaussian_kde for accurate kernel density
-        estimation. It provides smooth density estimates but can be computationally
-        intensive for large datasets.
-        """
-
-        xy = np.vstack([X, y])
-        density = gaussian_kde(xy)(xy)
-
-        idx = density.argsort()
-        X, y, density = X[idx], y[idx], density[idx]
-        norm = Normalize(vmin = np.min(density), vmax = np.max(density))
-
-        return X, y, density, norm
-
-
-    def __get_approximate_density(self, X: np.ndarray, y: np.ndarray, bins: int) -> Tuple[np.ndarray, np.ndarray, np.ndarray, Any]:
-        """
-        Calculate approximate point density using 2D histogram and interpolation.
+    Returns
+    -------
+    Tuple[np.ndarray, np.ndarray, np.ndarray, Any]
+        x-values, y-values, density values, and colormap normalization
         
-        Parameters
-        ----------
-        X : np.ndarray
-            x-coordinates (in-situ depth values)
-        y : np.ndarray
-            y-coordinates (modeled depth values)
-        bins : int
-            Number of bins for the 2D histogram
-            
-        Returns
-        -------
-        Tuple[np.ndarray, np.ndarray, np.ndarray, Any]
-            x-values, y-values, density values, and colormap normalization
-            
-        Notes
-        -----
-        This method uses numpy's histogram2d and scipy's interpn for faster but
-        less accurate density estimation. It's more suitable for large datasets
-        where performance is a concern.
-        """
+    Notes
+    -----
+    This method uses scipy's gaussian_kde for accurate kernel density
+    estimation. It provides smooth density estimates but can be computationally
+    intensive for large datasets.
+    """
 
-        data , x_e, y_e = np.histogram2d(X, y, bins = bins, density = True )
-        density = interpn( ( 0.5*(x_e[1:] + x_e[:-1]) , 0.5*(y_e[1:]+y_e[:-1]) ) , data , np.vstack([X, y]).T , method = "splinef2d", bounds_error = False)
+    xy = np.vstack([X, y])
+    density = gaussian_kde(xy)(xy)
 
-        density[np.where(np.isnan(density))] = 0.0
-        density[density < 0] = 0.0
+    idx = density.argsort()
+    X, y, density = X[idx], y[idx], density[idx]
+    norm = Normalize(vmin = np.min(density), vmax = np.max(density))
+
+    return X, y, density, norm
+
+def get_approximate_density(X: np.ndarray, y: np.ndarray, bins: int) -> Tuple[np.ndarray, np.ndarray, np.ndarray, Any]:
+    """
+    Calculate approximate point density using 2D histogram and interpolation.
+    
+    Parameters
+    ----------
+    X : np.ndarray
+        x-coordinates (in-situ depth values)
+    y : np.ndarray
+        y-coordinates (modeled depth values)
+    bins : int
+        Number of bins for the 2D histogram
         
-        idx = density.argsort()
-        X, y, density = X[idx], y[idx], density[idx]
+    Returns
+    -------
+    Tuple[np.ndarray, np.ndarray, np.ndarray, Any]
+        x-values, y-values, density values, and colormap normalization
+        
+    Notes
+    -----
+    This method uses numpy's histogram2d and scipy's interpn for faster but
+    less accurate density estimation. It's more suitable for large datasets
+    where performance is a concern.
+    """
 
-        norm = Normalize(vmin = np.min(density), vmax = np.max(density))
+    data , x_e, y_e = np.histogram2d(X, y, bins = bins, density = True )
+    density = interpn( ( 0.5*(x_e[1:] + x_e[:-1]) , 0.5*(y_e[1:]+y_e[:-1]) ) , data , np.vstack([X, y]).T , method = "splinef2d", bounds_error = False)
 
-        return X, y, density, norm
+    density[np.where(np.isnan(density))] = 0.0
+    density[density < 0] = 0.0
+    
+    idx = density.argsort()
+    X, y, density = X[idx], y[idx], density[idx]
+
+    norm = Normalize(vmin = np.min(density), vmax = np.max(density))
+
+    return X, y, density, norm
+
+
+def match_subplot_sizes(base : Axes, other : Axes) -> None:
+    fig = base.figure
+    fig.tight_layout()
+    fig.canvas.draw()
+
+    pos0 = base.get_position()
+    pos1 = other.get_position()
+
+    other.set_position([pos1.x0, pos0.y0, pos1.width, pos0.height])
