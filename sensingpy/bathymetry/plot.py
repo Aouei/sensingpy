@@ -447,12 +447,13 @@ def get_approximate_density(X: np.ndarray, y: np.ndarray, bins: int) -> Tuple[np
     return X, y, density, norm
 
 
-def match_subplot_sizes(base : Axes, other : Axes) -> None:
+def match_subplot_sizes(base : Axes, other : Axes, tight : bool = False) -> None:
     fig = base.figure
-    fig.tight_layout()
-    fig.canvas.draw()
 
+    if tight:
+        fig.tight_layout()
+    
+    fig.canvas.draw()
     pos0 = base.get_position()
     pos1 = other.get_position()
-
     other.set_position([pos1.x0, pos0.y0, pos1.width, pos0.height])
