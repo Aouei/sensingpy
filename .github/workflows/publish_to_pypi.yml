@@ -35,6 +35,4 @@ jobs:
         run: python -m build
 
       - name: Publish to PyPI
-        uses: __token__
-        with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+        uses: pypa/gh-action-pypi-publish@release/v1
