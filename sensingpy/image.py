@@ -1022,7 +1022,7 @@ class Image(object):
         """
 
         if isinstance(data, np.ndarray):
-            if not band_name in self.band_names:
+            if band_name not in self.band_names:
                 self.data[band_name] = (("y", "x"), data)
             else:
                 self.data[band_name].values = data

@@ -1,6 +1,5 @@
 from typing import Any, List, Mapping, Tuple
 
-import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 from matplotlib.axes import Axes

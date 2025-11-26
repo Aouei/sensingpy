@@ -279,7 +279,7 @@ class GeoTIFFReader(ImageReader):
         """
         band_names = (
             src.descriptions
-            if not None in src.descriptions
+            if None not in src.descriptions
             else [f"Band {i}" for i in range(1, src.count + 1)]
         )
 
