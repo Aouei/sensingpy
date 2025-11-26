@@ -185,7 +185,7 @@ class ValidationPlot(object):
 
     def add_densed_scatter(self, summary: ValidationSummary, ax: Axes, s: float = 5, 
                           cmap: str = 'viridis_r', vmin: float = None, vmax: float = None, 
-                          limits: Tuple[float, float] | None = None,
+                          x_min : int = None, x_max : int = None, step = 2,
                           density: Mapping[str, Any] = None) -> Tuple[Axes, Any]:
         """
         Create a density-colored scatter plot comparing modeled vs. in-situ depths.
@@ -222,21 +222,21 @@ class ValidationPlot(object):
 
         x, y, z, norm = self.__select_density_method(summary, density)
 
-        if limits is None:
-            minn = np.floor(min(x.min(), y.min()))
-            maxx = np.ceil(max(x.max(), y.max()))
-        else:
-            minn, maxx = limits
+        if x_min is None:
+            x_min = np.floor(min(x.min(), y.min()))
+        if x_max is None:
+            x_max = np.ceil(max(x.max(), y.max()))
+
 
         ax.set_aspect('equal', adjustable='box')
-        ticks = np.arange(minn, maxx, 2)
+        ticks = np.arange(x_min, x_max, step)
         ax.set_xticks(ticks)
         ax.set_yticks(ticks)
         
         mappable = ax.scatter(x, y, c = z, s = s, cmap = cmap, vmin = vmin, vmax = vmax, norm = norm)
-        ax.plot([minn, maxx], [minn, maxx], '--k', alpha = 0.75, zorder = 9)
-        ax.set_xlim(minn, maxx)
-        ax.set_ylim(minn, maxx)
+        ax.plot([x_min, x_max], [x_min, x_max], '--k', alpha = 0.75, zorder = 9)
+        ax.set_xlim(x_min, x_max)
+        ax.set_ylim(x_min, x_max)
         self.add_labels(ax, title = 'SDB vs In Situ', xlabel = 'In Situ (m)', ylabel = 'SDB (m)')
 
         fig = ax.figure
