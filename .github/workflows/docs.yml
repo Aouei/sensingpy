@@ -44,6 +44,18 @@ jobs:
           pip install -e .
           pip install sphinx sphinx-rtd-theme sphinx-autodoc-typehints myst-parser sphinx-book-theme nbsphinx ipython
 
+      - name: Extract version from pyproject.toml
+        id: get_version
+        run: |
+          VERSION=$(grep -oP '(?<=version = ")[^"]*' pyproject.toml)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "📦 Building docs for version $VERSION"
+
+      - name: Update version in Sphinx conf.py
+        run: |
+          sed -i "s/release = .*/release = '${{ steps.get_version.outputs.version }}'/" sphinx/source/conf.py
+          sed -i "s/version = .*/version = '${{ steps.get_version.outputs.version }}'/" sphinx/source/conf.py
+
       - name: Build documentation
         run: |
           cd sphinx
