@@ -130,3 +130,9 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           print-hash: true
+
+      - name: Trigger documentation build
+        run: |
+          gh workflow run docs.yml
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
