@@ -38,3 +38,6 @@ docs/source/_build/
 .doctrees/
 
 *docs_tests*
+
+# Test notebooks
+test_image.ipynb
