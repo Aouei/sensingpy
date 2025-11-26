@@ -71,6 +71,83 @@ class Image(object):
         self.data: xr.Dataset = data
         self.name: str = ""
 
+    def __getitem__(self, key: str | List[str]) -> np.ndarray | xr.DataArray:
+        """
+        Access band data using bracket notation (similar to xarray/numpy).
+
+        This method allows accessing bands directly using bracket notation,
+        making the API more intuitive and consistent with xarray/numpy conventions.
+
+        Parameters
+        ----------
+        key : str or List[str]
+            Band name(s) to access. If a single string, returns a single band.
+            If a list of strings, returns multiple bands stacked along axis 0.
+
+        Returns
+        -------
+        np.ndarray or xr.DataArray
+            Band data as numpy array. For single band returns 2D array,
+            for multiple bands returns 3D array with shape (n_bands, height, width).
+
+        Examples
+        --------
+        >>> # Access single band
+        >>> blue_band = image['blue']
+        >>> print(blue_band.shape)  # (height, width)
+        
+        >>> # Access multiple bands
+        >>> rgb = image[['red', 'green', 'blue']]
+        >>> print(rgb.shape)  # (3, height, width)
+        
+        >>> # Equivalent to using select method
+        >>> blue_band = image.select('blue')
+        >>> rgb = image.select(['red', 'green', 'blue'])
+
+        See Also
+        --------
+        select : Alternative method for band selection with more options
+        __setitem__ : Set band data using bracket notation
+        """
+        return self.select(key, only_values=True)
+
+    def __setitem__(self, key: str, value: np.ndarray | xr.DataArray) -> None:
+        """
+        Set band data using bracket notation (similar to xarray/numpy).
+
+        This method allows setting band data directly using bracket notation,
+        making the API more intuitive for adding or updating bands.
+
+        Parameters
+        ----------
+        key : str
+            Name of the band to set or update
+        value : np.ndarray or xr.DataArray
+            Band data. Must match the spatial dimensions (height, width) of the image.
+
+        Examples
+        --------
+        >>> # Add or update a band
+        >>> image['ndvi'] = ndvi_array
+        
+        >>> # Update existing band
+        >>> image['blue'] = modified_blue_band
+        
+        >>> # Equivalent to using add_band method
+        >>> image.add_band('ndvi', ndvi_array)
+
+        See Also
+        --------
+        add_band : Alternative method for adding bands
+        __getitem__ : Get band data using bracket notation
+
+        Notes
+        -----
+        If the band name already exists, it will be updated. Otherwise, a new band
+        will be created.
+        """
+        self.add_band(key, value)
+
     def replace(self, old: str, new: str) -> Self:
         """
         Replace occurrences of a substring in all band names with a new substring.
