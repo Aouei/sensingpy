@@ -87,13 +87,17 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add pyproject.toml sphinx/source/conf.py
           git commit -m "chore: Bump version to ${{ steps.version.outputs.new }}"
-          git push origin main
-
+          
       - name: Create and push tag
         run: |
           git tag -a "v${{ steps.version.outputs.new }}" -m "Release version ${{ steps.version.outputs.new }}"
+          echo "🏷️ Created tag v${{ steps.version.outputs.new }}"
+          
+      - name: Push changes and tag
+        run: |
+          git push origin main
           git push origin "v${{ steps.version.outputs.new }}"
-          echo "🏷️ Created and pushed tag v${{ steps.version.outputs.new }}"
+          echo "✅ Pushed commit and tag v${{ steps.version.outputs.new }}"
 
       - name: Create GitHub Release
         uses: actions/create-release@v1
