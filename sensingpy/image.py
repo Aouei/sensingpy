@@ -95,11 +95,9 @@ class Image(object):
         >>> # Access single band
         >>> blue_band = image['blue']
         >>> print(blue_band.shape)  # (height, width)
-        
         >>> # Access multiple bands
         >>> rgb = image[['red', 'green', 'blue']]
         >>> print(rgb.shape)  # (3, height, width)
-        
         >>> # Equivalent to using select method
         >>> blue_band = image.select('blue')
         >>> rgb = image.select(['red', 'green', 'blue'])
@@ -129,10 +127,8 @@ class Image(object):
         --------
         >>> # Add or update a band
         >>> image['ndvi'] = ndvi_array
-        
         >>> # Update existing band
         >>> image['blue'] = modified_blue_band
-        
         >>> # Equivalent to using add_band method
         >>> image.add_band('ndvi', ndvi_array)
 

@@ -2,16 +2,8 @@ name: Build and Deploy Documentation
 
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'sensingpy/**'
-      - 'sphinx/**'
-      - 'pyproject.toml'
-      - '.github/workflows/docs.yml'
-  pull_request:
-    branches:
-      - main
+    tags:
+      - 'v*.*.*'
   workflow_dispatch:
 
 permissions:
