@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sensingpy.image &#8212; sensingpy 1.3.2 documentation</title>
+    <title>sensingpy.image &#8212; sensingpy 1.3.4 documentation</title>
   
   
   
@@ -35,7 +35,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=8b5694f0"></script>
+    <script src="../../_static/documentation_options.js?v=a5bf943c"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -133,7 +133,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 1.3.2 documentation</p>
+    <p class="title logo__title">sensingpy 1.3.4 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -450,6 +450,83 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">:</span> <span class="n">xr</span><span class="o">.</span><span class="n">Dataset</span> <span class="o">=</span> <span class="n">data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
 
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Access band data using bracket notation (similar to xarray/numpy).</span>
+
+<span class="sd">        This method allows accessing bands directly using bracket notation,</span>
+<span class="sd">        making the API more intuitive and consistent with xarray/numpy conventions.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : str or List[str]</span>
+<span class="sd">            Band name(s) to access. If a single string, returns a single band.</span>
+<span class="sd">            If a list of strings, returns multiple bands stacked along axis 0.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray or xr.DataArray</span>
+<span class="sd">            Band data as numpy array. For single band returns 2D array,</span>
+<span class="sd">            for multiple bands returns 3D array with shape (n_bands, height, width).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; # Access single band</span>
+<span class="sd">        &gt;&gt;&gt; blue_band = image[&#39;blue&#39;]</span>
+<span class="sd">        &gt;&gt;&gt; print(blue_band.shape)  # (height, width)</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; # Access multiple bands</span>
+<span class="sd">        &gt;&gt;&gt; rgb = image[[&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]]</span>
+<span class="sd">        &gt;&gt;&gt; print(rgb.shape)  # (3, height, width)</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; # Equivalent to using select method</span>
+<span class="sd">        &gt;&gt;&gt; blue_band = image.select(&#39;blue&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; rgb = image.select([&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;])</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        select : Alternative method for band selection with more options</span>
+<span class="sd">        __setitem__ : Set band data using bracket notation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">only_values</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set band data using bracket notation (similar to xarray/numpy).</span>
+
+<span class="sd">        This method allows setting band data directly using bracket notation,</span>
+<span class="sd">        making the API more intuitive for adding or updating bands.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : str</span>
+<span class="sd">            Name of the band to set or update</span>
+<span class="sd">        value : np.ndarray or xr.DataArray</span>
+<span class="sd">            Band data. Must match the spatial dimensions (height, width) of the image.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; # Add or update a band</span>
+<span class="sd">        &gt;&gt;&gt; image[&#39;ndvi&#39;] = ndvi_array</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; # Update existing band</span>
+<span class="sd">        &gt;&gt;&gt; image[&#39;blue&#39;] = modified_blue_band</span>
+<span class="sd">        </span>
+<span class="sd">        &gt;&gt;&gt; # Equivalent to using add_band method</span>
+<span class="sd">        &gt;&gt;&gt; image.add_band(&#39;ndvi&#39;, ndvi_array)</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        add_band : Alternative method for adding bands</span>
+<span class="sd">        __getitem__ : Get band data using bracket notation</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        If the band name already exists, it will be updated. Otherwise, a new band</span>
+<span class="sd">        will be created.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_band</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
 <div class="viewcode-block" id="Image.replace">
 <a class="viewcode-back" href="../../modules/image.html#sensingpy.image.Image.replace">[docs]</a>
