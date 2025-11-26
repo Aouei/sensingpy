@@ -1,10 +1,10 @@
+from itertools import pairwise
+from typing import Callable, Iterable, List
+
 import numpy as np
 
-from typing import Iterable, List, Callable
-from itertools import pairwise
 
-
-def _get_limit_masks(array : np.array, pairs : Iterable) -> List[np.array]:
+def _get_limit_masks(array: np.array, pairs: Iterable) -> List[np.array]:
     """Generates a list of boolean masks for the given array based on the provided pairs of limits.
 
     Args:
@@ -17,16 +17,19 @@ def _get_limit_masks(array : np.array, pairs : Iterable) -> List[np.array]:
         List[np.array]: list of boolean masks for the given array based on the provided pairs of limits
     """
 
-    return [ (vmin <= array) & (array < vmax) for vmin, vmax in pairs ]
+    return [(vmin <= array) & (array < vmax) for vmin, vmax in pairs]
 
-def interval_choice(array : np.ndarray, size : int, intervals : Iterable, replace = True) -> np.ndarray:
+
+def interval_choice(
+    array: np.ndarray, size: int, intervals: Iterable, replace=True
+) -> np.ndarray:
     """Generates a random sample from the given array based on the provided intervals.
 
     Args:
         array (np.ndarray): array to be sampled
         size (int): size for each interval
         intervals (Iterable): intervals to be sampled from
-            
+
                 e.g. [(0, 1), (1, 2), (2, 3)]
         replace (bool, optional): np.choice sample argument. Defaults to True.
 
@@ -35,16 +38,24 @@ def interval_choice(array : np.ndarray, size : int, intervals : Iterable, replac
     """
 
     limit_masks = _get_limit_masks(array, pairwise(intervals))
-    return np.array([ np.random.choice(array[in_limits], size, replace = replace) for in_limits in limit_masks ]).ravel()
+    return np.array(
+        [
+            np.random.choice(array[in_limits], size, replace=replace)
+            for in_limits in limit_masks
+        ]
+    ).ravel()
 
-def arginterval_choice(array : np.ndarray, size : int, intervals : Iterable, replace = True) -> np.ndarray:
+
+def arginterval_choice(
+    array: np.ndarray, size: int, intervals: Iterable, replace=True
+) -> np.ndarray:
     """Generates the indexes of a random sample from the given array based on the provided intervals.
 
     Args:
         array (np.ndarray): array to be sampled
         size (int): size for each interval
         intervals (Iterable): intervals to be sampled from
-            
+
                 e.g. [(0, 1), (1, 2), (2, 3)]
         replace (bool, optional): np.choice sample argument. Defaults to True.
 
@@ -54,9 +65,17 @@ def arginterval_choice(array : np.ndarray, size : int, intervals : Iterable, rep
 
     indexes = np.arange(array.size)
     limit_masks = _get_limit_masks(array, pairwise(intervals))
-    return np.array([ np.random.choice(indexes[in_limits], size, replace = replace) for in_limits in limit_masks ]).ravel()
+    return np.array(
+        [
+            np.random.choice(indexes[in_limits], size, replace=replace)
+            for in_limits in limit_masks
+        ]
+    ).ravel()
 
-def composite(arrays : np.ndarray, method : Callable | np.ndarray = np.nanmax) -> np.ndarray:
+
+def composite(
+    arrays: np.ndarray, method: Callable | np.ndarray = np.nanmax
+) -> np.ndarray:
     """Generates a synthetic array based on the provided method.
 
     Args:
@@ -68,14 +87,15 @@ def composite(arrays : np.ndarray, method : Callable | np.ndarray = np.nanmax) -
     """
 
     if isinstance(method, np.ndarray):
-        m,n = method.shape
-        i, j = np.ogrid[:m,:n]
+        m, n = method.shape
+        i, j = np.ogrid[:m, :n]
         return arrays[method, i, j]
-    
+
     else:
-        return method(arrays, axis = 0)
-    
-def argcomposite(arrays : np.ndarray, method : Callable = np.argmax) -> np.ndarray:
+        return method(arrays, axis=0)
+
+
+def argcomposite(arrays: np.ndarray, method: Callable = np.argmax) -> np.ndarray:
     """Generates the indexes of a synthetic array based on the provided method.
 
     Args:
@@ -86,8 +106,8 @@ def argcomposite(arrays : np.ndarray, method : Callable = np.argmax) -> np.ndarr
         np.ndarray: The indexes of a synthetic array
     """
 
-    nans = np.isnan(arrays).all(axis = 0)
+    nans = np.isnan(arrays).all(axis=0)
     arrays[:, nans] = np.inf
-    indexes = method(arrays, axis = 0)
+    indexes = method(arrays, axis=0)
     arrays[:, nans] = np.nan
     return indexes

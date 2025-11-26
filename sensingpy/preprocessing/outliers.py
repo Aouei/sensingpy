@@ -1,9 +1,8 @@
 import numpy as np
-
 from scipy.stats import zscore
 
 
-def IQR(data : np.ndarray, distance : float = 1.5) -> np.ndarray:
+def IQR(data: np.ndarray, distance: float = 1.5) -> np.ndarray:
     """Interquartile Range (IQR) method for outlier masking.
 
     Args:
@@ -18,9 +17,14 @@ def IQR(data : np.ndarray, distance : float = 1.5) -> np.ndarray:
     Q3 = np.nanpercentile(data.reshape(-1), 75)
     outlier_distance = distance * (Q3 - Q1)
 
-    return np.where( (data <= (Q1 - outlier_distance)) | (data >= (Q3 + outlier_distance)), np.nan, data)
+    return np.where(
+        (data <= (Q1 - outlier_distance)) | (data >= (Q3 + outlier_distance)),
+        np.nan,
+        data,
+    )
 
-def Z_Score(data : np.ndarray) -> np.ndarray:
+
+def Z_Score(data: np.ndarray) -> np.ndarray:
     """Z-Score method for outlier masking.
 
     Args:
@@ -34,7 +38,8 @@ def Z_Score(data : np.ndarray) -> np.ndarray:
 
     return np.where(z_scores >= 3, np.nan, data)
 
-def upper_percentile(data : np.ndarray, percentile : float) -> np.ndarray:
+
+def upper_percentile(data: np.ndarray, percentile: float) -> np.ndarray:
     """Masks values above a certain percentile.
 
     Args:
@@ -46,9 +51,10 @@ def upper_percentile(data : np.ndarray, percentile : float) -> np.ndarray:
     """
 
     limit = np.nanpercentile(data.reshape(-1), percentile)
-    return np.where( data >= limit, np.nan, data)
+    return np.where(data >= limit, np.nan, data)
 
-def lower_percentile(data : np.ndarray, percentile : float) -> np.ndarray:
+
+def lower_percentile(data: np.ndarray, percentile: float) -> np.ndarray:
     """Masks values below a certain percentile.
 
     Args:
@@ -61,4 +67,4 @@ def lower_percentile(data : np.ndarray, percentile : float) -> np.ndarray:
 
     limit = np.nanpercentile(data.reshape(-1), percentile)
 
-    return np.where( data <= limit, np.nan, data)
+    return np.where(data <= limit, np.nan, data)

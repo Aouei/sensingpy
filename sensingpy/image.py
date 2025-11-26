@@ -1,41 +1,39 @@
 from __future__ import annotations
 
+from copy import deepcopy
+from typing import Callable, Iterable, List, Self, Tuple
+
+import numpy as np
+import pyproj
+import rasterio
 import rasterio.features
 import xarray as xr
-import numpy as np
-import rasterio
-import sensingpy.selector as selector
-import pyproj
-import sensingpy.enums as enums
-from rasterio.transform import rowcol, xy
-
-
-from rasterio.warp import reproject, Resampling, calculate_default_transform
-from shapely.geometry.base import BaseGeometry
-from rasterio.transform import from_origin
-from shapely.geometry import Polygon, box
-from typing import Tuple, List, Iterable, Self, Callable
 from affine import Affine
-from copy import deepcopy
+from rasterio.transform import from_origin, rowcol, xy
+from rasterio.warp import Resampling, calculate_default_transform, reproject
+from shapely.geometry import Polygon, box
+from shapely.geometry.base import BaseGeometry
 
+import sensingpy.enums as enums
+import sensingpy.selector as selector
 
 
 class Image(object):
     """
     A geospatial image processing class for remote sensing operations.
-    
+
     This class provides tools for working with geospatial image data in Python.
     It wraps xarray Datasets with geospatial metadata and provides methods for
     common remote sensing operations including reprojection, band manipulation,
     spatial analysis, and more.
-    
+
     Parameters
     ----------
     data : xr.Dataset
         xarray Dataset containing image bands and coordinates
     crs : pyproj.CRS
         Coordinate reference system of the image
-        
+
     Attributes
     ----------
     data : xr.Dataset
@@ -46,19 +44,19 @@ class Image(object):
         Optional name identifier for the image
     grid_mapping : str
         Name of the grid mapping variable in the Dataset
-    
+
     Notes
     -----
     The Image class is designed to maintain spatial reference information throughout
     operations. Most methods modify the image in-place and return self for method chaining.
     """
 
-    grid_mapping : str = 'projection'
+    grid_mapping: str = "projection"
 
     def __init__(self, data: xr.Dataset, crs: pyproj.CRS) -> None:
         """
         Initialize an Image object with geospatial data and coordinate reference system.
-        
+
         Parameters
         ----------
         data : xr.Dataset
@@ -71,9 +69,9 @@ class Image(object):
 
         self.crs: pyproj.CRS = crs
         self.data: xr.Dataset = data
-        self.name: str = ''
+        self.name: str = ""
 
-    def replace(self, old : str, new : str) -> Self:
+    def replace(self, old: str, new: str) -> Self:
         """
         Replace occurrences of a substring in all band names with a new substring.
 
@@ -88,12 +86,12 @@ class Image(object):
         -------
         Self
             Returns the Image object for method chaining
-            
+
         Examples
         --------
         >>> image.replace('B01', 'blue')  # Renames band 'B01' to 'blue'
         """
-        
+
         new_names = {
             var: var.replace(old, new) for var in self.data.data_vars if old in var
         }
@@ -115,11 +113,11 @@ class Image(object):
         Self
             Returns the Image object for method chaining
         """
-        
+
         self.data = self.data.rename(new_names)
         return self
-    
-    def rename_by_enum(self, enum : enums.Enum) -> Self:
+
+    def rename_by_enum(self, enum: enums.Enum) -> Self:
         """
         Rename bands using an enumeration mapping.
 
@@ -135,13 +133,13 @@ class Image(object):
         -------
         Self
             Returns the Image object for method chaining
-            
+
         Examples
         --------
         >>> # Using SENTINEL2_BANDS enum to rename bands
         >>> image.rename_by_enum(SENTINEL2_BANDS)
         >>> # Renames bands like '443' to 'B1', '493' to 'B2', etc.
-            
+
         See Also
         --------
         enums.SENTINEL2_BANDS : Enum for Sentinel-2 band mappings
@@ -166,7 +164,7 @@ class Image(object):
         """
 
         return list(self.data.data_vars.keys())
-    
+
     @property
     def width(self) -> int:
         """
@@ -179,7 +177,7 @@ class Image(object):
         """
 
         return len(self.data.x)
-    
+
     @property
     def height(self) -> int:
         """
@@ -188,11 +186,11 @@ class Image(object):
         Returns
         -------
         int
-            Image height 
+            Image height
         """
-        
+
         return len(self.data.y)
-    
+
     @property
     def count(self) -> int:
         """
@@ -203,7 +201,7 @@ class Image(object):
         int
             Number of bands
         """
-        
+
         return len(self.data.data_vars)
 
     @property
@@ -229,21 +227,21 @@ class Image(object):
         float or int
             Y resolution
         """
-        
+
         return float(abs(self.data.y[0] - self.data.y[1]))
-    
+
     @property
     def transform(self) -> Affine:
         """
         Get affine transform for the image.
-        
+
         Returns
         -------
         Affine
             Affine transform object representing the spatial relationship
             between pixel coordinates and CRS coordinates
         """
-         
+
         return from_origin(self.left, self.top, self.x_res, self.y_res)
 
     @property
@@ -269,7 +267,7 @@ class Image(object):
         float
             Left coordinate
         """
-        
+
         return float(self.data.x.min()) - abs(self.x_res / 2)
 
     @property
@@ -284,7 +282,7 @@ class Image(object):
         """
 
         return float(self.data.x.max()) + abs(self.x_res / 2)
-    
+
     @property
     def top(self) -> float:
         """
@@ -295,7 +293,7 @@ class Image(object):
         float
             Top coordinate
         """
-        
+
         return float(self.data.y.max()) + abs(self.y_res / 2)
 
     @property
@@ -321,7 +319,7 @@ class Image(object):
         Polygon
             Shapely polygon representing image bounds
         """
-        
+
         return box(self.left, self.bottom, self.right, self.top)
 
     @property
@@ -334,11 +332,12 @@ class Image(object):
         np.ndarray
             Array containing band values
         """
-        
-        return np.array( [self.data[band].values.copy() for band in self.band_names] )
 
+        return np.array([self.data[band].values.copy() for band in self.band_names])
 
-    def reproject(self, new_crs: pyproj.CRS, interpolation: Resampling = Resampling.nearest) -> Self:        
+    def reproject(
+        self, new_crs: pyproj.CRS, interpolation: Resampling = Resampling.nearest
+    ) -> Self:
         """
         Reproject image to new coordinate reference system.
 
@@ -366,41 +365,50 @@ class Image(object):
         -------
         Self
             Returns the Image object for method chaining
-            
+
         Examples
         --------
         >>> # Reproject to UTM Zone 10N
         >>> utm_crs = pyproj.CRS.from_epsg(32610)
         >>> image.reproject(utm_crs, interpolation=Resampling.bilinear)
-        >>> 
+        >>>
         >>> # Reproject to Web Mercator for web mapping
         >>> webmerc_crs = pyproj.CRS.from_epsg(3857)
         >>> image.reproject(webmerc_crs)
         """
-        
+
         src_crs = self.crs
         dst_crs = new_crs
-        
+
         src_height, src_width = self.height, self.width
-        
+
         dst_transform, dst_width, dst_height = calculate_default_transform(
-            src_crs, dst_crs, src_width, src_height,
-            left=float(self.data.x.min()), bottom=float(self.data.y.min()),
-            right=float(self.data.x.max()), top=float(self.data.y.max())
+            src_crs,
+            dst_crs,
+            src_width,
+            src_height,
+            left=float(self.data.x.min()),
+            bottom=float(self.data.y.min()),
+            right=float(self.data.x.max()),
+            top=float(self.data.y.max()),
         )
-        
-        self.data = self.__update_data(interpolation, dst_transform, dst_width, dst_height, self.crs, dst_crs)
+
+        self.data = self.__update_data(
+            interpolation, dst_transform, dst_width, dst_height, self.crs, dst_crs
+        )
         self.crs = dst_crs
-        
+
         return self
-    
-    def align(self, reference: Image, interpolation: Resampling = Resampling.nearest) -> Self:
+
+    def align(
+        self, reference: Image, interpolation: Resampling = Resampling.nearest
+    ) -> Self:
         """
         Align image to match reference image's CRS, resolution and extent.
-        
+
         Transforms this image to match the coordinate reference system (CRS), spatial resolution,
         and geographic extent of a reference image.
-        
+
         Parameters
         ----------
         reference : Image
@@ -413,39 +421,39 @@ class Image(object):
             - bilinear: Bilinear interpolation (smooth, better for continuous data)
             - cubic: Cubic interpolation (smoother than bilinear)
             - lanczos: Lanczos windowed sinc interpolation (sharp edges)
-                
+
         Returns
         -------
         Self
             Returns the modified Image object for method chaining
-            
+
         Examples
         --------
         >>> # Align a Landsat image to match a Sentinel-2 reference image
         >>> landsat_img.align(sentinel2_img, interpolation=Resampling.bilinear)
-        >>> 
+        >>>
         >>> # Check that the images now have the same dimensions
         >>> assert landsat_img.width == sentinel2_img.width
         >>> assert landsat_img.height == sentinel2_img.height
-            
+
         Notes
         -----
         This operation modifies the original image in-place. Use the copy() method first
         if you want to preserve the original image.
         """
-        
+
         if self.crs != reference.crs:
             self.reproject(reference.crs, interpolation)
-        
+
         dst_transform = reference.transform
         dst_width, dst_height = reference.width, reference.height
-        
+
         new_data_vars = {}
-        
+
         for var_name, var_data in self.data.data_vars.items():
             dst_array = np.zeros((dst_height, dst_width), dtype=np.float32)
             dst_array[:] = np.nan
-            
+
             dst_array, _ = reproject(
                 source=var_data.values,
                 destination=dst_array,
@@ -454,57 +462,54 @@ class Image(object):
                 dst_transform=dst_transform,
                 dst_crs=reference.crs,
                 dst_nodata=np.nan,
-                resampling=interpolation
+                resampling=interpolation,
             )
-            
+
             new_data_vars[var_name] = xr.DataArray(
                 data=dst_array,
-                dims=('y', 'x'),
-                coords={'y': reference.data.y, 'x': reference.data.x},
-                attrs={'grid_mapping': self.grid_mapping}
+                dims=("y", "x"),
+                coords={"y": reference.data.y, "x": reference.data.x},
+                attrs={"grid_mapping": self.grid_mapping},
             )
-        
+
         self.data = xr.Dataset(
             data_vars=new_data_vars,
             coords={
-                'x': reference.data.x.copy(),
-                'y': reference.data.y.copy(),
-                self.grid_mapping: xr.DataArray(
-                    data=0,
-                    attrs=reference.crs.to_cf()
-                )
+                "x": reference.data.x.copy(),
+                "y": reference.data.y.copy(),
+                self.grid_mapping: xr.DataArray(data=0, attrs=reference.crs.to_cf()),
             },
-            attrs=self.data.attrs
+            attrs=self.data.attrs,
         )
-        
+
         self.crs = reference.crs
 
         return self
-    
+
     def merge(self, other: Image) -> Image:
         """
         Merge two images into a new Image covering the union of their extents.
-        
+
         Creates a new image that encompasses both images' geographic extents.
         If images have different sizes or extents, a new matrix is created and
         filled with data from each image at their respective positions.
-        
+
         Parameters
         ----------
         other : Image
             The other image to merge with this one. Must have the same CRS and bands.
-        
+
         Returns
         -------
         Image
             New merged image covering both input images
-            
+
         Raises
         ------
         ValueError
             If the CRS of the two images do not match
             If the bands of the two images do not match
-            
+
         Examples
         --------
         >>> # Merge two adjacent images
@@ -512,7 +517,7 @@ class Image(object):
         >>> print(f"Original sizes: {image1.width}x{image1.height}, {image2.width}x{image2.height}")
         >>> print(f"Merged size: {merged.width}x{merged.height}")
         """
-        
+
         # Check CRS compatibility
         if self.crs != other.crs:
             raise ValueError(
@@ -520,7 +525,7 @@ class Image(object):
                 f"but other.crs is {other.crs.to_string()}. "
                 "Images must have the same CRS to merge."
             )
-        
+
         # Check bands compatibility
         if set(self.band_names).difference(set(other.band_names)) != set():
             raise ValueError("Images must have the same bands to merge.")
@@ -534,9 +539,23 @@ class Image(object):
         if self.x_res < other.x_res or self.y_res < other.y_res:
             transform = self.transform
 
-        W = abs(rasterio.transform.rowcol(transform, left, top)[1] - rasterio.transform.rowcol(transform, right, top)[1]) + 1
-        H = abs(rasterio.transform.rowcol(transform, left, top)[0] - rasterio.transform.rowcol(transform, left, bottom)[0]) + 1
-        transform = Affine(transform.a, transform.b, left, transform.d, transform.e, top)
+        W = (
+            abs(
+                rasterio.transform.rowcol(transform, left, top)[1]
+                - rasterio.transform.rowcol(transform, right, top)[1]
+            )
+            + 1
+        )
+        H = (
+            abs(
+                rasterio.transform.rowcol(transform, left, top)[0]
+                - rasterio.transform.rowcol(transform, left, bottom)[0]
+            )
+            + 1
+        )
+        transform = Affine(
+            transform.a, transform.b, left, transform.d, transform.e, top
+        )
 
         new_x = xy(transform, np.zeros((W)), range(W))[0]
         new_y = xy(transform, range(H), np.zeros((H)))[1]
@@ -550,41 +569,43 @@ class Image(object):
             data[rows, cols] = self.select(band).ravel()
             rows, cols = rasterio.transform.rowcol(transform, *other.xs_ys)
             data[rows, cols] = other.select(band).ravel()
-            
+
             new_data_vars[band] = xr.DataArray(
                 data=data,
-                dims=('y', 'x'),
-                coords={'y': new_y, 'x': new_x},
-                attrs={'grid_mapping': self.grid_mapping}
+                dims=("y", "x"),
+                coords={"y": new_y, "x": new_x},
+                attrs={"grid_mapping": self.grid_mapping},
             )
-        
+
         self.data = xr.Dataset(
             data_vars=new_data_vars,
             coords={
-                'x': new_x.copy(),
-                'y': new_y.copy(),
-                self.grid_mapping: xr.DataArray(
-                    data=0,
-                    attrs=self.crs.to_cf()
-                )
+                "x": new_x.copy(),
+                "y": new_y.copy(),
+                self.grid_mapping: xr.DataArray(data=0, attrs=self.crs.to_cf()),
             },
-            attrs=self.data.attrs
+            attrs=self.data.attrs,
         )
 
         return self
 
-    def resample(self, scale: int, downscale: bool = True, interpolation: Resampling = Resampling.nearest) -> Self:        
+    def resample(
+        self,
+        scale: int,
+        downscale: bool = True,
+        interpolation: Resampling = Resampling.nearest,
+    ) -> Self:
         """
         Resample image by scaling factor to change spatial resolution.
-        
+
         Changes the spatial resolution of the image by either increasing or decreasing the number
         of pixels while maintaining the same geographic extent.
-        
+
         Parameters
         ----------
         scale : int
             Scale factor to apply. For example, a scale factor of 2 with downscale=True
-            will reduce the image dimensions by half, while with downscale=False it will 
+            will reduce the image dimensions by half, while with downscale=False it will
             double the image dimensions.
         downscale : bool, optional
             Direction of scaling operation, by default True:
@@ -597,29 +618,29 @@ class Image(object):
             - cubic: Cubic interpolation (smoother than bilinear)
             - lanczos: Lanczos windowed sinc interpolation (preserves sharp edges)
             - average: Averages all pixels that contribute to the output pixel
-                
+
         Returns
         -------
         Self
             Returns the Image object for method chaining
-            
+
         Examples
         --------
         >>> # Reduce image resolution by half (4x smaller area)
         >>> image.resample(scale=2, downscale=True)
         >>> print(f"New dimensions: {image.width}x{image.height}")
-        >>> 
+        >>>
         >>> # Double the image resolution (4x larger area)
         >>> image.resample(scale=2, downscale=False, interpolation=Resampling.bilinear)
         >>> print(f"New dimensions: {image.width}x{image.height}")
-            
+
         Notes
         -----
         When downscaling, higher values of scale mean coarser resolution.
         When upscaling, higher values of scale mean finer resolution.
         This operation modifies the image in-place.
         """
-        
+
         if downscale:
             scale = 1 / scale
 
@@ -627,10 +648,20 @@ class Image(object):
         dst_width = int(len(self.data.x) * scale)
         dst_height = int(len(self.data.y) * scale)
 
-        self.data = self.__update_data(interpolation, dst_transform, dst_width, dst_height, self.crs, self.crs)
+        self.data = self.__update_data(
+            interpolation, dst_transform, dst_width, dst_height, self.crs, self.crs
+        )
         return self
 
-    def __update_data(self, interpolation : Resampling, new_transform : Affine, dst_width : int, dst_height : int, src_crs : pyproj.CRS, dst_crs : pyproj.CRS) -> xr.Dataset:
+    def __update_data(
+        self,
+        interpolation: Resampling,
+        new_transform: Affine,
+        dst_width: int,
+        dst_height: int,
+        src_crs: pyproj.CRS,
+        dst_crs: pyproj.CRS,
+    ) -> xr.Dataset:
         """
         Update image data using new spatial parameters and coordinate reference system.
 
@@ -648,7 +679,7 @@ class Image(object):
             Source coordinate reference system
         dst_crs : pyproj.CRS
             Destination coordinate reference system
-        
+
         Returns
         -------
         xr.Dataset
@@ -666,81 +697,79 @@ class Image(object):
         ...     Resampling.nearest,
         ...     dst_transform,
         ...     dst_width,
-        ...     dst_height, 
+        ...     dst_height,
         ...     self.crs,
         ...     new_crs
         ... )
         """
-            
-        dst_x, _ = rasterio.transform.xy(new_transform, np.zeros(dst_width), np.arange(dst_width))
-        _, dst_y = rasterio.transform.xy(new_transform, np.arange(dst_height), np.zeros(dst_height))
-        
+
+        dst_x, _ = rasterio.transform.xy(
+            new_transform, np.zeros(dst_width), np.arange(dst_width)
+        )
+        _, dst_y = rasterio.transform.xy(
+            new_transform, np.arange(dst_height), np.zeros(dst_height)
+        )
+
         try:
             x_meta, y_meta = dst_crs.cs_to_cf()
-            
+
             # Ensure proper coordinate order for geographic vs projected CRS
-            if x_meta.get('standard_name') == 'latitude':
+            if x_meta.get("standard_name") == "latitude":
                 x_meta, y_meta = y_meta, x_meta
         except Exception:
             # Fallback for CRS that don't support cs_to_cf()
-            x_meta = {'units': 'degrees_east' if dst_crs.is_geographic else 'm', 'standard_name': 'longitude' if dst_crs.is_geographic else 'projection_x_coordinate'}
-            y_meta = {'units': 'degrees_north' if dst_crs.is_geographic else 'm', 'standard_name': 'latitude' if dst_crs.is_geographic else 'projection_y_coordinate'}
-        
+            x_meta = {
+                "units": "degrees_east" if dst_crs.is_geographic else "m",
+                "standard_name": (
+                    "longitude" if dst_crs.is_geographic else "projection_x_coordinate"
+                ),
+            }
+            y_meta = {
+                "units": "degrees_north" if dst_crs.is_geographic else "m",
+                "standard_name": (
+                    "latitude" if dst_crs.is_geographic else "projection_y_coordinate"
+                ),
+            }
+
         wkt_meta = dst_crs.to_cf()
-        
+
         coords = {
-            'x': xr.DataArray(
-                data=dst_x,
-                coords={'x': dst_x},
-                attrs=x_meta
-            ),
-            'y': xr.DataArray(
-                data=dst_y,
-                coords={'y': dst_y},
-                attrs=y_meta
-            ),
-            self.grid_mapping: xr.DataArray(
-                data=0,
-                attrs=wkt_meta
-            )
+            "x": xr.DataArray(data=dst_x, coords={"x": dst_x}, attrs=x_meta),
+            "y": xr.DataArray(data=dst_y, coords={"y": dst_y}, attrs=y_meta),
+            self.grid_mapping: xr.DataArray(data=0, attrs=wkt_meta),
         }
 
-        new_data_vars = {}        
+        new_data_vars = {}
         for band in self.band_names:
             data = self.data[band].values
             dst_shape = (len(dst_y), len(dst_x))
-            new_data = np.empty(dst_shape, dtype = data.dtype)
+            new_data = np.empty(dst_shape, dtype=data.dtype)
 
             new_data, _ = reproject(
-                source = data,
-                destination = new_data,
-                src_transform = self.transform,
-                src_crs = src_crs,
-                dst_transform = new_transform,
-                dst_crs = dst_crs,
-                dst_nodata = 0 if data.dtype == np.uint8 else np.nan,
-                resampling = interpolation
+                source=data,
+                destination=new_data,
+                src_transform=self.transform,
+                src_crs=src_crs,
+                dst_transform=new_transform,
+                dst_crs=dst_crs,
+                dst_nodata=0 if data.dtype == np.uint8 else np.nan,
+                resampling=interpolation,
             )
 
             new_data_vars[band] = xr.DataArray(
                 data=new_data,
-                dims=('y', 'x'),
-                coords={'y': coords['y'], 'x': coords['x']},
-                attrs={'grid_mapping': self.grid_mapping}
+                dims=("y", "x"),
+                coords={"y": coords["y"], "x": coords["x"]},
+                attrs={"grid_mapping": self.grid_mapping},
             )
-        
-        return xr.Dataset(
-            data_vars=new_data_vars,
-            coords=coords,
-            attrs = self.data.attrs
-        )
-    
 
-    def clip(self, geometries : List[BaseGeometry]) -> Self:
+        return xr.Dataset(data_vars=new_data_vars, coords=coords, attrs=self.data.attrs)
+
+    def clip(self, geometries: List[BaseGeometry]) -> Self:
         """
         Clip image to given geometries.
 
-        Creates a mask from the input geometries and trims the image extent to the minimum 
+        Creates a mask from the input geometries and trims the image extent to the minimum
         bounding box that contains all non-zero values.
 
         Parameters
@@ -772,15 +801,19 @@ class Image(object):
         >>> # 1 1 0  <- Columns 1-3 only
         >>> # 1 1 1
         """
-        
-        inshape = rasterio.features.geometry_mask(geometries = geometries, out_shape = (self.height, self.width), 
-                                                  transform = self.transform, invert = True)
-            
+
+        inshape = rasterio.features.geometry_mask(
+            geometries=geometries,
+            out_shape=(self.height, self.width),
+            transform=self.transform,
+            invert=True,
+        )
+
         rows, cols = self.__find_empty_borders(inshape)
-        self.data = self.data.isel({'y' : rows, 'x' : cols})
+        self.data = self.data.isel({"y": rows, "x": cols})
         return self
-    
-    def mask(self, condition : np.ndarray, bands : str | List[str] = None) -> Self:     
+
+    def mask(self, condition: np.ndarray, bands: str | List[str] = None) -> Self:
         """
         Mask image bands using condition array.
 
@@ -796,14 +829,21 @@ class Image(object):
         Self
             Returns the Image object for method chaining
         """
-        
+
         if bands is not None:
-            self.data[bands] = self.data[bands].where( xr.DataArray(data = condition, dims = ('y', 'x')) )
+            self.data[bands] = self.data[bands].where(
+                xr.DataArray(data=condition, dims=("y", "x"))
+            )
         else:
-            self.data = self.data.where( xr.DataArray(data = condition, dims = ('y', 'x')) )
+            self.data = self.data.where(xr.DataArray(data=condition, dims=("y", "x")))
         return self
-    
-    def geometry_mask(self, geometries : List[BaseGeometry], mask_out : bool = True,  bands : str | List[str] = None) -> Self:
+
+    def geometry_mask(
+        self,
+        geometries: List[BaseGeometry],
+        mask_out: bool = True,
+        bands: str | List[str] = None,
+    ) -> Self:
         """
         Mask image using geometries.
 
@@ -836,16 +876,20 @@ class Image(object):
         >>> # N N 1 N N
         """
 
-        condition = rasterio.features.geometry_mask(geometries = geometries, out_shape = (self.height, self.width), 
-                                                    transform = self.transform, invert = mask_out)
-            
+        condition = rasterio.features.geometry_mask(
+            geometries=geometries,
+            out_shape=(self.height, self.width),
+            transform=self.transform,
+            invert=mask_out,
+        )
+
         self.mask(condition, bands)
         return self
 
     def dropna(self) -> Self:
         """
         Remove rows and columns that contain all NaN values only when adjacent rows/columns also contain all NaN values.
-    
+
         Returns
         -------
         Self
@@ -860,28 +904,28 @@ class Image(object):
         --------
         >>> # If an image has this pattern (where 0=value, N=NaN):
         >>> # 0 0 N N N
-        >>> # 0 0 N N N 
+        >>> # 0 0 N N N
         >>> # N N N N N  <- This row will be dropped
         >>> # N N N N N  <- This row will be dropped
         >>> # The rightmost 3 columns will also be dropped
 
         >>> # If an image has this pattern (where 0=value, N=NaN):
         >>> # 0 0 N 0 N
-        >>> # 0 0 N 0 N 
+        >>> # 0 0 N 0 N
         >>> # 0 0 N 0 N
         >>> # 0 0 N 0 N
         >>> # Only the last column will be dropped
         """
-        
+
         mask = np.zeros((self.height, self.width))
         for data in self.data.data_vars.values():
             mask = np.logical_or(mask, ~np.isnan(data.values))
-            
+
         rows, cols = self.__find_empty_borders(mask)
-        self.data = self.data.isel({'y' : rows, 'x' : cols})
+        self.data = self.data.isel({"y": rows, "x": cols})
         return self
-    
-    def __find_empty_borders(self, array : np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
+
+    def __find_empty_borders(self, array: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         """
         Find non-empty row and column ranges in a binary array.
 
@@ -913,7 +957,7 @@ class Image(object):
         >>> # rows = [1, 2]  # Indices of rows with data
         >>> # cols = [1, 2]  # Indices of columns with data
         """
-        
+
         rows = np.where(array.any(axis=1))[0]
         rows = np.arange(rows.min(), rows.max() + 1)
 
@@ -921,9 +965,10 @@ class Image(object):
         cols = np.arange(cols.min(), cols.max() + 1)
 
         return rows, cols
-    
 
-    def select(self, bands : str | List[str], only_values : bool = True) -> np.ndarray | xr.DataArray:
+    def select(
+        self, bands: str | List[str], only_values: bool = True
+    ) -> np.ndarray | xr.DataArray:
         """
         Select specific bands from the image.
 
@@ -939,7 +984,7 @@ class Image(object):
         np.ndarray or xr.DataArray
             Selected band data
         """
-        
+
         result = None
 
         if only_values:
@@ -949,10 +994,10 @@ class Image(object):
                 result = self.data[bands].values.copy()
         else:
             result = deepcopy(self.data[bands])
-    
+
         return result
-    
-    def add_band(self, band_name : str, data : np.ndarray | xr.DataArray) -> Self:
+
+    def add_band(self, band_name: str, data: np.ndarray | xr.DataArray) -> Self:
         """
         Add a new band to the image or update an existing band.
 
@@ -975,16 +1020,16 @@ class Image(object):
         >>> # Update existing band
         >>> image.add_band('blue', new_blue_data)
         """
-        
+
         if isinstance(data, np.ndarray):
             if not band_name in self.band_names:
-                self.data[band_name] = (('y', 'x'), data)
+                self.data[band_name] = (("y", "x"), data)
             else:
                 self.data[band_name].values = data
         else:
             self.data[band_name] = data
         return self
-    
+
     def drop_bands(self, bands) -> Self:
         """
         Remove specified bands from the image.
@@ -999,61 +1044,61 @@ class Image(object):
         Self
             Returns the Image object for method chaining
         """
-        
+
         self.data = self.data.drop_vars(bands)
         return self
-
 
     def normalized_diference(self, band1: str, band2: str) -> np.ndarray:
         """
         Calculate normalized difference between two bands.
-        
+
         Computes the normalized difference index between two bands using the formula:
         (band1 - band2) / (band1 + band2)
-        
+
         Parameters
         ----------
         band1 : str
             Name of the first band in the calculation (numerator)
         band2 : str
             Name of the second band in the calculation (denominator)
-        
+
         Returns
         -------
         np.ndarray
             2D array containing the normalized difference values ranging from -1 to 1.
             Areas where both bands have zero values will result in NaN values.
-        
+
         Notes
         -----
         This is a common operation in remote sensing used to create various spectral indices
         such as NDVI (Normalized Difference Vegetation Index), NDWI (Normalized Difference
         Water Index), etc.
-        
+
         Values outside the -1 to 1 range can occur if negative values are present
         in the input bands.
-        
+
         Examples
         --------
         >>> # Calculate NDVI using NIR and Red bands
         >>> ndvi = image.normalized_diference('nir', 'red')
         >>> image.add_band('ndvi', ndvi)
-        >>> 
+        >>>
         >>> # Calculate NDWI using Green and NIR bands
         >>> ndwi = image.normalized_diference('green', 'nir')
         >>> image.add_band('ndwi', ndwi)
         """
-        
+
         b1 = self.data[band1].values.copy()
         b2 = self.data[band2].values.copy()
-        
+
         return (b1 - b2) / (b1 + b2)
 
-
-    def extract_values(self, xs: np.ndarray, ys: np.ndarray, bands: List[str] = None) -> np.ndarray:
+    def extract_values(
+        self, xs: np.ndarray, ys: np.ndarray, bands: List[str] = None
+    ) -> np.ndarray:
         """
         Extract values at specified coordinates from the image.
-        
+
         Parameters
         ----------
         xs : np.ndarray
@@ -1063,22 +1108,21 @@ class Image(object):
         bands : List[str], optional
             List of band names to extract values from.
             If None, extracts from all bands, by default None
-        
+
         Returns
         -------
         np.ndarray
             Array of extracted values with shape:
         """
-        
+
         bands = self.band_names if bands is None else bands
         rows, cols = rowcol(self.transform, xs, ys)
-        
+
         # Verificar que las coordenadas estén dentro del raster
         valid_mask = (
-            (rows >= 0) & (rows < self.height) & 
-            (cols >= 0) & (cols < self.width)
+            (rows >= 0) & (rows < self.height) & (cols >= 0) & (cols < self.width)
         )
-        
+
         results = []
         for band in bands:
             band_data = self.select(band)
@@ -1086,16 +1130,17 @@ class Image(object):
 
             if np.any(valid_mask):
                 values[valid_mask] = band_data[rows[valid_mask], cols[valid_mask]]
-            
+
             results.append(values)
-        
+
         if len(bands) == 1:
             return results[0]
-        
-        return np.array(results)
-        
 
-    def interval_choice(self, band: str, size: int, intervals: Iterable, replace: bool = True) -> np.ndarray:
+        return np.array(results)
+
+    def interval_choice(
+        self, band: str, size: int, intervals: Iterable, replace: bool = True
+    ) -> np.ndarray:
         """
         Choose random values from intervals in specified band.
 
@@ -1115,15 +1160,16 @@ class Image(object):
         np.ndarray
             Selected values
         """
-        
+
         if not isinstance(band, str):
-            raise ValueError('band argument must a string')
+            raise ValueError("band argument must a string")
 
-
-        array = self.select(band).ravel()        
+        array = self.select(band).ravel()
         return selector.interval_choice(array, size, intervals, replace)
 
-    def arginterval_choice(self, band: str, size: int, intervals: Iterable, replace: bool = True) -> np.ndarray:
+    def arginterval_choice(
+        self, band: str, size: int, intervals: Iterable, replace: bool = True
+    ) -> np.ndarray:
         """
         Choose random indices from intervals in specified band.
 
@@ -1143,14 +1189,12 @@ class Image(object):
         np.ndarray
             Selected indices
         """
-        
+
         if not isinstance(band, str):
-            raise ValueError('band argument must a string')
+            raise ValueError("band argument must a string")
 
-
-        array = self.select(band).ravel()        
+        array = self.select(band).ravel()
         return selector.arginterval_choice(array, size, intervals, replace)
-
 
     def empty_like(self) -> Image:
         """
@@ -1161,15 +1205,15 @@ class Image(object):
         Image
             New empty image
         """
-        
+
         result = Image(deepcopy(self.data), deepcopy(self.crs))
         result.drop_bands(result.band_names)
         return result
-    
+
     def copy(self) -> Image:
         """
         Create a deep copy of the image.
-        
+
         Returns
         -------
         Image
@@ -1177,7 +1221,6 @@ class Image(object):
         """
 
         return deepcopy(self)
-    
 
     def to_netcdf(self, filename):
         """
@@ -1188,12 +1231,12 @@ class Image(object):
         filename : str
             Output filename
         """
-        
-        self.data.attrs['proj4_string'] = self.crs.to_proj4()
-        self.data.attrs['crs_wkt'] = self.crs.to_wkt()
-        
+
+        self.data.attrs["proj4_string"] = self.crs.to_proj4()
+        self.data.attrs["crs_wkt"] = self.crs.to_wkt()
+
         return self.data.to_netcdf(filename)
-    
+
     def to_tif(self, filename):
         """
         Save image to GeoTIFF file.
@@ -1203,47 +1246,50 @@ class Image(object):
         filename : str
             Output filename
         """
-        
+
         height, width = self.height, self.width
         count = self.count
-        
+
         # Prepare the metadata for rasterio
         meta = {
-            'driver': 'GTiff',
-            'height': height,
-            'width': width,
-            'count': count,
-            'dtype': next(iter(self.data.data_vars.values())).dtype,
-            'crs': self.crs,
-            'transform': self.transform
+            "driver": "GTiff",
+            "height": height,
+            "width": width,
+            "count": count,
+            "dtype": next(iter(self.data.data_vars.values())).dtype,
+            "crs": self.crs,
+            "transform": self.transform,
         }
-        
-        with rasterio.open(filename, 'w', **meta) as dst:
+
+        with rasterio.open(filename, "w", **meta) as dst:
             # Write each band
-            for idx, (band_name, band_data) in enumerate(self.data.data_vars.items(), start=1):
+            for idx, (band_name, band_data) in enumerate(
+                self.data.data_vars.items(), start=1
+            ):
                 dst.write(band_data.values, idx)
                 dst.set_band_description(idx, band_name)
 
-
     def __str__(self) -> str:
-        return f'Bands: {self.band_names} | Height: {self.height} | Width: {self.width}'
-    
+        return f"Bands: {self.band_names} | Height: {self.height} | Width: {self.width}"
+
     def __repr__(self) -> str:
         return str(self)
 
     def _repr_html_(self) -> str:
         return self.data._repr_html_()
-    
 
-def compose(images: List[Image], method: Callable | np.ndarray, bands: List[str] = None) -> Image:
+
+def compose(
+    images: List[Image], method: Callable | np.ndarray, bands: List[str] = None
+) -> Image:
     """
     Compose multiple images into one using a composition method.
-    
-    This function combines multiple images by applying a composition method to 
-    corresponding pixels across all input images. Common uses include creating 
-    cloud-free composites, calculating statistics across time series, or 
+
+    This function combines multiple images by applying a composition method to
+    corresponding pixels across all input images. Common uses include creating
+    cloud-free composites, calculating statistics across time series, or
     selecting optimal pixels based on quality metrics.
-    
+
     Parameters
     ----------
     images : List[Image]
@@ -1257,22 +1303,22 @@ def compose(images: List[Image], method: Callable | np.ndarray, bands: List[str]
     bands : List[str], optional
         List of band names to include in the composition, by default None which
         uses all bands from the first image
-        
+
     Returns
     -------
     Image
         New Image object containing the composition result
-    
+
     Notes
     -----
     The output image retains the spatial metadata (CRS, transform) from the first
     image in the list, but contains new pixel values based on the composition method.
-    
+
     Examples
     --------
     >>> # Create a mean composite from multiple images
     >>> mean_composite = compose(image_list, np.nanmean)
-    >>> 
+    >>>
     >>> # Create a maximum NDVI composite
     >>> import numpy as np
     >>> ndvi_values = np.array([img.normalized_diference('nir', 'red') for img in image_list])
@@ -1282,9 +1328,13 @@ def compose(images: List[Image], method: Callable | np.ndarray, bands: List[str]
     if bands is None:
         bands = images[0].band_names
 
-    
     result = images[0].empty_like()
     for band in bands:
-        result.add_band(band, selector.composite(np.array([image.data[band].values for image in images]), method))
-    
+        result.add_band(
+            band,
+            selector.composite(
+                np.array([image.data[band].values for image in images]), method
+            ),
+        )
+
     return result
