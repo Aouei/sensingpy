@@ -1,0 +1,702 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sensingpy.plot &#8212; sensingpy 1.0.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=f9c1cefe"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/sensingpy/plot';</script>
+    <link rel="canonical" href="https://aouei.github.io/sensingpy/_modules/sensingpy/plot.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">sensingpy 1.0.0 documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/reading_tif.html">Reading TIFF files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/reading_netcdf.html">Reading NetCDF files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/preprocessing.html">Cleaning Outliers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/deglinting.html">Sunglint Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/remote_sensing_water.html">Remote Sensing for Water Bodies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/SDB_stumpf.html">Satellite Derived Bathymetry - Stumpf Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/image.html">Image Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.image.Image.html">sensingpy.image.Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.image.compose.html">sensingpy.image.compose</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/reader.html">Reader Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.reader.ImageReader.html">sensingpy.reader.ImageReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.reader.GeoTIFFReader.html">sensingpy.reader.GeoTIFFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.reader.NetCDFReader.html">sensingpy.reader.NetCDFReader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.reader.open.html">sensingpy.reader.open</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/selector.html">Selector Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.selector.composite.html">sensingpy.selector.composite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.selector.argcomposite.html">sensingpy.selector.argcomposite</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/masks.html">Masks Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.masks.is_valid.html">sensingpy.masks.is_valid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.masks.is_lt.html">sensingpy.masks.is_lt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.masks.is_eq.html">sensingpy.masks.is_eq</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.masks.is_gt.html">sensingpy.masks.is_gt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.masks.is_lte.html">sensingpy.masks.is_lte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.masks.is_gte.html">sensingpy.masks.is_gte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.masks.is_in_range.html">sensingpy.masks.is_in_range</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/plot.html">Plot Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.plot.get_projection.html">sensingpy.plot.get_projection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.plot.get_geofigure.html">sensingpy.plot.get_geofigure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.plot.plot_band.html">sensingpy.plot.plot_band</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.plot.plot_rgb.html">sensingpy.plot.plot_rgb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.plot.add_gridlines.html">sensingpy.plot.add_gridlines</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/bathymetry.html">Bathymetry Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/bathymetry.metrics.html">Metrics Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/bathymetry.models.html">Models Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/bathymetry.plot.html">Plot Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.metrics.html">sensingpy.bathymetry.metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.html">sensingpy.bathymetry.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.plot.html">sensingpy.bathymetry.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.plot.get_approximate_density.html">sensingpy.bathymetry.plot.get_approximate_density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.plot.get_precise_density.html">sensingpy.bathymetry.plot.get_precise_density</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.bathymetry.plot.match_subplot_sizes.html">sensingpy.bathymetry.plot.match_subplot_sizes</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/preprocessing.html">Preprocessing Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/preprocessing.deglinting.html">Deglinting Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/preprocessing.outliers.html">Outliers Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.deglinting.html">sensingpy.preprocessing.deglinting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.html">sensingpy.preprocessing.outliers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../modules/generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../modules/enums.html">Enums Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.enums.SENTINEL2_BANDS.html">sensingpy.enums.SENTINEL2_BANDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.enums.MICASENSE_BANDS.html">sensingpy.enums.MICASENSE_BANDS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../modules/generated/sensingpy.enums.FILE_EXTENTIONS.html">sensingpy.enums.FILE_EXTENTIONS</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for sensingpy.plot</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">cartopy.crs</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ccrs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyproj</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.axes</span><span class="w"> </span><span class="kn">import</span> <span class="n">Axes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="kn">import</span> <span class="n">Figure</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sensingpy.image</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+
+<div class="viewcode-block" id="get_projection">
+<a class="viewcode-back" href="../../modules/plot.html#sensingpy.plot.get_projection">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_projection</span><span class="p">(</span><span class="n">crs</span><span class="p">:</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">CRS</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Projection</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Obtain cartopy projection from a CRS object for plotting.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    crs : pyproj.CRS</span>
+<span class="sd">        Custom object containing coordinate reference system data</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ccrs.Projection</span>
+<span class="sd">        Cartopy projection object suitable for plotting</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    ValueError</span>
+<span class="sd">        If the CRS object is not valid or not supported</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Currently supports UTM projections explicitly. Defaults to Mercator</span>
+<span class="sd">    for other projection types.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">crs</span><span class="p">,</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">CRS</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid CRS object. Expected a pyproj CRS object.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Check if it&#39;s a UTM projection using safer methods</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Use the coordinate_operation property to check for UTM</span>
+        <span class="k">if</span> <span class="n">crs</span><span class="o">.</span><span class="n">coordinate_operation</span> <span class="ow">and</span> <span class="s2">&quot;UTM&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="o">.</span><span class="n">coordinate_operation</span><span class="p">):</span>
+            <span class="c1"># Extract UTM zone from the CRS name or authority code</span>
+            <span class="k">if</span> <span class="n">crs</span><span class="o">.</span><span class="n">to_authority</span><span class="p">():</span>
+                <span class="n">auth_name</span><span class="p">,</span> <span class="n">auth_code</span> <span class="o">=</span> <span class="n">crs</span><span class="o">.</span><span class="n">to_authority</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">auth_name</span> <span class="o">==</span> <span class="s2">&quot;EPSG&quot;</span><span class="p">:</span>
+                    <span class="c1"># EPSG codes for UTM zones follow a pattern</span>
+                    <span class="n">code</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">auth_code</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="mi">32601</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mi">32660</span><span class="p">:</span>  <span class="c1"># UTM North zones</span>
+                        <span class="n">zone</span> <span class="o">=</span> <span class="n">code</span> <span class="o">-</span> <span class="mi">32600</span>
+                        <span class="k">return</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">UTM</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span> <span class="n">southern_hemisphere</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="mi">32701</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;=</span> <span class="mi">32760</span><span class="p">:</span>  <span class="c1"># UTM South zones</span>
+                        <span class="n">zone</span> <span class="o">=</span> <span class="n">code</span> <span class="o">-</span> <span class="mi">32700</span>
+                        <span class="k">return</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">UTM</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span> <span class="n">southern_hemisphere</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="c1"># Fallback: try to extract zone from CRS name</span>
+            <span class="n">crs_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;zone&quot;</span> <span class="ow">in</span> <span class="n">crs_name</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+                <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+                <span class="n">zone_match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;zone (\d+)&quot;</span><span class="p">,</span> <span class="n">crs_name</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+                <span class="k">if</span> <span class="n">zone_match</span><span class="p">:</span>
+                    <span class="n">zone</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">zone_match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+                    <span class="n">southern</span> <span class="o">=</span> <span class="s2">&quot;south&quot;</span> <span class="ow">in</span> <span class="n">crs_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                    <span class="k">return</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">UTM</span><span class="p">(</span><span class="n">zone</span><span class="p">,</span> <span class="n">southern_hemisphere</span><span class="o">=</span><span class="n">southern</span><span class="p">)</span>
+
+        <span class="c1"># Check for other common projections</span>
+        <span class="n">crs_name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="s2">&quot;plate carree&quot;</span> <span class="ow">in</span> <span class="n">crs_name</span> <span class="ow">or</span> <span class="s2">&quot;epsg:4326&quot;</span> <span class="ow">in</span> <span class="n">crs_name</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># Default to Mercator for unsupported projections</span>
+    <span class="k">return</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="get_geofigure">
+<a class="viewcode-back" href="../../modules/plot.html#sensingpy.plot.get_geofigure">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_geofigure</span><span class="p">(</span>
+    <span class="n">crs</span><span class="p">:</span> <span class="n">pyproj</span><span class="o">.</span><span class="n">CRS</span><span class="p">,</span> <span class="n">nrows</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">ncols</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">figsize</span><span class="p">:</span> <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Figure</span><span class="p">,</span> <span class="n">Axes</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="n">Axes</span><span class="p">]]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate matplotlib figure and axes with georeferenced projections.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    crs : pyproj.CRS</span>
+<span class="sd">        Coordinate reference system for the plot</span>
+<span class="sd">    nrows : int</span>
+<span class="sd">        Number of rows for the subplots</span>
+<span class="sd">    ncols : int</span>
+<span class="sd">        Number of columns for the subplots</span>
+<span class="sd">    figsize : tuple, optional</span>
+<span class="sd">        Dimensions in inches of the figure, by default (12, 6)</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to plt.subplots()</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[Figure, Axes | List[Axes]]</span>
+<span class="sd">        Figure object and either a single Axes object (if nrows=ncols=1)</span>
+<span class="sd">        or a list of Axes objects</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Creates a figure with axes that use the appropriate cartopy projection</span>
+<span class="sd">    based on the provided CRS.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+        <span class="n">ncols</span><span class="o">=</span><span class="n">ncols</span><span class="p">,</span>
+        <span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span><span class="p">,</span>
+        <span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">,</span>
+        <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;projection&quot;</span><span class="p">:</span> <span class="n">get_projection</span><span class="p">(</span><span class="n">crs</span><span class="p">)},</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="plot_band">
+<a class="viewcode-back" href="../../modules/plot.html#sensingpy.plot.plot_band">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_band</span><span class="p">(</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">,</span> <span class="n">band</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span> <span class="n">cmap</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;viridis&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Axes</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot a single band of an Image object.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : Image</span>
+<span class="sd">        Image object containing bands data and coordinate reference system</span>
+<span class="sd">    band : str</span>
+<span class="sd">        Band name to be plotted</span>
+<span class="sd">    ax : Axes</span>
+<span class="sd">        Matplotlib axes on which to plot the data</span>
+<span class="sd">    cmap : str, optional</span>
+<span class="sd">        Colormap to use for visualization, by default &#39;viridis&#39;</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to ax.pcolormesh()</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[Axes, Any]</span>
+<span class="sd">        Axes with the plotted data and the mappable object for creating a colorbar</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; fig, ax = get_geofigure(image.crs, 1, 1)</span>
+<span class="sd">    &gt;&gt;&gt; ax, mappable = plot_band(image, &#39;nir&#39;, ax, cmap=&#39;inferno&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; plt.colorbar(mappable, ax=ax, label=&#39;NIR Reflectance&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">band</span><span class="p">)</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">get_projection</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+    <span class="n">mappable</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+        <span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">xs_ys</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="n">mappable</span></div>
+
+
+
+<div class="viewcode-block" id="plot_rgb">
+<a class="viewcode-back" href="../../modules/plot.html#sensingpy.plot.plot_rgb">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_rgb</span><span class="p">(</span>
+    <span class="n">image</span><span class="p">:</span> <span class="n">Image</span><span class="p">,</span>
+    <span class="n">red</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">green</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">blue</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span>
+    <span class="n">brightness</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Axes</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create an RGB visualization from three bands of an Image object.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    image : Image</span>
+<span class="sd">        Image object containing bands data and coordinate reference system</span>
+<span class="sd">    red : str</span>
+<span class="sd">        Band name to use for the red channel</span>
+<span class="sd">    green : str</span>
+<span class="sd">        Band name to use for the green channel</span>
+<span class="sd">    blue : str</span>
+<span class="sd">        Band name to use for the blue channel</span>
+<span class="sd">    ax : Axes</span>
+<span class="sd">        Matplotlib axes on which to plot the RGB image</span>
+<span class="sd">    brightness : float, optional</span>
+<span class="sd">        Value to multiply the RGB values to adjust brightness, by default 1</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to ax.pcolormesh()</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Axes</span>
+<span class="sd">        Axes with the RGB image plotted</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This function handles both float (0-1) and uint8 (0-255) data types.</span>
+<span class="sd">    Values are clipped to valid range after brightness adjustment.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; fig, ax = get_geofigure(image.crs, 1, 1)</span>
+<span class="sd">    &gt;&gt;&gt; ax = plot_rgb(image, &#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, ax, brightness=1.5)</span>
+<span class="sd">    &gt;&gt;&gt; plt.title(&#39;True Color Composite&#39;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">]))</span>
+    <span class="n">limit</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">rgb</span><span class="o">.</span><span class="n">dtype</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">uint8</span> <span class="k">else</span> <span class="mi">255</span>
+
+    <span class="n">rgb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">rgb</span> <span class="o">*</span> <span class="n">brightness</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+    <span class="n">transform</span> <span class="o">=</span> <span class="n">get_projection</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="o">*</span><span class="n">image</span><span class="o">.</span><span class="n">xs_ys</span><span class="p">,</span> <span class="n">rgb</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">transform</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span></div>
+
+
+
+<div class="viewcode-block" id="add_gridlines">
+<a class="viewcode-back" href="../../modules/plot.html#sensingpy.plot.add_gridlines">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_gridlines</span><span class="p">(</span><span class="n">ax</span><span class="p">:</span> <span class="n">Axes</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Axes</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Add geographic gridlines to a cartopy axes.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ax : Axes</span>
+<span class="sd">        Cartopy axes to which gridlines will be added</span>
+<span class="sd">    **kwargs</span>
+<span class="sd">        Additional keyword arguments passed to ax.gridlines()</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Tuple[Axes, Any]</span>
+<span class="sd">        Axes with added gridlines and the gridlines object for further customization</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Labels on top and right edges are disabled by default.</span>
+<span class="sd">    The returned gridlines object can be used for additional customization.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; fig, ax = get_geofigure(image.crs, 1, 1)</span>
+<span class="sd">    &gt;&gt;&gt; ax, gl = add_gridlines(ax, linestyle=&#39;--&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; # Customize gridlines further if needed</span>
+<span class="sd">    &gt;&gt;&gt; gl.xlabel_style = {&#39;size&#39;: 15}</span>
+<span class="sd">    &gt;&gt;&gt; gl.ylabel_style = {&#39;color&#39;: &#39;gray&#39;}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="n">ax</span><span class="p">,</span> <span class="n">gl</span></div>
+
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sergio Heredia
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Sergio Heredia.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
