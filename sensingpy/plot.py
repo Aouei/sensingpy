@@ -74,7 +74,7 @@ def get_projection(crs: pyproj.CRS) -> ccrs.Projection:
         pass
     
     # Default to Mercator for unsupported projections
-    return ccrs.Mercator()
+    return ccrs.PlateCarree()
 
 
 def get_geofigure(crs: pyproj.CRS, nrows: int, ncols: int, 
@@ -140,7 +140,8 @@ def plot_band(image: Image, band: str, ax: Axes,
     >>> plt.colorbar(mappable, ax=ax, label='NIR Reflectance')
     """
     data = image.select(band)
-    mappable = ax.pcolormesh(*image.xs_ys, data, cmap=cmap, **kwargs)
+    transform = get_projection(image.crs)
+    mappable = ax.pcolormesh(*image.xs_ys, data, cmap=cmap, transform=transform, **kwargs)
     return ax, mappable
 
 
@@ -186,8 +187,8 @@ def plot_rgb(image: Image, red: str, green: str, blue: str, ax: Axes,
     limit = 1 if rgb.dtype != np.uint8 else 255
 
     rgb = np.clip(rgb * brightness, 0, limit)
-
-    ax.pcolormesh(*image.xs_ys, rgb, **kwargs)    
+    transform = get_projection(image.crs)
+    ax.pcolormesh(*image.xs_ys, rgb, transform=transform, **kwargs)    
     return ax
 
 
