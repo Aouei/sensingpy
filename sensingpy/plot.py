@@ -1,17 +1,13 @@
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
-import contextily as cx
 import numpy as np
 import pyproj
-import os
 
 from matplotlib.pyplot import Figure
 from typing import Tuple, List, Any
 from matplotlib.axes import Axes
-from contextily import providers
 
 
-import sensingpy.reader as reader
 from sensingpy.image import Image
 
 
@@ -192,64 +188,6 @@ def plot_rgb(image: Image, red: str, green: str, blue: str, ax: Axes,
     rgb = np.clip(rgb * brightness, 0, limit)
 
     ax.pcolormesh(*image.xs_ys, rgb, **kwargs)    
-    return ax
-
-
-def add_basemap(ax: Axes, west: float, south: float, east: float, north: float, 
-               crs: pyproj.CRS, source: Any = providers.OpenStreetMap.Mapnik) -> Axes:
-    """
-    Add a basemap to a cartopy axes using contextily.
-    
-    Parameters
-    ----------
-    ax : Axes
-        Cartopy axes on which to plot the basemap
-    west : float
-        Western longitude boundary
-    south : float
-        Southern latitude boundary
-    east : float
-        Eastern longitude boundary
-    north : float
-        Northern latitude boundary
-    crs : pyproj.CRS
-        Coordinate reference system for the plot
-    source : Any, optional
-        Contextily basemap provider, by default providers.OpenStreetMap.Mapnik
-        
-    Returns
-    -------
-    Axes
-        Axes with the basemap added
-        
-    Notes
-    -----
-    This function downloads tile data from the specified provider and displays it
-    on the map. It creates a temporary GeoTIFF file that is removed after plotting.
-    
-    Examples
-    --------
-    >>> fig, ax = get_geofigure(image.crs, 1, 1)
-    >>> ax = add_basemap(ax, image.left, image.bottom, image.right, image.top, 
-    ...                 image.crs, providers.Stamen.Terrain)
-    >>> ax = plot_rgb(image, 'red', 'green', 'blue', ax, alpha=0.7)
-    """
-    temp_file = '_temp.tif'
-
-    try:
-        cx.bounds2raster(west, south, east, north, path=temp_file, ll=True, source=source)
-        image = reader.open(temp_file)            
-        image.reproject(crs)
-
-        rgb = np.moveaxis(image.values, 0, -1)
-        rgb = np.clip(rgb, 0, 255).astype(np.float32) / 255
-        
-        ax.pcolormesh(*image.xs_ys, rgb)
-
-    finally:
-        if os.path.exists(temp_file):
-            os.remove(temp_file)
-
     return ax
 
 
