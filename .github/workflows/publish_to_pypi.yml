@@ -86,7 +86,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add pyproject.toml sphinx/source/conf.py
-          git commit -m "chore: Bump version to ${{ steps.version.outputs.new }} [skip ci]"
+          git commit -m "chore: Bump version to ${{ steps.version.outputs.new }}"
           git push origin main
 
       - name: Create and push tag
@@ -130,9 +130,3 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           print-hash: true
-
-      - name: Trigger documentation build
-        run: |
-          gh workflow run docs.yml
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
