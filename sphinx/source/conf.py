@@ -6,8 +6,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 project = 'sensingpy'
 copyright = '2025, Sergio Heredia'
 author = 'Sergio Heredia'
-release = '1.4.4'
-version = '1.4.4'
+release = '2.0.0'
+version = '2.0.0'
 
 extensions = [
     'sphinx.ext.autodoc',
