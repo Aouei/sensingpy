@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sensingpy"
-version = "2.1.0"
+version = "2.1.1"
 description = "A Python package for geospatial image processing and analysis."
 readme = "README.md"
 requires-python = ">=3.11"
