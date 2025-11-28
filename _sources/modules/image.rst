@@ -83,6 +83,7 @@ Image Class
       ~Image.normalized_diference
       ~Image.extract_values
       ~Image.interval_choice
+      ~Image.sample_indices_by_interval
       ~Image.arginterval_choice
    
    .. rubric:: Utility Methods

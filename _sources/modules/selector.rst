@@ -13,9 +13,11 @@ Functions
    :nosignatures:
    
    composite
+   composite_indices
+   interval_choice
+   sample_indices_by_interval
    argcomposite
-   intervals
-   argintervals
+   arginterval_choice
 
 Module Functions
 --------------
@@ -23,11 +25,20 @@ Module Functions
 .. autofunction:: composite
    :noindex:
 
+.. autofunction:: composite_indices
+   :noindex:
+
+.. autofunction:: interval_choice
+   :noindex:
+
+.. autofunction:: sample_indices_by_interval
+   :noindex:
+
+Deprecated Functions
+-------------------
+
 .. autofunction:: argcomposite
    :noindex:
 
-.. autofunction:: intervals
-   :noindex:
-
-.. autofunction:: argintervals
+.. autofunction:: arginterval_choice
    :noindex:

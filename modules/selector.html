@@ -175,7 +175,11 @@
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Selector Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite.html">sensingpy.selector.composite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite_indices.html">sensingpy.selector.composite_indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.interval_choice.html">sensingpy.selector.interval_choice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.sample_indices_by_interval.html">sensingpy.selector.sample_indices_by_interval</a></li>
 <li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.argcomposite.html">sensingpy.selector.argcomposite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.arginterval_choice.html">sensingpy.selector.arginterval_choice</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="masks.html">Masks Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -421,6 +425,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-functions">Module Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functions">Deprecated Functions</a></li>
 </ul>
             </nav>
         </div>
@@ -442,8 +447,20 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="generated/sensingpy.selector.composite.html#sensingpy.selector.composite" title="sensingpy.selector.composite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">composite</span></code></a></p></td>
 <td><p>Generates a synthetic array based on the provided method.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sensingpy.selector.argcomposite.html#sensingpy.selector.argcomposite" title="sensingpy.selector.argcomposite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argcomposite</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/sensingpy.selector.composite_indices.html#sensingpy.selector.composite_indices" title="sensingpy.selector.composite_indices"><code class="xref py py-obj docutils literal notranslate"><span class="pre">composite_indices</span></code></a></p></td>
+<td><p>Get indices of optimal values across multiple arrays for compositing.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/sensingpy.selector.interval_choice.html#sensingpy.selector.interval_choice" title="sensingpy.selector.interval_choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_choice</span></code></a></p></td>
+<td><p>Generates a random sample from the given array based on the provided intervals.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/sensingpy.selector.sample_indices_by_interval.html#sensingpy.selector.sample_indices_by_interval" title="sensingpy.selector.sample_indices_by_interval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_indices_by_interval</span></code></a></p></td>
+<td><p>Get indices of a random sample from the array based on value intervals.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="generated/sensingpy.selector.argcomposite.html#sensingpy.selector.argcomposite" title="sensingpy.selector.argcomposite"><code class="xref py py-obj docutils literal notranslate"><span class="pre">argcomposite</span></code></a></p></td>
 <td><p>Generates the indexes of a synthetic array based on the provided method.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="generated/sensingpy.selector.arginterval_choice.html#sensingpy.selector.arginterval_choice" title="sensingpy.selector.arginterval_choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arginterval_choice</span></code></a></p></td>
+<td><p>Generates the indexes of a random sample from the given array based on the provided intervals.</p></td>
 </tr>
 </tbody>
 </table>
@@ -473,10 +490,101 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.selector.</span></span><span class="sig-name descname"><span class="pre">composite_indices</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrays:</span> <span class="pre">~numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">~typing.Callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">argmax&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/selector.html#composite_indices"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Get indices of optimal values across multiple arrays for compositing.</p>
+<p>Finds which array contains the optimal value (e.g., maximum, minimum) at each position,
+returning an index array that can be used with the composite() function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arrays</strong> (<em>np.ndarray</em>) – stack of arrays with shape (n_arrays, height, width)</p></li>
+<li><p><strong>method</strong> (<em>Callable</em><em>, </em><em>optional</em>) – numpy argmax/argmin function to determine optimal values.
+Defaults to np.argmax.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>2D array of indices indicating which input array has the optimal value</dt><dd><p>at each position.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Create max NDVI composite</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ndvi_stack</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">img1_ndvi</span><span class="p">,</span> <span class="n">img2_ndvi</span><span class="p">,</span> <span class="n">img3_ndvi</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">best_indices</span> <span class="o">=</span> <span class="n">composite_indices</span><span class="p">(</span><span class="n">ndvi_stack</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">max_ndvi_composite</span> <span class="o">=</span> <span class="n">composite</span><span class="p">(</span><span class="n">image_stack</span><span class="p">,</span> <span class="n">best_indices</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.selector.</span></span><span class="sig-name descname"><span class="pre">interval_choice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/selector.html#interval_choice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Generates a random sample from the given array based on the provided intervals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>np.ndarray</em>) – array to be sampled</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – size for each interval</p></li>
+<li><p><strong>intervals</strong> (<em>Iterable</em>) – <p>intervals to be sampled from</p>
+<p>e.g. [(0, 1), (1, 2), (2, 3)]</p>
+</p></li>
+<li><p><strong>replace</strong> (<em>bool</em><em>, </em><em>optional</em>) – np.choice sample argument. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Random sample from the given array based on the provided intervals.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.selector.</span></span><span class="sig-name descname"><span class="pre">sample_indices_by_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/selector.html#sample_indices_by_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Get indices of a random sample from the array based on value intervals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>np.ndarray</em>) – array to be sampled</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – number of samples per interval</p></li>
+<li><p><strong>intervals</strong> (<em>Iterable</em>) – <p>value intervals to sample from</p>
+<p>e.g. [(0, 1), (1, 2), (2, 3)]</p>
+</p></li>
+<li><p><strong>replace</strong> (<em>bool</em><em>, </em><em>optional</em>) – whether to sample with replacement. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Indices of the random sample from the given array.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample 10 indices from each depth interval</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">depths</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">sample_indices_by_interval</span><span class="p">(</span><span class="n">depths</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+<section id="deprecated-functions">
+<h2>Deprecated Functions<a class="headerlink" href="#deprecated-functions" title="Link to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
 <span class="sig-prename descclassname"><span class="pre">sensingpy.selector.</span></span><span class="sig-name descname"><span class="pre">argcomposite</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arrays:</span> <span class="pre">~numpy.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method:</span> <span class="pre">~typing.Callable</span> <span class="pre">=</span> <span class="pre">&lt;function</span> <span class="pre">argmax&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/selector.html#argcomposite"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
 <dd><p>Generates the indexes of a synthetic array based on the provided method.</p>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 2.1.0: </span>Use <code class="xref py py-func docutils literal notranslate"><span class="pre">composite_indices()</span></code> instead. This function will be removed in version 3.0.0.</p>
+<p><span class="versionmodified deprecated">Deprecated since version 2.1.0: </span>Use <a class="reference internal" href="generated/sensingpy.selector.composite_indices.html#sensingpy.selector.composite_indices" title="sensingpy.selector.composite_indices"><code class="xref py py-func docutils literal notranslate"><span class="pre">composite_indices()</span></code></a> instead. This function will be removed in version 3.0.0.</p>
 </div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -487,6 +595,33 @@ document.write(`
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The indexes of a synthetic array</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.selector.</span></span><span class="sig-name descname"><span class="pre">arginterval_choice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/selector.html#arginterval_choice"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dd><p>Generates the indexes of a random sample from the given array based on the provided intervals.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 2.1.0: </span>Use <a class="reference internal" href="generated/sensingpy.selector.sample_indices_by_interval.html#sensingpy.selector.sample_indices_by_interval" title="sensingpy.selector.sample_indices_by_interval"><code class="xref py py-func docutils literal notranslate"><span class="pre">sample_indices_by_interval()</span></code></a> instead. This function will be removed in version 3.0.0.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>array</strong> (<em>np.ndarray</em>) – array to be sampled</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – size for each interval</p></li>
+<li><p><strong>intervals</strong> (<em>Iterable</em>) – <p>intervals to be sampled from</p>
+<p>e.g. [(0, 1), (1, 2), (2, 3)]</p>
+</p></li>
+<li><p><strong>replace</strong> (<em>bool</em><em>, </em><em>optional</em>) – np.choice sample argument. Defaults to True.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The indexes of a random sample from the given array based on the provided intervals.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.ndarray</p>
@@ -544,6 +679,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-functions">Module Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecated-functions">Deprecated Functions</a></li>
 </ul>
   </nav></div>
 
