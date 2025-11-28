@@ -26,7 +26,7 @@ nbsphinx_execute = 'never'
 autosummary_generate = False
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**/generated', 'notebooks/*.ipynb']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**/generated']
 
 html_theme = 'sphinx_book_theme'
 html_static_path = ['_static']
