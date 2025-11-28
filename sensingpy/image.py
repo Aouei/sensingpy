@@ -1114,7 +1114,11 @@ class Image(object):
         --------
         __getitem__ : Get band as xarray DataArray (editable view)
         """
-        return self.data[bands].values.copy()
+
+        if isinstance(bands, str):
+            return self.data[bands].values.copy()
+        else:
+            return np.array([ self.data[band].values.copy() for band in bands ])
 
     def add_band(self, band_name: str, data: np.ndarray | xr.DataArray) -> Self:
         """

@@ -10,7 +10,7 @@ requirements = [
 
 setup(
     name="sensingpy",
-    version="1.0.0",
+    version="2.1.1",
     author="Sergio Heredia",
     author_email="sergiohercar1@gmail.com",
     description="A package for geospatial image processing",
