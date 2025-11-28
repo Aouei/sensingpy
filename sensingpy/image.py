@@ -71,43 +71,56 @@ class Image(object):
         self.data: xr.Dataset = data
         self.name: str = ""
 
-    def __getitem__(self, key: str | List[str]) -> np.ndarray | xr.DataArray:
+    def __getitem__(self, bands: str | List[str]) -> xr.DataArray:
         """
-        Access band data using bracket notation (similar to xarray/numpy).
+        Access band(s) by name using bracket notation.
 
-        This method allows accessing bands directly using bracket notation,
-        making the API more intuitive and consistent with xarray/numpy conventions.
+        Returns the underlying xarray DataArray for the specified band(s).
+        The returned DataArray provides a direct reference to the data, allowing
+        in-place modifications using xarray's advanced indexing capabilities.
 
         Parameters
         ----------
-        key : str or List[str]
-            Band name(s) to access. If a single string, returns a single band.
-            If a list of strings, returns multiple bands stacked along axis 0.
+        bands : str or List[str]
+            Band name(s) to access. Single string for one band,
+            list of strings for multiple bands.
 
         Returns
         -------
-        np.ndarray or xr.DataArray
-            Band data as numpy array. For single band returns 2D array,
-            for multiple bands returns 3D array with shape (n_bands, height, width).
+        xr.DataArray
+            Reference to the band data as xarray DataArray. Modifications using
+            xarray indexing methods (like .loc[], .where()) will affect the
+            original Image.
 
         Examples
         --------
         >>> # Access single band
         >>> blue_band = image['blue']
-        >>> print(blue_band.shape)  # (height, width)
+        >>> 
         >>> # Access multiple bands
         >>> rgb = image[['red', 'green', 'blue']]
-        >>> print(rgb.shape)  # (3, height, width)
-        >>> # Equivalent to using select method
-        >>> blue_band = image.select('blue')
-        >>> rgb = image.select(['red', 'green', 'blue'])
+        >>> 
+        >>> # Modify values using xarray's .loc[] indexing
+        >>> image['blue'].loc[mask] = 0
+        >>> 
+        >>> # Modify using .where()
+        >>> image['ndvi'] = image['ndvi'].where(image['ndvi'] >= 0)
+        >>> 
+        >>> # Get values as numpy array (copy)
+        >>> blue_values = image['blue'].values.copy()
 
         See Also
         --------
-        select : Alternative method for band selection with more options
+        select : Get band data as numpy array (always returns a copy)
         __setitem__ : Set band data using bracket notation
+
+        Notes
+        -----
+        To modify values in-place, use xarray's indexing methods like .loc[]
+        or .where(). Direct indexing like `image['blue'][mask] = 0` creates
+        a temporary view and won't modify the original data.
         """
-        return self.select(key, only_values=True)
+        return self.data[bands]
 
     def __setitem__(self, key: str, value: np.ndarray | xr.DataArray) -> None:
         """
@@ -1039,36 +1052,36 @@ class Image(object):
 
         return rows, cols
 
-    def select(
-        self, bands: str | List[str], only_values: bool = True
-    ) -> np.ndarray | xr.DataArray:
+    def select(self, bands: str | List[str]) -> np.ndarray:
         """
-        Select specific bands from the image.
+        Select specific bands from the image and return as numpy array (copy).
 
         Parameters
         ----------
         bands : str or List[str]
-            Band(s) to select
-        only_values : bool, optional
-            If True return array of values, if False return DataArray, by default True
+            Band(s) to select. Single string for one band,
+            list of strings for multiple bands.
 
         Returns
         -------
-        np.ndarray or xr.DataArray
-            Selected band data
+        np.ndarray
+            Selected band data as numpy array. For single band returns 2D array (H, W),
+            for multiple bands returns 3D array (N, H, W).
+
+        Examples
+        --------
+        >>> # Get single band as numpy array
+        >>> blue = image.select('blue')
+        >>> blue[mask] = 0  # Does NOT modify original image
+        >>> # Get multiple bands
+        >>> rgb = image.select(['red', 'green', 'blue'])
+        >>> print(rgb.shape)  # (3, height, width)
+
+        See Also
+        --------
+        __getitem__ : Get band as xarray DataArray (editable view)
         """
-
-        result = None
-
-        if only_values:
-            if isinstance(bands, list):
-                result = np.array([self.data[band].values.copy() for band in bands])
-            else:
-                result = self.data[bands].values.copy()
-        else:
-            result = deepcopy(self.data[bands])
-
-        return result
+        return self.data[bands].values.copy()
 
     def add_band(self, band_name: str, data: np.ndarray | xr.DataArray) -> Self:
         """
