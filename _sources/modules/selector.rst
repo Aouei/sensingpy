@@ -1,44 +1,35 @@
 Selector Module
-==============
+===============
 
 The Selector module provides functions for selecting and compositing values from multidimensional arrays.
 
-.. currentmodule:: sensingpy.selector
-
-Functions
---------
+.. rubric:: Array Selection
 
 .. autosummary::
-   :toctree: generated/
    :nosignatures:
-   
-   composite
-   composite_indices
-   interval_choice
-   sample_indices_by_interval
-   argcomposite
-   arginterval_choice
 
-Module Functions
---------------
+   sensingpy.selector.interval_choice
+   sensingpy.selector.sample_indices_by_interval
 
-.. autofunction:: composite
-   :noindex:
+.. rubric:: Array Compositing
 
-.. autofunction:: composite_indices
-   :noindex:
+.. autosummary::
+   :nosignatures:
 
-.. autofunction:: interval_choice
-   :noindex:
+   sensingpy.selector.composite
+   sensingpy.selector.composite_indices
 
-.. autofunction:: sample_indices_by_interval
-   :noindex:
+.. rubric:: Deprecated Functions
 
-Deprecated Functions
--------------------
+.. autosummary::
+   :nosignatures:
 
-.. autofunction:: argcomposite
-   :noindex:
+   sensingpy.selector.arginterval_choice
+   sensingpy.selector.argcomposite
 
-.. autofunction:: arginterval_choice
-   :noindex:
+.. rubric:: Module Documentation
+
+.. automodule:: sensingpy.selector
+   :members:
+   :undoc-members:
+   :show-inheritance:

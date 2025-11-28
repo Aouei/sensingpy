@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Metrics Module &#8212; sensingpy 2.1.0 documentation</title>
+    <title>Metrics Module &#8212; sensingpy 2.1.1 documentation</title>
   
   
   
@@ -36,7 +36,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/documentation_options.js?v=891ff365"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -45,7 +45,7 @@
     <link rel="canonical" href="https://aouei.github.io/sensingpy/modules/bathymetry.metrics.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="sensingpy.bathymetry.metrics.ValidationSummary" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html" />
+    <link rel="next" title="Models Module" href="bathymetry.models.html" />
     <link rel="prev" title="Bathymetry Package" href="bathymetry.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 2.1.0 documentation</p>
+    <p class="title logo__title">sensingpy 2.1.1 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -161,120 +161,23 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="image.html">Image Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.image.Image.html">sensingpy.image.Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.image.compose.html">sensingpy.image.compose</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="reader.html">Reader Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.ImageReader.html">sensingpy.reader.ImageReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.GeoTIFFReader.html">sensingpy.reader.GeoTIFFReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.NetCDFReader.html">sensingpy.reader.NetCDFReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.open.html">sensingpy.reader.open</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="selector.html">Selector Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite.html">sensingpy.selector.composite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite_indices.html">sensingpy.selector.composite_indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.interval_choice.html">sensingpy.selector.interval_choice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.sample_indices_by_interval.html">sensingpy.selector.sample_indices_by_interval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.argcomposite.html">sensingpy.selector.argcomposite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.arginterval_choice.html">sensingpy.selector.arginterval_choice</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="masks.html">Masks Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_valid.html">sensingpy.masks.is_valid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_lt.html">sensingpy.masks.is_lt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_eq.html">sensingpy.masks.is_eq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_gt.html">sensingpy.masks.is_gt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_lte.html">sensingpy.masks.is_lte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_gte.html">sensingpy.masks.is_gte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_in_range.html">sensingpy.masks.is_in_range</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="plot.html">Plot Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.get_projection.html">sensingpy.plot.get_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.get_geofigure.html">sensingpy.plot.get_geofigure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.plot_band.html">sensingpy.plot.plot_band</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.plot_rgb.html">sensingpy.plot.plot_rgb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.add_gridlines.html">sensingpy.plot.add_gridlines</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reader.html">Reader Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">Selector Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="masks.html">Masks Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">Plot Module</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="bathymetry.html">Bathymetry Package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Metrics Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.models.html">Models Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.plot.html">Plot Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.html">sensingpy.bathymetry.metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.models.html">sensingpy.bathymetry.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.html">sensingpy.bathymetry.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.get_approximate_density.html">sensingpy.bathymetry.plot.get_approximate_density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.get_precise_density.html">sensingpy.bathymetry.plot.get_precise_density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.match_subplot_sizes.html">sensingpy.bathymetry.plot.match_subplot_sizes</a></li>
-</ul>
-</details></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Metrics Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.models.html">Models Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.plot.html">Plot Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="preprocessing.html">Preprocessing Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="preprocessing.deglinting.html">Deglinting Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.deglinting.html">Deglinting Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.outliers.html">Outliers Module</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="preprocessing.outliers.html">Outliers Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.html">sensingpy.preprocessing.deglinting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.html">sensingpy.preprocessing.outliers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="enums.html">Enums Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.SENTINEL2_BANDS.html">sensingpy.enums.SENTINEL2_BANDS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.MICASENSE_BANDS.html">sensingpy.enums.MICASENSE_BANDS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.FILE_EXTENTIONS.html">sensingpy.enums.FILE_EXTENTIONS</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums Module</a></li>
 </ul>
 
     </div>
@@ -423,21 +326,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validationsummary">ValidationSummary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary"><code class="docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.Abs_std"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.Abs_std</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MAE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MAE</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MSD"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MSD</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MedAE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MedAE</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.N"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.N</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMSE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.RMSE</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMedSE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.RMedSE</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.error"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.error</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.in_situ"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.in_situ</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.model"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.model</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary"><code class="docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.Abs_std"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.Abs_std</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MAE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MAE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MSD"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MSD</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MedAE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MedAE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.N"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.N</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMSE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.RMSE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMedSE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.RMedSE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.error"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.error</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.in_situ"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.in_situ</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.model"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.model</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -453,54 +352,22 @@ document.write(`
                   
   <section id="metrics-module">
 <h1>Metrics Module<a class="headerlink" href="#metrics-module" title="Link to this heading">#</a></h1>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<p>Validation metrics and statistical analysis for bathymetry model evaluation.</p>
+<p class="rubric">Validation Classes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.bathymetry.metrics.ValidationSummary</span></code></a></p></td>
 <td><p>Class to estimate error and metrics from true and pred values</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</section>
-<section id="validationsummary">
-<h2>ValidationSummary<a class="headerlink" href="#validationsummary" title="Link to this heading">#</a></h2>
-<dl class="py class">
+<p class="rubric">Module Documentation</p>
+<dl class="py class" id="module-sensingpy.bathymetry.metrics">
 <dt class="sig sig-object py" id="sensingpy.bathymetry.metrics.ValidationSummary">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensingpy.bathymetry.metrics.</span></span><span class="sig-name descname"><span class="pre">ValidationSummary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">in_situ</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sensingpy/bathymetry/metrics.html#ValidationSummary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.metrics.ValidationSummary" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class to estimate error and metrics from true and pred values</p>
-<p class="rubric">Properties</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary.error" title="sensingpy.bathymetry.metrics.ValidationSummary.error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">error</span></code></a></p></td>
-<td><p>error = true - pred</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary.MSD" title="sensingpy.bathymetry.metrics.ValidationSummary.MSD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MSD</span></code></a></p></td>
-<td><p>Mean Sample Differences = pred - true</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary.MAE" title="sensingpy.bathymetry.metrics.ValidationSummary.MAE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MAE</span></code></a></p></td>
-<td><p>Mean Absolute Error</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary.MedAE" title="sensingpy.bathymetry.metrics.ValidationSummary.MedAE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MedAE</span></code></a></p></td>
-<td><p>Median Absolute Error</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMSE" title="sensingpy.bathymetry.metrics.ValidationSummary.RMSE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RMSE</span></code></a></p></td>
-<td><p>Root Mean Squared Error</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMedSE" title="sensingpy.bathymetry.metrics.ValidationSummary.RMedSE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RMedSE</span></code></a></p></td>
-<td><p>Root Median Squared Error</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary.Abs_std" title="sensingpy.bathymetry.metrics.ValidationSummary.Abs_std"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Abs_std</span></code></a></p></td>
-<td><p>Absolute std error</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.bathymetry.metrics.ValidationSummary.N" title="sensingpy.bathymetry.metrics.ValidationSummary.N"><code class="xref py py-obj docutils literal notranslate"><span class="pre">N</span></code></a></p></td>
-<td><p>Number of errors</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <dl class="py property">
 <dt class="sig sig-object py" id="sensingpy.bathymetry.metrics.ValidationSummary.Abs_std">
 <em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Abs_std</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#sensingpy.bathymetry.metrics.ValidationSummary.Abs_std" title="Link to this definition">#</a></dt>
@@ -562,7 +429,6 @@ document.write(`
 </dd></dl>
 
 </section>
-</section>
 
 
                 </article>
@@ -585,11 +451,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html"
+       href="bathymetry.models.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">sensingpy.bathymetry.metrics.ValidationSummary</p>
+        <p class="prev-next-title">Models Module</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -609,21 +475,17 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validationsummary">ValidationSummary</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary"><code class="docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.Abs_std"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.Abs_std</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MAE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MAE</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MSD"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MSD</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MedAE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MedAE</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.N"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.N</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMSE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.RMSE</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMedSE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.RMedSE</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.error"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.error</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.in_situ"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.in_situ</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.model"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.model</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary"><code class="docutils literal notranslate"><span class="pre">ValidationSummary</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.Abs_std"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.Abs_std</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MAE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MAE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MSD"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MSD</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.MedAE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.MedAE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.N"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.N</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMSE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.RMSE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.RMedSE"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.RMedSE</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.error"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.error</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.in_situ"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.in_situ</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.metrics.ValidationSummary.model"><code class="docutils literal notranslate"><span class="pre">ValidationSummary.model</span></code></a></li>
 </ul>
 </li>
 </ul>

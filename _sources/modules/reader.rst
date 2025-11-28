@@ -3,68 +3,25 @@ Reader Module
 
 The Reader module provides functionality for reading geospatial data from different file formats.
 
-.. currentmodule:: sensingpy.reader
-
-Classes and Functions
--------------------
+.. rubric:: Reader Classes
 
 .. autosummary::
-   :toctree: generated/
    :nosignatures:
-   
-   ImageReader
-   GeoTIFFReader
-   NetCDFReader
-   open
 
-ImageReader Class
-----------
+   sensingpy.reader.ImageReader
+   sensingpy.reader.NetCDFReader
+   sensingpy.reader.GeoTIFFReader
 
-.. autoclass:: ImageReader
+.. rubric:: Utility Functions
+
+.. autosummary::
+   :nosignatures:
+
+   sensingpy.reader.open
+
+.. rubric:: Module Documentation
+
+.. automodule:: sensingpy.reader
    :members:
    :undoc-members:
    :show-inheritance:
-   
-   .. rubric:: Methods
-   
-   .. autosummary::
-      :nosignatures:
-      
-      ~ImageReader.read
-
-GeoTIFFReader Class
-----------
-
-.. autoclass:: GeoTIFFReader
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   
-   .. rubric:: Methods
-   
-   .. autosummary::
-      :nosignatures:
-      
-      ~GeoTIFFReader.read
-      ~GeoTIFFReader._prepare_coords
-      ~GeoTIFFReader._prepare_vars
-
-NetCDFReader Class
-----------
-
-.. autoclass:: NetCDFReader
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   
-   .. rubric:: Methods
-   
-   .. autosummary::
-      :nosignatures:
-      
-      ~NetCDFReader.read
-
-Module Functions
---------------
-
-.. autofunction:: open

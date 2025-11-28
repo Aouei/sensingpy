@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Image Module &#8212; sensingpy 2.1.0 documentation</title>
+    <title>Image Module &#8212; sensingpy 2.1.1 documentation</title>
   
   
   
@@ -36,7 +36,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/documentation_options.js?v=891ff365"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -45,7 +45,7 @@
     <link rel="canonical" href="https://aouei.github.io/sensingpy/modules/image.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="sensingpy.image.Image" href="generated/sensingpy.image.Image.html" />
+    <link rel="next" title="Reader Module" href="reader.html" />
     <link rel="prev" title="Satellite Derived Bathymetry - Stumpf Method" href="../notebooks/SDB_stumpf.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 2.1.0 documentation</p>
+    <p class="title logo__title">sensingpy 2.1.1 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -161,120 +161,23 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Image Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.image.Image.html">sensingpy.image.Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.image.compose.html">sensingpy.image.compose</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="reader.html">Reader Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.ImageReader.html">sensingpy.reader.ImageReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.GeoTIFFReader.html">sensingpy.reader.GeoTIFFReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.NetCDFReader.html">sensingpy.reader.NetCDFReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.open.html">sensingpy.reader.open</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="selector.html">Selector Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite.html">sensingpy.selector.composite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite_indices.html">sensingpy.selector.composite_indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.interval_choice.html">sensingpy.selector.interval_choice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.sample_indices_by_interval.html">sensingpy.selector.sample_indices_by_interval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.argcomposite.html">sensingpy.selector.argcomposite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.arginterval_choice.html">sensingpy.selector.arginterval_choice</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="masks.html">Masks Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_valid.html">sensingpy.masks.is_valid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_lt.html">sensingpy.masks.is_lt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_eq.html">sensingpy.masks.is_eq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_gt.html">sensingpy.masks.is_gt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_lte.html">sensingpy.masks.is_lte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_gte.html">sensingpy.masks.is_gte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_in_range.html">sensingpy.masks.is_in_range</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="plot.html">Plot Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.get_projection.html">sensingpy.plot.get_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.get_geofigure.html">sensingpy.plot.get_geofigure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.plot_band.html">sensingpy.plot.plot_band</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.plot_rgb.html">sensingpy.plot.plot_rgb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.add_gridlines.html">sensingpy.plot.add_gridlines</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reader.html">Reader Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">Selector Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="masks.html">Masks Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">Plot Module</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="bathymetry.html">Bathymetry Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.metrics.html">Metrics Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.models.html">Models Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.plot.html">Plot Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.html">sensingpy.bathymetry.metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.models.html">sensingpy.bathymetry.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.html">sensingpy.bathymetry.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.get_approximate_density.html">sensingpy.bathymetry.plot.get_approximate_density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.get_precise_density.html">sensingpy.bathymetry.plot.get_precise_density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.match_subplot_sizes.html">sensingpy.bathymetry.plot.match_subplot_sizes</a></li>
-</ul>
-</details></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.metrics.html">Metrics Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.models.html">Models Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.plot.html">Plot Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="preprocessing.html">Preprocessing Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="preprocessing.deglinting.html">Deglinting Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.deglinting.html">Deglinting Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.outliers.html">Outliers Module</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="preprocessing.outliers.html">Outliers Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.html">sensingpy.preprocessing.deglinting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.html">sensingpy.preprocessing.outliers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="enums.html">Enums Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.SENTINEL2_BANDS.html">sensingpy.enums.SENTINEL2_BANDS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.MICASENSE_BANDS.html">sensingpy.enums.MICASENSE_BANDS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.FILE_EXTENTIONS.html">sensingpy.enums.FILE_EXTENTIONS</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums Module</a></li>
 </ul>
 
     </div>
@@ -423,7 +326,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes-and-functions">Classes and Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-class">Image Class</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.data"><code class="docutils literal notranslate"><span class="pre">Image.data</span></code></a></li>
@@ -433,20 +335,14 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.add_band"><code class="docutils literal notranslate"><span class="pre">Image.add_band()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.align"><code class="docutils literal notranslate"><span class="pre">Image.align()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.arginterval_choice"><code class="docutils literal notranslate"><span class="pre">Image.arginterval_choice()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.band_names"><code class="docutils literal notranslate"><span class="pre">Image.band_names</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.bbox"><code class="docutils literal notranslate"><span class="pre">Image.bbox</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.bottom"><code class="docutils literal notranslate"><span class="pre">Image.bottom</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.clip"><code class="docutils literal notranslate"><span class="pre">Image.clip()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.copy"><code class="docutils literal notranslate"><span class="pre">Image.copy()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.count"><code class="docutils literal notranslate"><span class="pre">Image.count</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.drop_bands"><code class="docutils literal notranslate"><span class="pre">Image.drop_bands()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.dropna"><code class="docutils literal notranslate"><span class="pre">Image.dropna()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.empty_like"><code class="docutils literal notranslate"><span class="pre">Image.empty_like()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.extract_values"><code class="docutils literal notranslate"><span class="pre">Image.extract_values()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.geometry_mask"><code class="docutils literal notranslate"><span class="pre">Image.geometry_mask()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.height"><code class="docutils literal notranslate"><span class="pre">Image.height</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.interval_choice"><code class="docutils literal notranslate"><span class="pre">Image.interval_choice()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.left"><code class="docutils literal notranslate"><span class="pre">Image.left</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.mask"><code class="docutils literal notranslate"><span class="pre">Image.mask()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.merge"><code class="docutils literal notranslate"><span class="pre">Image.merge()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.normalized_diference"><code class="docutils literal notranslate"><span class="pre">Image.normalized_diference()</span></code></a></li>
@@ -455,11 +351,18 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.replace"><code class="docutils literal notranslate"><span class="pre">Image.replace()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.reproject"><code class="docutils literal notranslate"><span class="pre">Image.reproject()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.resample"><code class="docutils literal notranslate"><span class="pre">Image.resample()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.right"><code class="docutils literal notranslate"><span class="pre">Image.right</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.sample_indices_by_interval"><code class="docutils literal notranslate"><span class="pre">Image.sample_indices_by_interval()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.select"><code class="docutils literal notranslate"><span class="pre">Image.select()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.to_netcdf"><code class="docutils literal notranslate"><span class="pre">Image.to_netcdf()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.to_tif"><code class="docutils literal notranslate"><span class="pre">Image.to_tif()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.band_names"><code class="docutils literal notranslate"><span class="pre">Image.band_names</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.bbox"><code class="docutils literal notranslate"><span class="pre">Image.bbox</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.bottom"><code class="docutils literal notranslate"><span class="pre">Image.bottom</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.count"><code class="docutils literal notranslate"><span class="pre">Image.count</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Image.grid_mapping</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.height"><code class="docutils literal notranslate"><span class="pre">Image.height</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.left"><code class="docutils literal notranslate"><span class="pre">Image.left</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.right"><code class="docutils literal notranslate"><span class="pre">Image.right</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.top"><code class="docutils literal notranslate"><span class="pre">Image.top</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.transform"><code class="docutils literal notranslate"><span class="pre">Image.transform</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.values"><code class="docutils literal notranslate"><span class="pre">Image.values</span></code></a></li>
@@ -489,20 +392,6 @@ document.write(`
   <section id="image-module">
 <h1>Image Module<a class="headerlink" href="#image-module" title="Link to this heading">#</a></h1>
 <p>The Image module provides functionality for handling geospatial image data through the Image class.</p>
-<section id="classes-and-functions">
-<h2>Classes and Functions<a class="headerlink" href="#classes-and-functions" title="Link to this heading">#</a></h2>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image" title="sensingpy.image.Image"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Image</span></code></a></p></td>
-<td><p>A geospatial image processing class for remote sensing operations.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.compose" title="sensingpy.image.compose"><code class="xref py py-obj docutils literal notranslate"><span class="pre">compose</span></code></a></p></td>
-<td><p>Compose multiple images into one using a composition method.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</section>
 <section id="image-class">
 <h2>Image Class<a class="headerlink" href="#image-class" title="Link to this heading">#</a></h2>
 <dl class="py class">
@@ -569,77 +458,71 @@ spatial analysis, and more.</p>
 <p class="rubric">Notes</p>
 <p>The Image class is designed to maintain spatial reference information throughout
 operations. Most methods modify the image in-place and return self for method chaining.</p>
-<p class="rubric">Spatial Properties</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.width" title="sensingpy.image.Image.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code></a></p></td>
-<td><p>Get width of the image in pixels.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.height" title="sensingpy.image.Image.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a></p></td>
-<td><p>Get height of the image in pixels.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.transform" title="sensingpy.image.Image.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a></p></td>
-<td><p>Get affine transform for the image.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.x_res" title="sensingpy.image.Image.x_res"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x_res</span></code></a></p></td>
-<td><p>Get pixel resolution in x direction.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.y_res" title="sensingpy.image.Image.y_res"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_res</span></code></a></p></td>
-<td><p>Get pixel resolution in y direction.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.left" title="sensingpy.image.Image.left"><code class="xref py py-obj docutils literal notranslate"><span class="pre">left</span></code></a></p></td>
-<td><p>Get min longitude coordinate of the image.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.right" title="sensingpy.image.Image.right"><code class="xref py py-obj docutils literal notranslate"><span class="pre">right</span></code></a></p></td>
-<td><p>Get max longitude coordinate of the image.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.top" title="sensingpy.image.Image.top"><code class="xref py py-obj docutils literal notranslate"><span class="pre">top</span></code></a></p></td>
-<td><p>Get max latitude coordinate of the image.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.bottom" title="sensingpy.image.Image.bottom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bottom</span></code></a></p></td>
-<td><p>Get min latitude coordinate of the image.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.bbox" title="sensingpy.image.Image.bbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bbox</span></code></a></p></td>
-<td><p>Get bounding box polygon of the image.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p class="rubric">Data Properties</p>
+<p class="rubric">Properties</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.band_names" title="sensingpy.image.Image.band_names"><code class="xref py py-obj docutils literal notranslate"><span class="pre">band_names</span></code></a></p></td>
 <td><p>Get list of band names in the image.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.width" title="sensingpy.image.Image.width"><code class="xref py py-obj docutils literal notranslate"><span class="pre">width</span></code></a></p></td>
+<td><p>Get width of the image in pixels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.height" title="sensingpy.image.Image.height"><code class="xref py py-obj docutils literal notranslate"><span class="pre">height</span></code></a></p></td>
+<td><p>Get height of the image in pixels.</p></td>
+</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.count" title="sensingpy.image.Image.count"><code class="xref py py-obj docutils literal notranslate"><span class="pre">count</span></code></a></p></td>
 <td><p>Get number of bands in the image.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.values" title="sensingpy.image.Image.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
-<td><p>Get array of all band values.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.x_res" title="sensingpy.image.Image.x_res"><code class="xref py py-obj docutils literal notranslate"><span class="pre">x_res</span></code></a></p></td>
+<td><p>Get pixel resolution in x direction.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.y_res" title="sensingpy.image.Image.y_res"><code class="xref py py-obj docutils literal notranslate"><span class="pre">y_res</span></code></a></p></td>
+<td><p>Get pixel resolution in y direction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.transform" title="sensingpy.image.Image.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a></p></td>
+<td><p>Get affine transform for the image.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.xs_ys" title="sensingpy.image.Image.xs_ys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">xs_ys</span></code></a></p></td>
 <td><p>Get meshgrid of x and y coordinates.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.left" title="sensingpy.image.Image.left"><code class="xref py py-obj docutils literal notranslate"><span class="pre">left</span></code></a></p></td>
+<td><p>Get min longitude coordinate of the image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.right" title="sensingpy.image.Image.right"><code class="xref py py-obj docutils literal notranslate"><span class="pre">right</span></code></a></p></td>
+<td><p>Get max longitude coordinate of the image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.top" title="sensingpy.image.Image.top"><code class="xref py py-obj docutils literal notranslate"><span class="pre">top</span></code></a></p></td>
+<td><p>Get max latitude coordinate of the image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.bottom" title="sensingpy.image.Image.bottom"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bottom</span></code></a></p></td>
+<td><p>Get min latitude coordinate of the image.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.bbox" title="sensingpy.image.Image.bbox"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bbox</span></code></a></p></td>
+<td><p>Get bounding box polygon of the image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.values" title="sensingpy.image.Image.values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">values</span></code></a></p></td>
+<td><p>Get array of all band values.</p></td>
+</tr>
 </tbody>
 </table>
 </div>
-<p class="rubric">Data Manipulation Methods</p>
+<p class="rubric">Band Management</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.add_band" title="sensingpy.image.Image.add_band"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_band</span></code></a></p></td>
-<td><p>Add a new band to the image or update an existing band.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.drop_bands" title="sensingpy.image.Image.drop_bands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_bands</span></code></a></p></td>
-<td><p>Remove specified bands from the image.</p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.select" title="sensingpy.image.Image.select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a></p></td>
 <td><p>Select specific bands from the image and return as numpy array (copy).</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.rename" title="sensingpy.image.Image.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a></p></td>
-<td><p>Rename band names using a dictionary mapping.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.add_band" title="sensingpy.image.Image.add_band"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_band</span></code></a></p></td>
+<td><p>Add a new band to the image or update an existing band.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.replace" title="sensingpy.image.Image.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.drop_bands" title="sensingpy.image.Image.drop_bands"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_bands</span></code></a></p></td>
+<td><p>Remove specified bands from the image.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.replace" title="sensingpy.image.Image.replace"><code class="xref py py-obj docutils literal notranslate"><span class="pre">replace</span></code></a></p></td>
 <td><p>Replace occurrences of a substring in all band names with a new substring.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.rename" title="sensingpy.image.Image.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a></p></td>
+<td><p>Rename band names using a dictionary mapping.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.rename_by_enum" title="sensingpy.image.Image.rename_by_enum"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename_by_enum</span></code></a></p></td>
 <td><p>Rename bands using an enumeration mapping.</p></td>
@@ -647,7 +530,7 @@ operations. Most methods modify the image in-place and return self for method ch
 </tbody>
 </table>
 </div>
-<p class="rubric">Spatial Methods</p>
+<p class="rubric">Spatial Operations</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.reproject" title="sensingpy.image.Image.reproject"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reproject</span></code></a></p></td>
@@ -662,6 +545,15 @@ operations. Most methods modify the image in-place and return self for method ch
 <tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.clip" title="sensingpy.image.Image.clip"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clip</span></code></a></p></td>
 <td><p>Clip image to given geometries.</p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.merge" title="sensingpy.image.Image.merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge</span></code></a></p></td>
+<td><p>Merge two images into a new Image covering the union of their extents.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Masking and Filtering</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.mask" title="sensingpy.image.Image.mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask</span></code></a></p></td>
 <td><p>Mask image bands using condition array.</p></td>
 </tr>
@@ -674,7 +566,7 @@ operations. Most methods modify the image in-place and return self for method ch
 </tbody>
 </table>
 </div>
-<p class="rubric">Analysis Methods</p>
+<p class="rubric">Data Analysis</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.normalized_diference" title="sensingpy.image.Image.normalized_diference"><code class="xref py py-obj docutils literal notranslate"><span class="pre">normalized_diference</span></code></a></p></td>
@@ -689,8 +581,17 @@ operations. Most methods modify the image in-place and return self for method ch
 <tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.sample_indices_by_interval" title="sensingpy.image.Image.sample_indices_by_interval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sample_indices_by_interval</span></code></a></p></td>
 <td><p>Get indices of random samples from value intervals in a specified band.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.arginterval_choice" title="sensingpy.image.Image.arginterval_choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arginterval_choice</span></code></a></p></td>
-<td><p>Choose random indices from intervals in specified band.</p></td>
+</tbody>
+</table>
+</div>
+<p class="rubric">Data Export</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.to_netcdf" title="sensingpy.image.Image.to_netcdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_netcdf</span></code></a></p></td>
+<td><p>Save image to NetCDF file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.to_tif" title="sensingpy.image.Image.to_tif"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_tif</span></code></a></p></td>
+<td><p>Save image to GeoTIFF file.</p></td>
 </tr>
 </tbody>
 </table>
@@ -703,12 +604,6 @@ operations. Most methods modify the image in-place and return self for method ch
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.copy" title="sensingpy.image.Image.copy"><code class="xref py py-obj docutils literal notranslate"><span class="pre">copy</span></code></a></p></td>
 <td><p>Create a deep copy of the image.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.to_netcdf" title="sensingpy.image.Image.to_netcdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_netcdf</span></code></a></p></td>
-<td><p>Save image to NetCDF file.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.to_tif" title="sensingpy.image.Image.to_tif"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_tif</span></code></a></p></td>
-<td><p>Save image to GeoTIFF file.</p></td>
 </tr>
 </tbody>
 </table>
@@ -805,48 +700,6 @@ if you want to preserve the original image.</p>
 </dl>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="sensingpy.image.Image.band_names">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">band_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#sensingpy.image.Image.band_names" title="Link to this definition">#</a></dt>
-<dd><p>Get list of band names in the image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>List of band names</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>List[str]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="sensingpy.image.Image.bbox">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bbox</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Polygon</span></em><a class="headerlink" href="#sensingpy.image.Image.bbox" title="Link to this definition">#</a></dt>
-<dd><p>Get bounding box polygon of the image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Shapely polygon representing image bounds</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>Polygon</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="sensingpy.image.Image.bottom">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bottom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#sensingpy.image.Image.bottom" title="Link to this definition">#</a></dt>
-<dd><p>Get min latitude coordinate of the image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Bottom coordinate</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.image.Image.clip">
 <span class="sig-name descname"><span class="pre">clip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseGeometry</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.clip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.clip" title="Link to this definition">#</a></dt>
@@ -893,20 +746,6 @@ clipped to the combined extent of all geometries.</p>
 </dd>
 <dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p><a class="reference internal" href="#sensingpy.image.Image" title="sensingpy.image.Image">Image</a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="sensingpy.image.Image.count">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#sensingpy.image.Image.count" title="Link to this definition">#</a></dt>
-<dd><p>Get number of bands in the image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Number of bands</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>int</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1035,20 +874,6 @@ by default None (no change)</p></li>
 </div>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="sensingpy.image.Image.height">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#sensingpy.image.Image.height" title="Link to this definition">#</a></dt>
-<dd><p>Get height of the image in pixels.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Image height</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>int</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.image.Image.interval_choice">
 <span class="sig-name descname"><span class="pre">interval_choice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.interval_choice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.interval_choice" title="Link to this definition">#</a></dt>
@@ -1067,20 +892,6 @@ by default None (no change)</p></li>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.ndarray</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="sensingpy.image.Image.left">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#sensingpy.image.Image.left" title="Link to this definition">#</a></dt>
-<dd><p>Get min longitude coordinate of the image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Left coordinate</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1352,20 +1163,6 @@ When upscaling, higher values of scale mean finer resolution.
 This operation modifies the image in-place.</p>
 </dd></dl>
 
-<dl class="py property">
-<dt class="sig sig-object py" id="sensingpy.image.Image.right">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#sensingpy.image.Image.right" title="Link to this definition">#</a></dt>
-<dd><p>Get max longitude coordinate of the image.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Right coordinate</p>
-</dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.image.Image.sample_indices_by_interval">
 <span class="sig-name descname"><span class="pre">sample_indices_by_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.sample_indices_by_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.sample_indices_by_interval" title="Link to this definition">#</a></dt>
@@ -1446,6 +1243,109 @@ for multiple bands returns 3D array (N, H, W).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Output filename</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensingpy.image.Image.band_names">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">band_names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#sensingpy.image.Image.band_names" title="Link to this definition">#</a></dt>
+<dd><p>Get list of band names in the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of band names</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensingpy.image.Image.bbox">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bbox</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Polygon</span></em><a class="headerlink" href="#sensingpy.image.Image.bbox" title="Link to this definition">#</a></dt>
+<dd><p>Get bounding box polygon of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Shapely polygon representing image bounds</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Polygon</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensingpy.image.Image.bottom">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bottom</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#sensingpy.image.Image.bottom" title="Link to this definition">#</a></dt>
+<dd><p>Get min latitude coordinate of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Bottom coordinate</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensingpy.image.Image.count">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">count</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#sensingpy.image.Image.count" title="Link to this definition">#</a></dt>
+<dd><p>Get number of bands in the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Number of bands</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">grid_mapping</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'projection'</span></em><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensingpy.image.Image.height">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">height</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#sensingpy.image.Image.height" title="Link to this definition">#</a></dt>
+<dd><p>Get height of the image in pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Image height</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensingpy.image.Image.left">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#sensingpy.image.Image.left" title="Link to this definition">#</a></dt>
+<dd><p>Get min longitude coordinate of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Left coordinate</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="sensingpy.image.Image.right">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#sensingpy.image.Image.right" title="Link to this definition">#</a></dt>
+<dd><p>Get max longitude coordinate of the image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Right coordinate</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1627,11 +1527,11 @@ image in the list, but contains new pixel values based on the composition method
       </div>
     </a>
     <a class="right-next"
-       href="generated/sensingpy.image.Image.html"
+       href="reader.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">sensingpy.image.Image</p>
+        <p class="prev-next-title">Reader Module</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1651,7 +1551,6 @@ image in the list, but contains new pixel values based on the composition method
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes-and-functions">Classes and Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-class">Image Class</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image"><code class="docutils literal notranslate"><span class="pre">Image</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.data"><code class="docutils literal notranslate"><span class="pre">Image.data</span></code></a></li>
@@ -1661,20 +1560,14 @@ image in the list, but contains new pixel values based on the composition method
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.add_band"><code class="docutils literal notranslate"><span class="pre">Image.add_band()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.align"><code class="docutils literal notranslate"><span class="pre">Image.align()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.arginterval_choice"><code class="docutils literal notranslate"><span class="pre">Image.arginterval_choice()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.band_names"><code class="docutils literal notranslate"><span class="pre">Image.band_names</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.bbox"><code class="docutils literal notranslate"><span class="pre">Image.bbox</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.bottom"><code class="docutils literal notranslate"><span class="pre">Image.bottom</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.clip"><code class="docutils literal notranslate"><span class="pre">Image.clip()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.copy"><code class="docutils literal notranslate"><span class="pre">Image.copy()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.count"><code class="docutils literal notranslate"><span class="pre">Image.count</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.drop_bands"><code class="docutils literal notranslate"><span class="pre">Image.drop_bands()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.dropna"><code class="docutils literal notranslate"><span class="pre">Image.dropna()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.empty_like"><code class="docutils literal notranslate"><span class="pre">Image.empty_like()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.extract_values"><code class="docutils literal notranslate"><span class="pre">Image.extract_values()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.geometry_mask"><code class="docutils literal notranslate"><span class="pre">Image.geometry_mask()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.height"><code class="docutils literal notranslate"><span class="pre">Image.height</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.interval_choice"><code class="docutils literal notranslate"><span class="pre">Image.interval_choice()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.left"><code class="docutils literal notranslate"><span class="pre">Image.left</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.mask"><code class="docutils literal notranslate"><span class="pre">Image.mask()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.merge"><code class="docutils literal notranslate"><span class="pre">Image.merge()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.normalized_diference"><code class="docutils literal notranslate"><span class="pre">Image.normalized_diference()</span></code></a></li>
@@ -1683,11 +1576,18 @@ image in the list, but contains new pixel values based on the composition method
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.replace"><code class="docutils literal notranslate"><span class="pre">Image.replace()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.reproject"><code class="docutils literal notranslate"><span class="pre">Image.reproject()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.resample"><code class="docutils literal notranslate"><span class="pre">Image.resample()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.right"><code class="docutils literal notranslate"><span class="pre">Image.right</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.sample_indices_by_interval"><code class="docutils literal notranslate"><span class="pre">Image.sample_indices_by_interval()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.select"><code class="docutils literal notranslate"><span class="pre">Image.select()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.to_netcdf"><code class="docutils literal notranslate"><span class="pre">Image.to_netcdf()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.to_tif"><code class="docutils literal notranslate"><span class="pre">Image.to_tif()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.band_names"><code class="docutils literal notranslate"><span class="pre">Image.band_names</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.bbox"><code class="docutils literal notranslate"><span class="pre">Image.bbox</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.bottom"><code class="docutils literal notranslate"><span class="pre">Image.bottom</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.count"><code class="docutils literal notranslate"><span class="pre">Image.count</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">Image.grid_mapping</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.height"><code class="docutils literal notranslate"><span class="pre">Image.height</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.left"><code class="docutils literal notranslate"><span class="pre">Image.left</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.right"><code class="docutils literal notranslate"><span class="pre">Image.right</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.top"><code class="docutils literal notranslate"><span class="pre">Image.top</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.transform"><code class="docutils literal notranslate"><span class="pre">Image.transform</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.values"><code class="docutils literal notranslate"><span class="pre">Image.values</span></code></a></li>

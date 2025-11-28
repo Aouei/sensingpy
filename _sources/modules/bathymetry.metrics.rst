@@ -1,35 +1,18 @@
 Metrics Module
 ================
 
-.. currentmodule:: sensingpy.bathymetry.metrics
+Validation metrics and statistical analysis for bathymetry model evaluation.
 
-Classes
--------
+.. rubric:: Validation Classes
 
 .. autosummary::
-   :toctree: generated/
    :nosignatures:
-   
-   ValidationSummary
 
-ValidationSummary
--------------------
+   sensingpy.bathymetry.metrics.ValidationSummary
 
-.. autoclass:: ValidationSummary
+.. rubric:: Module Documentation
+
+.. automodule:: sensingpy.bathymetry.metrics
    :members:
    :undoc-members:
    :show-inheritance:
-   
-   .. rubric:: Properties
-   
-   .. autosummary::
-      :nosignatures:
-      
-      ~ValidationSummary.error
-      ~ValidationSummary.MSD
-      ~ValidationSummary.MAE
-      ~ValidationSummary.MedAE
-      ~ValidationSummary.RMSE
-      ~ValidationSummary.RMedSE
-      ~ValidationSummary.Abs_std
-      ~ValidationSummary.N

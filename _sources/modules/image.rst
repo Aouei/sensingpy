@@ -1,102 +1,96 @@
 Image Module
-===========
+============
 
 The Image module provides functionality for handling geospatial image data through the Image class.
 
-.. currentmodule:: sensingpy.image
-
-Classes and Functions
--------------------
-
-.. autosummary::
-   :toctree: generated/
-   :nosignatures:
-   
-   Image
-   compose
-
 Image Class
-----------
+-----------
 
-.. autoclass:: Image
+.. autoclass:: sensingpy.image.Image
    :members:
    :undoc-members:
    :show-inheritance:
-   :exclude-members: grid_mapping, data, crs, name
-   
-   .. rubric:: Spatial Properties
-   
+   :member-order: groupwise
+
+   .. rubric:: Properties
+
    .. autosummary::
       :nosignatures:
-      
-      ~Image.width
-      ~Image.height
-      ~Image.transform
-      ~Image.x_res
-      ~Image.y_res
-      ~Image.left
-      ~Image.right
-      ~Image.top
-      ~Image.bottom
-      ~Image.bbox
-   
-   .. rubric:: Data Properties
-   
+
+      band_names
+      width
+      height
+      count
+      x_res
+      y_res
+      transform
+      xs_ys
+      left
+      right
+      top
+      bottom
+      bbox
+      values
+
+   .. rubric:: Band Management
+
    .. autosummary::
       :nosignatures:
-      
-      ~Image.band_names
-      ~Image.count
-      ~Image.values
-      ~Image.xs_ys
-   
-   .. rubric:: Data Manipulation Methods
-   
+
+      select
+      add_band
+      drop_bands
+      replace
+      rename
+      rename_by_enum
+
+   .. rubric:: Spatial Operations
+
    .. autosummary::
       :nosignatures:
-      
-      ~Image.add_band
-      ~Image.drop_bands
-      ~Image.select
-      ~Image.rename
-      ~Image.replace
-      ~Image.rename_by_enum
-   
-   .. rubric:: Spatial Methods
-   
+
+      reproject
+      align
+      resample
+      clip
+      merge
+
+   .. rubric:: Masking and Filtering
+
    .. autosummary::
       :nosignatures:
-      
-      ~Image.reproject
-      ~Image.align
-      ~Image.resample
-      ~Image.clip
-      ~Image.mask
-      ~Image.geometry_mask
-      ~Image.dropna
-   
-   .. rubric:: Analysis Methods
-   
+
+      mask
+      geometry_mask
+      dropna
+
+   .. rubric:: Data Analysis
+
    .. autosummary::
       :nosignatures:
-      
-      ~Image.normalized_diference
-      ~Image.extract_values
-      ~Image.interval_choice
-      ~Image.sample_indices_by_interval
-      ~Image.arginterval_choice
-   
+
+      normalized_diference
+      extract_values
+      interval_choice
+      sample_indices_by_interval
+
+   .. rubric:: Data Export
+
+   .. autosummary::
+      :nosignatures:
+
+      to_netcdf
+      to_tif
+
    .. rubric:: Utility Methods
-   
+
    .. autosummary::
       :nosignatures:
-      
-      ~Image.empty_like
-      ~Image.copy
-      ~Image.to_netcdf
-      ~Image.to_tif
+
+      empty_like
+      copy
 
 Module Functions
---------------
+----------------
 
-.. autofunction:: compose
+.. autofunction:: sensingpy.image.compose

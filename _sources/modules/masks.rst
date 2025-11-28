@@ -1,45 +1,36 @@
 Masks Module
-===========
+============
 
 The Masks module provides functionality for creating boolean masks based on array values.
 
-.. currentmodule:: sensingpy.masks
-
-Functions
---------
+.. rubric:: Validation Masks
 
 .. autosummary::
-   :toctree: generated/
    :nosignatures:
-   
-   is_valid
-   is_lt
-   is_eq
-   is_gt
-   is_lte
-   is_gte
-   is_in_range
 
-Module Functions
---------------
+   sensingpy.masks.is_valid
 
-.. autofunction:: is_valid
-   :noindex:
+.. rubric:: Comparison Masks
 
-.. autofunction:: is_lt
-   :noindex:
+.. autosummary::
+   :nosignatures:
 
-.. autofunction:: is_eq
-   :noindex:
+   sensingpy.masks.is_lt
+   sensingpy.masks.is_eq
+   sensingpy.masks.is_gt
+   sensingpy.masks.is_lte
+   sensingpy.masks.is_gte
 
-.. autofunction:: is_gt
-   :noindex:
+.. rubric:: Range Masks
 
-.. autofunction:: is_lte
-   :noindex:
+.. autosummary::
+   :nosignatures:
 
-.. autofunction:: is_gte
-   :noindex:
+   sensingpy.masks.is_in_range
 
-.. autofunction:: is_in_range
-   :noindex:
+.. rubric:: Module Documentation
+
+.. automodule:: sensingpy.masks
+   :members:
+   :undoc-members:
+   :show-inheritance:

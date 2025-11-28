@@ -1,24 +1,20 @@
 Deglinting Module
-================
+==================
 
-.. currentmodule:: sensingpy.preprocessing.deglinting
+Sunglint removal algorithms for correcting specular reflections in water remote sensing imagery.
 
-Functions
---------
+.. rubric:: Deglinting Methods
 
 .. autosummary::
-   :toctree: generated/
    :nosignatures:
-   
-   hedley
-   lyzenga
-   joyce
 
-Function Documentation
---------------------
+   sensingpy.preprocessing.deglinting.hedley
+   sensingpy.preprocessing.deglinting.lyzenga
+   sensingpy.preprocessing.deglinting.joyce
 
-.. autofunction:: hedley
+.. rubric:: Module Documentation
 
-.. autofunction:: lyzenga
-
-.. autofunction:: joyce
+.. automodule:: sensingpy.preprocessing.deglinting
+   :members:
+   :undoc-members:
+   :show-inheritance:

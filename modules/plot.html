@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Plot Module &#8212; sensingpy 2.1.0 documentation</title>
+    <title>Plot Module &#8212; sensingpy 2.1.1 documentation</title>
   
   
   
@@ -36,7 +36,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/documentation_options.js?v=891ff365"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -45,8 +45,8 @@
     <link rel="canonical" href="https://aouei.github.io/sensingpy/modules/plot.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="sensingpy.plot.get_projection" href="generated/sensingpy.plot.get_projection.html" />
-    <link rel="prev" title="sensingpy.masks.is_in_range" href="generated/sensingpy.masks.is_in_range.html" />
+    <link rel="next" title="Bathymetry Package" href="bathymetry.html" />
+    <link rel="prev" title="Masks Module" href="masks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 2.1.0 documentation</p>
+    <p class="title logo__title">sensingpy 2.1.1 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -161,120 +161,23 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="image.html">Image Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.image.Image.html">sensingpy.image.Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.image.compose.html">sensingpy.image.compose</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="reader.html">Reader Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.ImageReader.html">sensingpy.reader.ImageReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.GeoTIFFReader.html">sensingpy.reader.GeoTIFFReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.NetCDFReader.html">sensingpy.reader.NetCDFReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.open.html">sensingpy.reader.open</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="selector.html">Selector Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite.html">sensingpy.selector.composite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite_indices.html">sensingpy.selector.composite_indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.interval_choice.html">sensingpy.selector.interval_choice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.sample_indices_by_interval.html">sensingpy.selector.sample_indices_by_interval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.argcomposite.html">sensingpy.selector.argcomposite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.arginterval_choice.html">sensingpy.selector.arginterval_choice</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="masks.html">Masks Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_valid.html">sensingpy.masks.is_valid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_lt.html">sensingpy.masks.is_lt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_eq.html">sensingpy.masks.is_eq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_gt.html">sensingpy.masks.is_gt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_lte.html">sensingpy.masks.is_lte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_gte.html">sensingpy.masks.is_gte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_in_range.html">sensingpy.masks.is_in_range</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Plot Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.get_projection.html">sensingpy.plot.get_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.get_geofigure.html">sensingpy.plot.get_geofigure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.plot_band.html">sensingpy.plot.plot_band</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.plot_rgb.html">sensingpy.plot.plot_rgb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.add_gridlines.html">sensingpy.plot.add_gridlines</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reader.html">Reader Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">Selector Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="masks.html">Masks Module</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plot Module</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="bathymetry.html">Bathymetry Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.metrics.html">Metrics Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.models.html">Models Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.plot.html">Plot Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.html">sensingpy.bathymetry.metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.models.html">sensingpy.bathymetry.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.html">sensingpy.bathymetry.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.get_approximate_density.html">sensingpy.bathymetry.plot.get_approximate_density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.get_precise_density.html">sensingpy.bathymetry.plot.get_precise_density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.match_subplot_sizes.html">sensingpy.bathymetry.plot.match_subplot_sizes</a></li>
-</ul>
-</details></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.metrics.html">Metrics Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.models.html">Models Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.plot.html">Plot Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="preprocessing.html">Preprocessing Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="preprocessing.deglinting.html">Deglinting Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.deglinting.html">Deglinting Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.outliers.html">Outliers Module</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="preprocessing.outliers.html">Outliers Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.html">sensingpy.preprocessing.deglinting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.html">sensingpy.preprocessing.outliers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="enums.html">Enums Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.SENTINEL2_BANDS.html">sensingpy.enums.SENTINEL2_BANDS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.MICASENSE_BANDS.html">sensingpy.enums.MICASENSE_BANDS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.FILE_EXTENTIONS.html">sensingpy.enums.FILE_EXTENTIONS</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums Module</a></li>
 </ul>
 
     </div>
@@ -423,8 +326,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-documentation">Function Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.add_gridlines"><code class="docutils literal notranslate"><span class="pre">add_gridlines()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.get_geofigure"><code class="docutils literal notranslate"><span class="pre">get_geofigure()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.get_projection"><code class="docutils literal notranslate"><span class="pre">get_projection()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.plot_band"><code class="docutils literal notranslate"><span class="pre">plot_band()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.plot_rgb"><code class="docutils literal notranslate"><span class="pre">plot_rgb()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -439,57 +345,74 @@ document.write(`
   <section id="plot-module">
 <h1>Plot Module<a class="headerlink" href="#plot-module" title="Link to this heading">#</a></h1>
 <p>The Plot module provides visualization functionality for geospatial images.</p>
-<section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h2>
+<p class="rubric">Figure Setup</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sensingpy.plot.get_projection.html#sensingpy.plot.get_projection" title="sensingpy.plot.get_projection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_projection</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.plot.get_projection" title="sensingpy.plot.get_projection"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.plot.get_projection</span></code></a></p></td>
 <td><p>Obtain cartopy projection from a CRS object for plotting.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sensingpy.plot.get_geofigure.html#sensingpy.plot.get_geofigure" title="sensingpy.plot.get_geofigure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_geofigure</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.plot.get_geofigure" title="sensingpy.plot.get_geofigure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.plot.get_geofigure</span></code></a></p></td>
 <td><p>Generate matplotlib figure and axes with georeferenced projections.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sensingpy.plot.plot_band.html#sensingpy.plot.plot_band" title="sensingpy.plot.plot_band"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_band</span></code></a></p></td>
+</tbody>
+</table>
+</div>
+<p class="rubric">Plotting Functions</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.plot.plot_band" title="sensingpy.plot.plot_band"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.plot.plot_band</span></code></a></p></td>
 <td><p>Plot a single band of an Image object.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sensingpy.plot.plot_rgb.html#sensingpy.plot.plot_rgb" title="sensingpy.plot.plot_rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rgb</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.plot.plot_rgb" title="sensingpy.plot.plot_rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.plot.plot_rgb</span></code></a></p></td>
 <td><p>Create an RGB visualization from three bands of an Image object.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sensingpy.plot.add_gridlines.html#sensingpy.plot.add_gridlines" title="sensingpy.plot.add_gridlines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_gridlines</span></code></a></p></td>
+</tbody>
+</table>
+</div>
+<p class="rubric">Styling Functions</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.plot.add_gridlines" title="sensingpy.plot.add_gridlines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.plot.add_gridlines</span></code></a></p></td>
 <td><p>Add geographic gridlines to a cartopy axes.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</section>
-<section id="function-documentation">
-<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Link to this heading">#</a></h2>
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">get_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CRS</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Projection</span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#get_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Obtain cartopy projection from a CRS object for plotting.</p>
+<p class="rubric">Module Documentation</p>
+<dl class="py function" id="module-sensingpy.plot">
+<dt class="sig sig-object py" id="sensingpy.plot.add_gridlines">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">add_gridlines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#add_gridlines"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.plot.add_gridlines" title="Link to this definition">#</a></dt>
+<dd><p>Add geographic gridlines to a cartopy axes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>crs</strong> (<em>pyproj.CRS</em>) – Custom object containing coordinate reference system data</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ax</strong> (<em>Axes</em>) – Cartopy axes to which gridlines will be added</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments passed to ax.gridlines()</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Cartopy projection object suitable for plotting</p>
+<dd class="field-even"><p>Axes with added gridlines and the gridlines object for further customization</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ccrs.Projection</p>
-</dd>
-<dt class="field-even">Raises<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ValueError</strong> – If the CRS object is not valid or not supported</p>
+<dd class="field-odd"><p>Tuple[Axes, Any]</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>Currently supports UTM projections explicitly. Defaults to Mercator
-for other projection types.</p>
+<p>Labels on top and right edges are disabled by default.
+The returned gridlines object can be used for additional customization.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_geofigure</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="p">,</span> <span class="n">gl</span> <span class="o">=</span> <span class="n">add_gridlines</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Customize gridlines further if needed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">xlabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">ylabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;gray&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">get_geofigure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(12,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Figure</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Axes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#get_geofigure"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="sensingpy.plot.get_geofigure">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">get_geofigure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CRS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nrows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ncols</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(12,</span> <span class="pre">6)</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Figure</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Axes</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#get_geofigure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.plot.get_geofigure" title="Link to this definition">#</a></dt>
 <dd><p>Generate matplotlib figure and axes with georeferenced projections.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -515,8 +438,31 @@ based on the provided CRS.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">plot_band</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="image.html#sensingpy.image.Image" title="sensingpy.image.Image"><span class="pre">Image</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#plot_band"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="sensingpy.plot.get_projection">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">get_projection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">crs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">CRS</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Projection</span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#get_projection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.plot.get_projection" title="Link to this definition">#</a></dt>
+<dd><p>Obtain cartopy projection from a CRS object for plotting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>crs</strong> (<em>pyproj.CRS</em>) – Custom object containing coordinate reference system data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Cartopy projection object suitable for plotting</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ccrs.Projection</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If the CRS object is not valid or not supported</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Currently supports UTM projections explicitly. Defaults to Mercator
+for other projection types.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensingpy.plot.plot_band">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">plot_band</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="image.html#sensingpy.image.Image" title="sensingpy.image.Image"><span class="pre">Image</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'viridis'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#plot_band"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.plot.plot_band" title="Link to this definition">#</a></dt>
 <dd><p>Plot a single band of an Image object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -544,8 +490,8 @@ based on the provided CRS.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">plot_rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="image.html#sensingpy.image.Image" title="sensingpy.image.Image"><span class="pre">Image</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">red</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Axes</span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#plot_rgb"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
+<dt class="sig sig-object py" id="sensingpy.plot.plot_rgb">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">plot_rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="image.html#sensingpy.image.Image" title="sensingpy.image.Image"><span class="pre">Image</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">red</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blue</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brightness</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Axes</span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#plot_rgb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.plot.plot_rgb" title="Link to this definition">#</a></dt>
 <dd><p>Create an RGB visualization from three bands of an Image object.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -577,38 +523,6 @@ Values are clipped to valid range after brightness adjustment.</p>
 </div>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py">
-<span class="sig-prename descclassname"><span class="pre">sensingpy.plot.</span></span><span class="sig-name descname"><span class="pre">add_gridlines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/plot.html#add_gridlines"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Add geographic gridlines to a cartopy axes.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ax</strong> (<em>Axes</em>) – Cartopy axes to which gridlines will be added</p></li>
-<li><p><strong>**kwargs</strong> – Additional keyword arguments passed to ax.gridlines()</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Axes with added gridlines and the gridlines object for further customization</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Tuple[Axes, Any]</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Labels on top and right edges are disabled by default.
-The returned gridlines object can be used for additional customization.</p>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">get_geofigure</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">crs</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ax</span><span class="p">,</span> <span class="n">gl</span> <span class="o">=</span> <span class="n">add_gridlines</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Customize gridlines further if needed</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">xlabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">gl</span><span class="o">.</span><span class="n">ylabel_style</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;gray&#39;</span><span class="p">}</span>
-</pre></div>
-</div>
-</dd></dl>
-
-</section>
 </section>
 
 
@@ -623,20 +537,20 @@ The returned gridlines object can be used for additional customization.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generated/sensingpy.masks.is_in_range.html"
+       href="masks.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">sensingpy.masks.is_in_range</p>
+        <p class="prev-next-title">Masks Module</p>
       </div>
     </a>
     <a class="right-next"
-       href="generated/sensingpy.plot.get_projection.html"
+       href="bathymetry.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">sensingpy.plot.get_projection</p>
+        <p class="prev-next-title">Bathymetry Package</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -656,8 +570,11 @@ The returned gridlines object can be used for additional customization.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-documentation">Function Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.add_gridlines"><code class="docutils literal notranslate"><span class="pre">add_gridlines()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.get_geofigure"><code class="docutils literal notranslate"><span class="pre">get_geofigure()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.get_projection"><code class="docutils literal notranslate"><span class="pre">get_projection()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.plot_band"><code class="docutils literal notranslate"><span class="pre">plot_band()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.plot.plot_rgb"><code class="docutils literal notranslate"><span class="pre">plot_rgb()</span></code></a></li>
 </ul>
   </nav></div>
 

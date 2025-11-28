@@ -1,27 +1,27 @@
 Outliers Module
-==============
+===============
 
-.. currentmodule:: sensingpy.preprocessing.outliers
+Statistical methods for detecting and filtering outliers in image data.
 
-Functions
---------
+.. rubric:: Statistical Methods
 
 .. autosummary::
-   :toctree: generated/
    :nosignatures:
-   
-   IQR
-   Z_Score
-   upper_percentile
-   lower_percentile
 
-Function Documentation
---------------------
+   sensingpy.preprocessing.outliers.IQR
+   sensingpy.preprocessing.outliers.Z_Score
 
-.. autofunction:: IQR
+.. rubric:: Percentile Methods
 
-.. autofunction:: Z_Score
+.. autosummary::
+   :nosignatures:
 
-.. autofunction:: upper_percentile
+   sensingpy.preprocessing.outliers.upper_percentile
+   sensingpy.preprocessing.outliers.lower_percentile
 
-.. autofunction:: lower_percentile
+.. rubric:: Module Documentation
+
+.. automodule:: sensingpy.preprocessing.outliers
+   :members:
+   :undoc-members:
+   :show-inheritance:

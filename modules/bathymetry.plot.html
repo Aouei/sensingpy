@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Plot Module &#8212; sensingpy 2.1.0 documentation</title>
+    <title>Plot Module &#8212; sensingpy 2.1.1 documentation</title>
   
   
   
@@ -36,7 +36,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=32e37178"></script>
+    <script src="../_static/documentation_options.js?v=891ff365"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -45,8 +45,8 @@
     <link rel="canonical" href="https://aouei.github.io/sensingpy/modules/bathymetry.plot.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="sensingpy.bathymetry.plot.CalibrationPlot" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html" />
-    <link rel="prev" title="sensingpy.bathymetry.models.LinearModel" href="generated/sensingpy.bathymetry.models.LinearModel.html" />
+    <link rel="next" title="Preprocessing Package" href="preprocessing.html" />
+    <link rel="prev" title="Models Module" href="bathymetry.models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 2.1.0 documentation</p>
+    <p class="title logo__title">sensingpy 2.1.1 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -161,120 +161,23 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">API Reference:</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="image.html">Image Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.image.Image.html">sensingpy.image.Image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.image.compose.html">sensingpy.image.compose</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="reader.html">Reader Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.ImageReader.html">sensingpy.reader.ImageReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.GeoTIFFReader.html">sensingpy.reader.GeoTIFFReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.NetCDFReader.html">sensingpy.reader.NetCDFReader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.reader.open.html">sensingpy.reader.open</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="selector.html">Selector Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite.html">sensingpy.selector.composite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.composite_indices.html">sensingpy.selector.composite_indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.interval_choice.html">sensingpy.selector.interval_choice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.sample_indices_by_interval.html">sensingpy.selector.sample_indices_by_interval</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.argcomposite.html">sensingpy.selector.argcomposite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.selector.arginterval_choice.html">sensingpy.selector.arginterval_choice</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="masks.html">Masks Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_valid.html">sensingpy.masks.is_valid</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_lt.html">sensingpy.masks.is_lt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_eq.html">sensingpy.masks.is_eq</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_gt.html">sensingpy.masks.is_gt</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_lte.html">sensingpy.masks.is_lte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_gte.html">sensingpy.masks.is_gte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.masks.is_in_range.html">sensingpy.masks.is_in_range</a></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="plot.html">Plot Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.get_projection.html">sensingpy.plot.get_projection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.get_geofigure.html">sensingpy.plot.get_geofigure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.plot_band.html">sensingpy.plot.plot_band</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.plot_rgb.html">sensingpy.plot.plot_rgb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.plot.add_gridlines.html">sensingpy.plot.add_gridlines</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="image.html">Image Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reader.html">Reader Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="selector.html">Selector Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="masks.html">Masks Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot.html">Plot Module</a></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="bathymetry.html">Bathymetry Package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.metrics.html">Metrics Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="bathymetry.models.html">Models Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Plot Module</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.html">sensingpy.bathymetry.metrics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html">sensingpy.bathymetry.metrics.ValidationSummary</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.models.html">sensingpy.bathymetry.models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html">sensingpy.bathymetry.models.LinearModel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.multi_image_pseudomodel.html">sensingpy.bathymetry.models.multi_image_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.optical_deep_water_model.html">sensingpy.bathymetry.models.optical_deep_water_model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.stumpf_pseudomodel.html">sensingpy.bathymetry.models.stumpf_pseudomodel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.models.switching_model.html">sensingpy.bathymetry.models.switching_model</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.html">sensingpy.bathymetry.plot</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html">sensingpy.bathymetry.plot.CalibrationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html">sensingpy.bathymetry.plot.ValidationPlot</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.get_approximate_density.html">sensingpy.bathymetry.plot.get_approximate_density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.get_precise_density.html">sensingpy.bathymetry.plot.get_precise_density</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.bathymetry.plot.match_subplot_sizes.html">sensingpy.bathymetry.plot.match_subplot_sizes</a></li>
-</ul>
-</details></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.metrics.html">Metrics Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bathymetry.models.html">Models Module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Plot Module</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="preprocessing.html">Preprocessing Package</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="preprocessing.deglinting.html">Deglinting Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.deglinting.html">Deglinting Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="preprocessing.outliers.html">Outliers Module</a></li>
 </ul>
 </details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="preprocessing.outliers.html">Outliers Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.html">sensingpy.preprocessing.deglinting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.hedley.html">sensingpy.preprocessing.deglinting.hedley</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.joyce.html">sensingpy.preprocessing.deglinting.joyce</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.deglinting.lyzenga.html">sensingpy.preprocessing.deglinting.lyzenga</a></li>
-</ul>
-</details></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.html">sensingpy.preprocessing.outliers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.IQR.html">sensingpy.preprocessing.outliers.IQR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.Z_Score.html">sensingpy.preprocessing.outliers.Z_Score</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.lower_percentile.html">sensingpy.preprocessing.outliers.lower_percentile</a></li>
-<li class="toctree-l3"><a class="reference internal" href="generated/sensingpy.preprocessing.outliers.upper_percentile.html">sensingpy.preprocessing.outliers.upper_percentile</a></li>
-</ul>
-</details></li>
-</ul>
-</details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="enums.html">Enums Module</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.SENTINEL2_BANDS.html">sensingpy.enums.SENTINEL2_BANDS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.MICASENSE_BANDS.html">sensingpy.enums.MICASENSE_BANDS</a></li>
-<li class="toctree-l2"><a class="reference internal" href="generated/sensingpy.enums.FILE_EXTENTIONS.html">sensingpy.enums.FILE_EXTENTIONS</a></li>
-</ul>
-</details></li>
+<li class="toctree-l1"><a class="reference internal" href="enums.html">Enums Module</a></li>
 </ul>
 
     </div>
@@ -423,25 +326,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrationplot">CalibrationPlot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_calibration_scatter()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_labels"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_labels()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_legend"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_legend()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_calibration_scatter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_labels"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_labels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_legend"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_legend()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot"><code class="docutils literal notranslate"><span class="pre">ValidationPlot</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_densed_scatter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_labels"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_labels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_residuals"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_residuals()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validationplot">ValidationPlot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot"><code class="docutils literal notranslate"><span class="pre">ValidationPlot</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_densed_scatter()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_labels"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_labels()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_residuals"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_residuals()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.get_approximate_density"><code class="docutils literal notranslate"><span class="pre">get_approximate_density()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.get_precise_density"><code class="docutils literal notranslate"><span class="pre">get_precise_density()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.match_subplot_sizes"><code class="docutils literal notranslate"><span class="pre">match_subplot_sizes()</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -455,23 +354,36 @@ document.write(`
                   
   <section id="plot-module">
 <h1>Plot Module<a class="headerlink" href="#plot-module" title="Link to this heading">#</a></h1>
-<section id="classes">
-<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h2>
+<p>Visualization tools for calibration, validation, and analysis of bathymetry models.</p>
+<p class="rubric">Plot Classes</p>
 <div class="pst-scrollable-table-container"><table class="autosummary longtable table">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html#sensingpy.bathymetry.plot.CalibrationPlot" title="sensingpy.bathymetry.plot.CalibrationPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CalibrationPlot</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.CalibrationPlot" title="sensingpy.bathymetry.plot.CalibrationPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.bathymetry.plot.CalibrationPlot</span></code></a></p></td>
 <td><p>Class for creating standardized bathymetry calibration plots.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sensingpy.bathymetry.plot.ValidationPlot.html#sensingpy.bathymetry.plot.ValidationPlot" title="sensingpy.bathymetry.plot.ValidationPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValidationPlot</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.ValidationPlot" title="sensingpy.bathymetry.plot.ValidationPlot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.bathymetry.plot.ValidationPlot</span></code></a></p></td>
 <td><p>Class for creating standardized bathymetry validation plots.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</section>
-<section id="calibrationplot">
-<h2>CalibrationPlot<a class="headerlink" href="#calibrationplot" title="Link to this heading">#</a></h2>
-<dl class="py class">
+<p class="rubric">Utility Functions</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.get_precise_density" title="sensingpy.bathymetry.plot.get_precise_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.bathymetry.plot.get_precise_density</span></code></a></p></td>
+<td><p>Calculate accurate point density using Gaussian kernel density estimation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.get_approximate_density" title="sensingpy.bathymetry.plot.get_approximate_density"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.bathymetry.plot.get_approximate_density</span></code></a></p></td>
+<td><p>Calculate approximate point density using 2D histogram and interpolation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.match_subplot_sizes" title="sensingpy.bathymetry.plot.match_subplot_sizes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sensingpy.bathymetry.plot.match_subplot_sizes</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Module Documentation</p>
+<dl class="py class" id="module-sensingpy.bathymetry.plot">
 <dt class="sig sig-object py" id="sensingpy.bathymetry.plot.CalibrationPlot">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensingpy.bathymetry.plot.</span></span><span class="sig-name descname"><span class="pre">CalibrationPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Times</span> <span class="pre">New</span> <span class="pre">Roman'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#CalibrationPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.CalibrationPlot" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -490,29 +402,14 @@ It handles consistent styling and formatting across plots.</p>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter" title="sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_calibration_scatter</span></code></a></p></td>
-<td><p>Plot regression data with model fit line and statistics.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_legend" title="sensingpy.bathymetry.plot.CalibrationPlot.add_legend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_legend</span></code></a></p></td>
-<td><p>Add formatted legend to axes.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_labels" title="sensingpy.bathymetry.plot.CalibrationPlot.add_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_labels</span></code></a></p></td>
-<td><p>Add formatted title and axis labels to plot.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter">
-<span class="sig-name descname"><span class="pre">add_calibration_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html#sensingpy.bathymetry.models.LinearModel" title="sensingpy.bathymetry.models.LinearModel"><span class="pre">LinearModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'g'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Axes</span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#CalibrationPlot.add_calibration_scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_calibration_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bathymetry.models.html#sensingpy.bathymetry.models.LinearModel" title="sensingpy.bathymetry.models.LinearModel"><span class="pre">LinearModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'g'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Axes</span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#CalibrationPlot.add_calibration_scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter" title="Link to this definition">#</a></dt>
 <dd><p>Plot regression data with model fit line and statistics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>model</strong> (<a class="reference internal" href="generated/sensingpy.bathymetry.models.LinearModel.html#sensingpy.bathymetry.models.LinearModel" title="sensingpy.bathymetry.models.LinearModel"><em>LinearModel</em></a>) – Calibrated linear model with slope, intercept and R² values</p></li>
+<li><p><strong>model</strong> (<a class="reference internal" href="bathymetry.models.html#sensingpy.bathymetry.models.LinearModel" title="sensingpy.bathymetry.models.LinearModel"><em>LinearModel</em></a>) – Calibrated linear model with slope, intercept and R² values</p></li>
 <li><p><strong>x</strong> (<em>np.ndarray</em>) – x-axis values (predictor variables)</p></li>
 <li><p><strong>y</strong> (<em>np.ndarray</em>) – y-axis values (observed depths)</p></li>
 <li><p><strong>ax</strong> (<em>Axes</em>) – Matplotlib axes on which to plot</p></li>
@@ -579,9 +476,6 @@ during class initialization, with handles hidden.</p>
 
 </dd></dl>
 
-</section>
-<section id="validationplot">
-<h2>ValidationPlot<a class="headerlink" href="#validationplot" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="sensingpy.bathymetry.plot.ValidationPlot">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">sensingpy.bathymetry.plot.</span></span><span class="sig-name descname"><span class="pre">ValidationPlot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">title_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">15</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">legend_font_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">font_family</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'Times</span> <span class="pre">New</span> <span class="pre">Roman'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#ValidationPlot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.ValidationPlot" title="Link to this definition">#</a></dt>
@@ -601,29 +495,14 @@ and error histograms with statistical metrics.</p>
 </ul>
 </dd>
 </dl>
-<p class="rubric">Methods</p>
-<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter" title="sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_densed_scatter</span></code></a></p></td>
-<td><p>Create a density-colored scatter plot comparing modeled vs.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.ValidationPlot.add_residuals" title="sensingpy.bathymetry.plot.ValidationPlot.add_residuals"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_residuals</span></code></a></p></td>
-<td><p>Create a histogram of model residuals with statistical metrics.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.bathymetry.plot.ValidationPlot.add_labels" title="sensingpy.bathymetry.plot.ValidationPlot.add_labels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">add_labels</span></code></a></p></td>
-<td><p>Add formatted title and axis labels to plot.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter">
-<span class="sig-name descname"><span class="pre">add_densed_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><span class="pre">ValidationSummary</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'viridis_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#ValidationPlot.add_densed_scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_densed_scatter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bathymetry.metrics.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><span class="pre">ValidationSummary</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'viridis_r'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vmax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_min</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_max</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Axes</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#ValidationPlot.add_densed_scatter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter" title="Link to this definition">#</a></dt>
 <dd><p>Create a density-colored scatter plot comparing modeled vs. in-situ depths.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>summary</strong> (<a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><em>ValidationSummary</em></a>) – Validation summary object containing model predictions and ground truth</p></li>
+<li><p><strong>summary</strong> (<a class="reference internal" href="bathymetry.metrics.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><em>ValidationSummary</em></a>) – Validation summary object containing model predictions and ground truth</p></li>
 <li><p><strong>ax</strong> (<em>Axes</em>) – Matplotlib axes on which to plot</p></li>
 <li><p><strong>s</strong> (<em>float</em><em>, </em><em>optional</em>) – Point size for scatter plot, by default 5</p></li>
 <li><p><strong>cmap</strong> (<em>str</em><em>, </em><em>optional</em>) – Matplotlib colormap for density representation, by default ‘viridis_r’</p></li>
@@ -673,12 +552,12 @@ during class initialization.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.bathymetry.plot.ValidationPlot.add_residuals">
-<span class="sig-name descname"><span class="pre">add_residuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><span class="pre">ValidationSummary</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_lim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">hist_kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Axes</span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#ValidationPlot.add_residuals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.ValidationPlot.add_residuals" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add_residuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">summary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="bathymetry.metrics.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><span class="pre">ValidationSummary</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ax</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_lim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">hist_kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Axes</span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#ValidationPlot.add_residuals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.ValidationPlot.add_residuals" title="Link to this definition">#</a></dt>
 <dd><p>Create a histogram of model residuals with statistical metrics.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>summary</strong> (<a class="reference internal" href="generated/sensingpy.bathymetry.metrics.ValidationSummary.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><em>ValidationSummary</em></a>) – Validation summary object containing error statistics</p></li>
+<li><p><strong>summary</strong> (<a class="reference internal" href="bathymetry.metrics.html#sensingpy.bathymetry.metrics.ValidationSummary" title="sensingpy.bathymetry.metrics.ValidationSummary"><em>ValidationSummary</em></a>) – Validation summary object containing error statistics</p></li>
 <li><p><strong>ax</strong> (<em>Axes</em>) – Matplotlib axes on which to plot</p></li>
 <li><p><strong>x_lim</strong> (<em>int</em><em>, </em><em>optional</em>) – Symmetric x-axis limit for histogram, by default 5</p></li>
 <li><p><strong>metrics</strong> (<em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – List of metric names to display in legend, by default None</p></li>
@@ -700,7 +579,60 @@ metrics are shown in a text box on the plot.</p>
 
 </dd></dl>
 
-</section>
+<dl class="py function">
+<dt class="sig sig-object py" id="sensingpy.bathymetry.plot.get_approximate_density">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.bathymetry.plot.</span></span><span class="sig-name descname"><span class="pre">get_approximate_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#get_approximate_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.get_approximate_density" title="Link to this definition">#</a></dt>
+<dd><p>Calculate approximate point density using 2D histogram and interpolation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.ndarray</em>) – x-coordinates (in-situ depth values)</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – y-coordinates (modeled depth values)</p></li>
+<li><p><strong>bins</strong> (<em>int</em>) – Number of bins for the 2D histogram</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>x-values, y-values, density values, and colormap normalization</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, np.ndarray, np.ndarray, Any]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method uses numpy’s histogram2d and scipy’s interpn for faster but
+less accurate density estimation. It’s more suitable for large datasets
+where performance is a concern.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensingpy.bathymetry.plot.get_precise_density">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.bathymetry.plot.</span></span><span class="sig-name descname"><span class="pre">get_precise_density</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#get_precise_density"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.get_precise_density" title="Link to this definition">#</a></dt>
+<dd><p>Calculate accurate point density using Gaussian kernel density estimation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>np.ndarray</em>) – x-coordinates (in-situ depth values)</p></li>
+<li><p><strong>y</strong> (<em>np.ndarray</em>) – y-coordinates (modeled depth values)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>x-values, y-values, density values, and colormap normalization</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[np.ndarray, np.ndarray, np.ndarray, Any]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>This method uses scipy’s gaussian_kde for accurate kernel density
+estimation. It provides smooth density estimates but can be computationally
+intensive for large datasets.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sensingpy.bathymetry.plot.match_subplot_sizes">
+<span class="sig-prename descclassname"><span class="pre">sensingpy.bathymetry.plot.</span></span><span class="sig-name descname"><span class="pre">match_subplot_sizes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Axes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tight</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../_modules/sensingpy/bathymetry/plot.html#match_subplot_sizes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.bathymetry.plot.match_subplot_sizes" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
 </section>
 
 
@@ -715,20 +647,20 @@ metrics are shown in a text box on the plot.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="generated/sensingpy.bathymetry.models.LinearModel.html"
+       href="bathymetry.models.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">sensingpy.bathymetry.models.LinearModel</p>
+        <p class="prev-next-title">Models Module</p>
       </div>
     </a>
     <a class="right-next"
-       href="generated/sensingpy.bathymetry.plot.CalibrationPlot.html"
+       href="preprocessing.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">sensingpy.bathymetry.plot.CalibrationPlot</p>
+        <p class="prev-next-title">Preprocessing Package</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -748,25 +680,21 @@ metrics are shown in a text box on the plot.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrationplot">CalibrationPlot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_calibration_scatter()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_labels"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_labels()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_legend"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_legend()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_calibration_scatter"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_calibration_scatter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_labels"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_labels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.CalibrationPlot.add_legend"><code class="docutils literal notranslate"><span class="pre">CalibrationPlot.add_legend()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot"><code class="docutils literal notranslate"><span class="pre">ValidationPlot</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_densed_scatter()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_labels"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_labels()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_residuals"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_residuals()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validationplot">ValidationPlot</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot"><code class="docutils literal notranslate"><span class="pre">ValidationPlot</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_densed_scatter"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_densed_scatter()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_labels"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_labels()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.ValidationPlot.add_residuals"><code class="docutils literal notranslate"><span class="pre">ValidationPlot.add_residuals()</span></code></a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.get_approximate_density"><code class="docutils literal notranslate"><span class="pre">get_approximate_density()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.get_precise_density"><code class="docutils literal notranslate"><span class="pre">get_precise_density()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.bathymetry.plot.match_subplot_sizes"><code class="docutils literal notranslate"><span class="pre">match_subplot_sizes()</span></code></a></li>
 </ul>
   </nav></div>
 

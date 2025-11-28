@@ -1,42 +1,27 @@
 Models Module
-============
+=============
 
-.. currentmodule:: sensingpy.bathymetry.models
+Satellite-derived bathymetry (SDB) algorithms and depth estimation models.
 
-Functions
----------
-
-.. autosummary::
-   :toctree: generated/
-   :nosignatures:
-   
-   stumpf_pseudomodel
-   multi_image_pseudomodel
-   switching_model
-   optical_deep_water_model
-
-Classes
--------
+.. rubric:: Empirical Models
 
 .. autosummary::
-   :toctree: generated/
    :nosignatures:
-   
-   LinearModel
 
-LinearModel
-----------
+   sensingpy.bathymetry.models.stumpf_pseudomodel
+   sensingpy.bathymetry.models.multi_image_pseudomodel
 
-.. autoclass:: LinearModel
+.. rubric:: Advanced Models
+
+.. autosummary::
+   :nosignatures:
+
+   sensingpy.bathymetry.models.switching_model
+   sensingpy.bathymetry.models.optical_deep_water_model
+
+.. rubric:: Module Documentation
+
+.. automodule:: sensingpy.bathymetry.models
    :members:
    :undoc-members:
    :show-inheritance:
-   
-   .. rubric:: Methods
-   
-   .. autosummary::
-      :nosignatures:
-      
-      ~LinearModel.fit
-      ~LinearModel.predict
-      ~LinearModel.predict_and_evaluate

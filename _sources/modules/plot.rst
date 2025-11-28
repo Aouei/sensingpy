@@ -1,41 +1,34 @@
 Plot Module
-==========
+===========
 
 The Plot module provides visualization functionality for geospatial images.
 
-.. currentmodule:: sensingpy.plot
-
-Functions
---------
+.. rubric:: Figure Setup
 
 .. autosummary::
-   :toctree: generated/
    :nosignatures:
-   
-   get_projection
-   get_geofigure
-   plot_band
-   plot_rgb
-   add_basemap
-   add_gridlines
 
-Function Documentation
---------------------
+   sensingpy.plot.get_projection
+   sensingpy.plot.get_geofigure
 
-.. autofunction:: get_projection
-   :noindex:
+.. rubric:: Plotting Functions
 
-.. autofunction:: get_geofigure
-   :noindex:
+.. autosummary::
+   :nosignatures:
 
-.. autofunction:: plot_band
-   :noindex:
+   sensingpy.plot.plot_band
+   sensingpy.plot.plot_rgb
 
-.. autofunction:: plot_rgb
-   :noindex:
+.. rubric:: Styling Functions
 
-.. autofunction:: add_basemap
-   :noindex:
+.. autosummary::
+   :nosignatures:
 
-.. autofunction:: add_gridlines
-   :noindex:
+   sensingpy.plot.add_gridlines
+
+.. rubric:: Module Documentation
+
+.. automodule:: sensingpy.plot
+   :members:
+   :undoc-members:
+   :show-inheritance:
