@@ -4,7 +4,7 @@ import numpy as np
 import scipy
 
 from sensingpy.bathymetry.metrics import ValidationSummary
-from sensingpy.selector import argcomposite
+from sensingpy.selector import composite_indices
 
 
 def stumpf_pseudomodel(
@@ -88,7 +88,7 @@ def multi_image_pseudomodel(p_greens: np.ndarray, p_reds: np.ndarray) -> np.ndar
     return (
         np.nanmax(p_greens, axis=0),
         np.nanmax(p_reds, axis=0),
-        argcomposite(p_greens, np.nanargmax),
+        composite_indices(p_greens, np.nanargmax),
     )
 
 

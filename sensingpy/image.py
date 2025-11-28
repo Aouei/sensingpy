@@ -1292,6 +1292,9 @@ class Image(object):
         """
         Choose random indices from intervals in specified band.
 
+        .. deprecated:: 2.1.0
+            Use :meth:`sample_indices_by_interval` instead. This method will be removed in version 3.0.0.
+
         Parameters
         ----------
         band : str
@@ -1308,12 +1311,48 @@ class Image(object):
         np.ndarray
             Selected indices
         """
+        import warnings
+        warnings.warn(
+            "arginterval_choice is deprecated and will be removed in version 3.0.0. "
+            "Use sample_indices_by_interval instead.",
+            DeprecationWarning,
+            stacklevel=2
+        )
+        return self.sample_indices_by_interval(band, size, intervals, replace)
+
+    def sample_indices_by_interval(
+        self, band: str, size: int, intervals: Iterable, replace: bool = True
+    ) -> np.ndarray:
+        """
+        Get indices of random samples from value intervals in a specified band.
+
+        Parameters
+        ----------
+        band : str
+            Band to sample from
+        size : int
+            Number of samples per interval
+        intervals : Iterable
+            Value intervals to sample from, e.g., [(0, 2), (2, 4), (4, 6)]
+        replace : bool, optional
+            Sample with replacement if True, by default True
+
+        Returns
+        -------
+        np.ndarray
+            Selected indices
+
+        Examples
+        --------
+        >>> # Sample 100 indices from each depth interval
+        >>> indices = image.sample_indices_by_interval('depth', 100, [0, 5, 10, 15])
+        """
 
         if not isinstance(band, str):
             raise ValueError("band argument must a string")
 
         array = self.select(band).ravel()
-        return selector.arginterval_choice(array, size, intervals, replace)
+        return selector.sample_indices_by_interval(array, size, intervals, replace)
 
     def empty_like(self) -> Image:
         """
