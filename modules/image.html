@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Image Module &#8212; sensingpy 2.0.0 documentation</title>
+    <title>Image Module &#8212; sensingpy 2.1.0 documentation</title>
   
   
   
@@ -36,7 +36,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=ce394494"></script>
+    <script src="../_static/documentation_options.js?v=32e37178"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 2.0.0 documentation</p>
+    <p class="title logo__title">sensingpy 2.1.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -452,6 +452,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.reproject"><code class="docutils literal notranslate"><span class="pre">Image.reproject()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.resample"><code class="docutils literal notranslate"><span class="pre">Image.resample()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.right"><code class="docutils literal notranslate"><span class="pre">Image.right</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.sample_indices_by_interval"><code class="docutils literal notranslate"><span class="pre">Image.sample_indices_by_interval()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.select"><code class="docutils literal notranslate"><span class="pre">Image.select()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.to_netcdf"><code class="docutils literal notranslate"><span class="pre">Image.to_netcdf()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.to_tif"><code class="docutils literal notranslate"><span class="pre">Image.to_tif()</span></code></a></li>
@@ -776,6 +777,9 @@ if you want to preserve the original image.</p>
 <dt class="sig sig-object py" id="sensingpy.image.Image.arginterval_choice">
 <span class="sig-name descname"><span class="pre">arginterval_choice</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.arginterval_choice"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.arginterval_choice" title="Link to this definition">#</a></dt>
 <dd><p>Choose random indices from intervals in specified band.</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 2.1.0: </span>Use <a class="reference internal" href="#sensingpy.image.Image.sample_indices_by_interval" title="sensingpy.image.Image.sample_indices_by_interval"><code class="xref py py-meth docutils literal notranslate"><span class="pre">sample_indices_by_interval()</span></code></a> instead. This method will be removed in version 3.0.0.</p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -1356,6 +1360,33 @@ This operation modifies the image in-place.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sensingpy.image.Image.sample_indices_by_interval">
+<span class="sig-name descname"><span class="pre">sample_indices_by_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">band</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intervals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replace</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.sample_indices_by_interval"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.sample_indices_by_interval" title="Link to this definition">#</a></dt>
+<dd><p>Get indices of random samples from value intervals in a specified band.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>band</strong> (<em>str</em>) – Band to sample from</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Number of samples per interval</p></li>
+<li><p><strong>intervals</strong> (<em>Iterable</em>) – Value intervals to sample from, e.g., [(0, 2), (2, 4), (4, 6)]</p></li>
+<li><p><strong>replace</strong> (<em>bool</em><em>, </em><em>optional</em>) – Sample with replacement if True, by default True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Selected indices</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Sample 100 indices from each depth interval</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">indices</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">sample_indices_by_interval</span><span class="p">(</span><span class="s1">&#39;depth&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.image.Image.select">
 <span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.select" title="Link to this definition">#</a></dt>
 <dd><p>Select specific bands from the image and return as numpy array (copy).</p>
@@ -1646,6 +1677,7 @@ image in the list, but contains new pixel values based on the composition method
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.reproject"><code class="docutils literal notranslate"><span class="pre">Image.reproject()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.resample"><code class="docutils literal notranslate"><span class="pre">Image.resample()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.right"><code class="docutils literal notranslate"><span class="pre">Image.right</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.sample_indices_by_interval"><code class="docutils literal notranslate"><span class="pre">Image.sample_indices_by_interval()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.select"><code class="docutils literal notranslate"><span class="pre">Image.select()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.to_netcdf"><code class="docutils literal notranslate"><span class="pre">Image.to_netcdf()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sensingpy.image.Image.to_tif"><code class="docutils literal notranslate"><span class="pre">Image.to_tif()</span></code></a></li>

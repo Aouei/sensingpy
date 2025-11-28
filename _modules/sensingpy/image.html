@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sensingpy.image &#8212; sensingpy 2.0.0 documentation</title>
+    <title>sensingpy.image &#8212; sensingpy 2.1.0 documentation</title>
   
   
   
@@ -35,7 +35,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=ce394494"></script>
+    <script src="../../_static/documentation_options.js?v=32e37178"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -133,7 +133,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 2.0.0 documentation</p>
+    <p class="title logo__title">sensingpy 2.1.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -1725,6 +1725,9 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Choose random indices from intervals in specified band.</span>
 
+<span class="sd">        .. deprecated:: 2.1.0</span>
+<span class="sd">            Use :meth:`sample_indices_by_interval` instead. This method will be removed in version 3.0.0.</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        band : str</span>
@@ -1741,12 +1744,51 @@ document.write(`
 <span class="sd">        np.ndarray</span>
 <span class="sd">            Selected indices</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;arginterval_choice is deprecated and will be removed in version 3.0.0. &quot;</span>
+            <span class="s2">&quot;Use sample_indices_by_interval instead.&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_indices_by_interval</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">intervals</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Image.sample_indices_by_interval">
+<a class="viewcode-back" href="../../modules/image.html#sensingpy.image.Image.sample_indices_by_interval">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">sample_indices_by_interval</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">band</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get indices of random samples from value intervals in a specified band.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        band : str</span>
+<span class="sd">            Band to sample from</span>
+<span class="sd">        size : int</span>
+<span class="sd">            Number of samples per interval</span>
+<span class="sd">        intervals : Iterable</span>
+<span class="sd">            Value intervals to sample from, e.g., [(0, 2), (2, 4), (4, 6)]</span>
+<span class="sd">        replace : bool, optional</span>
+<span class="sd">            Sample with replacement if True, by default True</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Selected indices</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; # Sample 100 indices from each depth interval</span>
+<span class="sd">        &gt;&gt;&gt; indices = image.sample_indices_by_interval(&#39;depth&#39;, 100, [0, 5, 10, 15])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;band argument must a string&quot;</span><span class="p">)</span>
 
         <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">band</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">selector</span><span class="o">.</span><span class="n">arginterval_choice</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">intervals</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">selector</span><span class="o">.</span><span class="n">sample_indices_by_interval</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">intervals</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Image.empty_like">

@@ -33,6 +33,7 @@
       ~Image.replace
       ~Image.reproject
       ~Image.resample
+      ~Image.sample_indices_by_interval
       ~Image.select
       ~Image.to_netcdf
       ~Image.to_tif

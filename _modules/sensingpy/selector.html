@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sensingpy.selector &#8212; sensingpy 2.0.0 documentation</title>
+    <title>sensingpy.selector &#8212; sensingpy 2.1.0 documentation</title>
   
   
   
@@ -35,7 +35,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=ce394494"></script>
+    <script src="../../_static/documentation_options.js?v=32e37178"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -133,7 +133,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 2.0.0 documentation</p>
+    <p class="title logo__title">sensingpy 2.1.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -421,10 +421,45 @@ document.write(`
     <span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">sample_indices_by_interval</span><span class="p">(</span>
+    <span class="n">array</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get indices of a random sample from the array based on value intervals.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        array (np.ndarray): array to be sampled</span>
+<span class="sd">        size (int): number of samples per interval</span>
+<span class="sd">        intervals (Iterable): value intervals to sample from</span>
+
+<span class="sd">                e.g. [(0, 1), (1, 2), (2, 3)]</span>
+<span class="sd">        replace (bool, optional): whether to sample with replacement. Defaults to True.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: Indices of the random sample from the given array.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; # Sample 10 indices from each depth interval</span>
+<span class="sd">        &gt;&gt;&gt; depths = np.array([0.5, 1.5, 2.5, 3.5, 4.5])</span>
+<span class="sd">        &gt;&gt;&gt; indices = sample_indices_by_interval(depths, 10, [0, 2, 4, 6])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">limit_masks</span> <span class="o">=</span> <span class="n">_get_limit_masks</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">pairwise</span><span class="p">(</span><span class="n">intervals</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">indexes</span><span class="p">[</span><span class="n">in_limits</span><span class="p">],</span> <span class="n">size</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">in_limits</span> <span class="ow">in</span> <span class="n">limit_masks</span>
+        <span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+
 <span class="k">def</span><span class="w"> </span><span class="nf">arginterval_choice</span><span class="p">(</span>
     <span class="n">array</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates the indexes of a random sample from the given array based on the provided intervals.</span>
+
+<span class="sd">    .. deprecated:: 2.1.0</span>
+<span class="sd">        Use :func:`sample_indices_by_interval` instead. This function will be removed in version 3.0.0.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        array (np.ndarray): array to be sampled</span>
@@ -437,15 +472,14 @@ document.write(`
 <span class="sd">    Returns:</span>
 <span class="sd">        np.ndarray: The indexes of a random sample from the given array based on the provided intervals.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">indexes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">array</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
-    <span class="n">limit_masks</span> <span class="o">=</span> <span class="n">_get_limit_masks</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">pairwise</span><span class="p">(</span><span class="n">intervals</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
-        <span class="p">[</span>
-            <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">indexes</span><span class="p">[</span><span class="n">in_limits</span><span class="p">],</span> <span class="n">size</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="n">replace</span><span class="p">)</span>
-            <span class="k">for</span> <span class="n">in_limits</span> <span class="ow">in</span> <span class="n">limit_masks</span>
-        <span class="p">]</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;arginterval_choice is deprecated and will be removed in version 3.0.0. &quot;</span>
+        <span class="s2">&quot;Use sample_indices_by_interval instead.&quot;</span><span class="p">,</span>
+        <span class="ne">DeprecationWarning</span><span class="p">,</span>
+        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">sample_indices_by_interval</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">intervals</span><span class="p">,</span> <span class="n">replace</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="composite">
@@ -473,10 +507,42 @@ document.write(`
 
 
 
+<span class="k">def</span><span class="w"> </span><span class="nf">composite_indices</span><span class="p">(</span><span class="n">arrays</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get indices of optimal values across multiple arrays for compositing.</span>
+
+<span class="sd">    Finds which array contains the optimal value (e.g., maximum, minimum) at each position,</span>
+<span class="sd">    returning an index array that can be used with the composite() function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        arrays (np.ndarray): stack of arrays with shape (n_arrays, height, width)</span>
+<span class="sd">        method (Callable, optional): numpy argmax/argmin function to determine optimal values.</span>
+<span class="sd">            Defaults to np.argmax.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        np.ndarray: 2D array of indices indicating which input array has the optimal value</span>
+<span class="sd">            at each position.</span>
+
+<span class="sd">    Examples:</span>
+<span class="sd">        &gt;&gt;&gt; # Create max NDVI composite</span>
+<span class="sd">        &gt;&gt;&gt; ndvi_stack = np.array([img1_ndvi, img2_ndvi, img3_ndvi])</span>
+<span class="sd">        &gt;&gt;&gt; best_indices = composite_indices(ndvi_stack, np.argmax)</span>
+<span class="sd">        &gt;&gt;&gt; max_ndvi_composite = composite(image_stack, best_indices)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">nans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">arrays</span><span class="p">[:,</span> <span class="n">nans</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
+    <span class="n">indexes</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">arrays</span><span class="p">[:,</span> <span class="n">nans</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">return</span> <span class="n">indexes</span>
+
+
 <div class="viewcode-block" id="argcomposite">
 <a class="viewcode-back" href="../../modules/selector.html#sensingpy.selector.argcomposite">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">argcomposite</span><span class="p">(</span><span class="n">arrays</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates the indexes of a synthetic array based on the provided method.</span>
+
+<span class="sd">    .. deprecated:: 2.1.0</span>
+<span class="sd">        Use :func:`composite_indices` instead. This function will be removed in version 3.0.0.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        arrays (np.ndarray): the array to be composed</span>
@@ -485,12 +551,14 @@ document.write(`
 <span class="sd">    Returns:</span>
 <span class="sd">        np.ndarray: The indexes of a synthetic array</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">nans</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">arrays</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">arrays</span><span class="p">[:,</span> <span class="n">nans</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
-    <span class="n">indexes</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">arrays</span><span class="p">[:,</span> <span class="n">nans</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-    <span class="k">return</span> <span class="n">indexes</span></div>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+        <span class="s2">&quot;argcomposite is deprecated and will be removed in version 3.0.0. &quot;</span>
+        <span class="s2">&quot;Use composite_indices instead.&quot;</span><span class="p">,</span>
+        <span class="ne">DeprecationWarning</span><span class="p">,</span>
+        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">composite_indices</span><span class="p">(</span><span class="n">arrays</span><span class="p">,</span> <span class="n">method</span><span class="p">)</span></div>
 
 </pre></div>
 
