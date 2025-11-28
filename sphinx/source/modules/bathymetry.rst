@@ -16,13 +16,4 @@ Submodules
    bathymetry.plot
 
 Module Contents
---------------
-
-.. autosummary::
-   :toctree: generated/
-   :recursive:
-   :template: custom-module-template.rst
-   
-   metrics
-   models
-   plot
+---------------

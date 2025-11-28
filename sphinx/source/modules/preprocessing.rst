@@ -1,5 +1,5 @@
 Preprocessing Package
-====================
+=====================
 
 Package for preprocessing remote sensing imagery, including deglinting and outlier removal.
 
@@ -15,12 +15,4 @@ Submodules
    preprocessing.outliers
 
 Module Contents
---------------
-
-.. autosummary::
-   :toctree: generated/
-   :recursive:
-   :template: custom-module-template.rst
-   
-   deglinting
-   outliers
+---------------

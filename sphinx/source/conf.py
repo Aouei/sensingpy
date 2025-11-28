@@ -22,8 +22,11 @@ extensions = [
 nbsphinx_allow_errors = True
 nbsphinx_execute = 'never'
 
+# Disable autosummary generation to avoid duplicates with automodule
+autosummary_generate = False
+
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '**/generated', 'notebooks/*.ipynb']
 
 html_theme = 'sphinx_book_theme'
 html_static_path = ['_static']
