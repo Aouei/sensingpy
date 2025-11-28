@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>sensingpy.image.Image &#8212; sensingpy 1.4.4 documentation</title>
+    <title>sensingpy.image.Image &#8212; sensingpy 2.0.0 documentation</title>
   
   
   
@@ -36,7 +36,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=3e2a177b"></script>
+    <script src="../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 1.4.4 documentation</p>
+    <p class="title logo__title">sensingpy 2.0.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -552,13 +552,13 @@ of the image data</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.extract_values" title="sensingpy.image.Image.extract_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">extract_values</span></code></a>(xs, ys[, bands])</p></td>
 <td><p>Extract values at specified coordinates from the image.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.geometry_mask" title="sensingpy.image.Image.geometry_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry_mask</span></code></a>(geometries[, mask_out, bands])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.geometry_mask" title="sensingpy.image.Image.geometry_mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">geometry_mask</span></code></a>(geometries[, mask_out, bands, ...])</p></td>
 <td><p>Mask image using geometries.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.interval_choice" title="sensingpy.image.Image.interval_choice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interval_choice</span></code></a>(band, size, intervals[, replace])</p></td>
 <td><p>Choose random values from intervals in specified band.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.mask" title="sensingpy.image.Image.mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask</span></code></a>(condition[, bands])</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.mask" title="sensingpy.image.Image.mask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mask</span></code></a>(condition[, bands, fill_true, fill_false])</p></td>
 <td><p>Mask image bands using condition array.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.merge" title="sensingpy.image.Image.merge"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge</span></code></a>(other)</p></td>
@@ -582,8 +582,8 @@ of the image data</p></li>
 <tr class="row-even"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.resample" title="sensingpy.image.Image.resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resample</span></code></a>(scale[, downscale, interpolation])</p></td>
 <td><p>Resample image by scaling factor to change spatial resolution.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.select" title="sensingpy.image.Image.select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a>(bands[, only_values])</p></td>
-<td><p>Select specific bands from the image.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.select" title="sensingpy.image.Image.select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a>(bands)</p></td>
+<td><p>Select specific bands from the image and return as numpy array (copy).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="../image.html#sensingpy.image.Image.to_netcdf" title="sensingpy.image.Image.to_netcdf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_netcdf</span></code></a>(filename)</p></td>
 <td><p>Save image to NetCDF file.</p></td>

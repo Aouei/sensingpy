@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Image Module &#8212; sensingpy 1.4.4 documentation</title>
+    <title>Image Module &#8212; sensingpy 2.0.0 documentation</title>
   
   
   
@@ -36,7 +36,7 @@
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../_static/documentation_options.js?v=3e2a177b"></script>
+    <script src="../_static/documentation_options.js?v=ce394494"></script>
     <script src="../_static/doctools.js?v=9bcbadda"></script>
     <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -134,7 +134,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 1.4.4 documentation</p>
+    <p class="title logo__title">sensingpy 2.0.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -628,7 +628,7 @@ operations. Most methods modify the image in-place and return self for method ch
 <td><p>Remove specified bands from the image.</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sensingpy.image.Image.select" title="sensingpy.image.Image.select"><code class="xref py py-obj docutils literal notranslate"><span class="pre">select</span></code></a></p></td>
-<td><p>Select specific bands from the image.</p></td>
+<td><p>Select specific bands from the image and return as numpy array (copy).</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sensingpy.image.Image.rename" title="sensingpy.image.Image.rename"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rename</span></code></a></p></td>
 <td><p>Rename band names using a dictionary mapping.</p></td>
@@ -989,7 +989,7 @@ If None, extracts from all bands, by default None</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.image.Image.geometry_mask">
-<span class="sig-name descname"><span class="pre">geometry_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseGeometry</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_out</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.geometry_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.geometry_mask" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">geometry_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">geometries</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">BaseGeometry</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mask_out</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_false</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.geometry_mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.geometry_mask" title="Link to this definition">#</a></dt>
 <dd><p>Mask image using geometries.</p>
 <p>Creates a binary mask from the input geometries and sets values to NaN either inside
 or outside the geometries depending on the mask_out parameter.</p>
@@ -999,6 +999,9 @@ or outside the geometries depending on the mask_out parameter.</p>
 <li><p><strong>geometries</strong> (<em>List</em><em>[</em><em>BaseGeometry</em><em>]</em>) – List of geometries for masking</p></li>
 <li><p><strong>mask_out</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True mask outside geometries, if False mask inside, by default True</p></li>
 <li><p><strong>bands</strong> (<em>str</em><em> or </em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Band(s) to apply mask to, by default None which applies to all bands</p></li>
+<li><p><strong>fill_true</strong> (<em>Any</em><em>, </em><em>optional</em>) – Value to set where condition is True (inside/outside depending on mask_out),
+by default None (no change)</p></li>
+<li><p><strong>fill_false</strong> (<em>Any</em><em>, </em><em>optional</em>) – Value to set where condition is False, by default np.nan</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1009,14 +1012,14 @@ or outside the geometries depending on the mask_out parameter.</p>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># If mask_out=True with this pattern (where 1=inside geometry, 0=outside):</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 0 0 1 0 0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 0 1 1 1 0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># 0 0 1 0 0</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># The result will be:</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># N N 5 N N  (where N=NaN, 5=original value)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># N 3 4 2 N</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="c1"># N N 1 N N</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Mask outside geometries to NaN (default)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">geometry_mask</span><span class="p">(</span><span class="n">polygons</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Mask outside geometries to 0, keep original inside</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">geometry_mask</span><span class="p">(</span><span class="n">polygons</span><span class="p">,</span> <span class="n">fill_false</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set inside to 1, outside to 0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">geometry_mask</span><span class="p">(</span><span class="n">polygons</span><span class="p">,</span> <span class="n">fill_true</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fill_false</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1073,13 +1076,15 @@ or outside the geometries depending on the mask_out parameter.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.image.Image.mask">
-<span class="sig-name descname"><span class="pre">mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.mask" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">condition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_true</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_false</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">nan</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.mask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.mask" title="Link to this definition">#</a></dt>
 <dd><p>Mask image bands using condition array.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>condition</strong> (<em>np.ndarray</em>) – Boolean mask array</p></li>
 <li><p><strong>bands</strong> (<em>str</em><em> or </em><em>List</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – Band(s) to apply mask to, by default None which applies to all bands</p></li>
+<li><p><strong>fill_true</strong> (<em>Any</em><em>, </em><em>optional</em>) – Value to set where condition is True, by default None (no change)</p></li>
+<li><p><strong>fill_false</strong> (<em>Any</em><em>, </em><em>optional</em>) – Value to set where condition is False, by default np.nan</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -1089,6 +1094,17 @@ or outside the geometries depending on the mask_out parameter.</p>
 <dd class="field-odd"><p>Self</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Mask values to NaN where condition is False (default)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">water_mask</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set values to 0 where condition is False, keep original where True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">land_mask</span><span class="p">,</span> <span class="n">fill_false</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Set values to 1 where True, 0 where False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">binary_mask</span><span class="p">,</span> <span class="n">fill_true</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fill_false</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py method">
@@ -1341,22 +1357,37 @@ This operation modifies the image in-place.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sensingpy.image.Image.select">
-<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">only_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">DataArray</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.select" title="Link to this definition">#</a></dt>
-<dd><p>Select specific bands from the image.</p>
+<span class="sig-name descname"><span class="pre">select</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bands</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="../_modules/sensingpy/image.html#Image.select"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sensingpy.image.Image.select" title="Link to this definition">#</a></dt>
+<dd><p>Select specific bands from the image and return as numpy array (copy).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>bands</strong> (<em>str</em><em> or </em><em>List</em><em>[</em><em>str</em><em>]</em>) – Band(s) to select</p></li>
-<li><p><strong>only_values</strong> (<em>bool</em><em>, </em><em>optional</em>) – If True return array of values, if False return DataArray, by default True</p></li>
-</ul>
+<dd class="field-odd"><p><strong>bands</strong> (<em>str</em><em> or </em><em>List</em><em>[</em><em>str</em><em>]</em>) – Band(s) to select. Single string for one band,
+list of strings for multiple bands.</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Selected band data</p>
+<dd class="field-even"><p>Selected band data as numpy array. For single band returns 2D array (H, W),
+for multiple bands returns 3D array (N, H, W).</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>np.ndarray or xr.DataArray</p>
+<dd class="field-odd"><p>np.ndarray</p>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get single band as numpy array</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blue</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">blue</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Does NOT modify original image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># Get multiple bands</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">rgb</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># (3, height, width)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">__getitem__</span></code></dt><dd><p>Get band as xarray DataArray (editable view)</p>
+</dd>
+</dl>
+</div>
 </dd></dl>
 
 <dl class="py method">

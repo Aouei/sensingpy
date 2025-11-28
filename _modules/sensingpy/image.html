@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sensingpy.image &#8212; sensingpy 1.4.4 documentation</title>
+    <title>sensingpy.image &#8212; sensingpy 2.0.0 documentation</title>
   
   
   
@@ -35,7 +35,7 @@
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script src="../../_static/documentation_options.js?v=3e2a177b"></script>
+    <script src="../../_static/documentation_options.js?v=ce394494"></script>
     <script src="../../_static/doctools.js?v=9bcbadda"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
@@ -133,7 +133,7 @@
   
   
   
-    <p class="title logo__title">sensingpy 1.4.4 documentation</p>
+    <p class="title logo__title">sensingpy 2.0.0 documentation</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -451,43 +451,56 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span></div>
 
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Access band data using bracket notation (similar to xarray/numpy).</span>
+<span class="sd">        Access band(s) by name using bracket notation.</span>
 
-<span class="sd">        This method allows accessing bands directly using bracket notation,</span>
-<span class="sd">        making the API more intuitive and consistent with xarray/numpy conventions.</span>
+<span class="sd">        Returns the underlying xarray DataArray for the specified band(s).</span>
+<span class="sd">        The returned DataArray provides a direct reference to the data, allowing</span>
+<span class="sd">        in-place modifications using xarray&#39;s advanced indexing capabilities.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        key : str or List[str]</span>
-<span class="sd">            Band name(s) to access. If a single string, returns a single band.</span>
-<span class="sd">            If a list of strings, returns multiple bands stacked along axis 0.</span>
+<span class="sd">        bands : str or List[str]</span>
+<span class="sd">            Band name(s) to access. Single string for one band,</span>
+<span class="sd">            list of strings for multiple bands.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray or xr.DataArray</span>
-<span class="sd">            Band data as numpy array. For single band returns 2D array,</span>
-<span class="sd">            for multiple bands returns 3D array with shape (n_bands, height, width).</span>
+<span class="sd">        xr.DataArray</span>
+<span class="sd">            Reference to the band data as xarray DataArray. Modifications using</span>
+<span class="sd">            xarray indexing methods (like .loc[], .where()) will affect the</span>
+<span class="sd">            original Image.</span>
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
 <span class="sd">        &gt;&gt;&gt; # Access single band</span>
 <span class="sd">        &gt;&gt;&gt; blue_band = image[&#39;blue&#39;]</span>
-<span class="sd">        &gt;&gt;&gt; print(blue_band.shape)  # (height, width)</span>
+<span class="sd">        &gt;&gt;&gt; </span>
 <span class="sd">        &gt;&gt;&gt; # Access multiple bands</span>
 <span class="sd">        &gt;&gt;&gt; rgb = image[[&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;]]</span>
-<span class="sd">        &gt;&gt;&gt; print(rgb.shape)  # (3, height, width)</span>
-<span class="sd">        &gt;&gt;&gt; # Equivalent to using select method</span>
-<span class="sd">        &gt;&gt;&gt; blue_band = image.select(&#39;blue&#39;)</span>
-<span class="sd">        &gt;&gt;&gt; rgb = image.select([&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">        &gt;&gt;&gt; # Modify values using xarray&#39;s .loc[] indexing</span>
+<span class="sd">        &gt;&gt;&gt; image[&#39;blue&#39;].loc[mask] = 0</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">        &gt;&gt;&gt; # Modify using .where()</span>
+<span class="sd">        &gt;&gt;&gt; image[&#39;ndvi&#39;] = image[&#39;ndvi&#39;].where(image[&#39;ndvi&#39;] &gt;= 0)</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">        &gt;&gt;&gt; # Get values as numpy array (copy)</span>
+<span class="sd">        &gt;&gt;&gt; blue_values = image[&#39;blue&#39;].values.copy()</span>
 
 <span class="sd">        See Also</span>
 <span class="sd">        --------</span>
-<span class="sd">        select : Alternative method for band selection with more options</span>
+<span class="sd">        select : Get band data as numpy array (always returns a copy)</span>
 <span class="sd">        __setitem__ : Set band data using bracket notation</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        To modify values in-place, use xarray&#39;s indexing methods like .loc[]</span>
+<span class="sd">        or .where(). Direct indexing like `image[&#39;blue&#39;][mask] = 0` creates</span>
+<span class="sd">        a temporary view and won&#39;t modify the original data.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">only_values</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span>
 
     <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1292,7 +1305,13 @@ document.write(`
 
 <div class="viewcode-block" id="Image.mask">
 <a class="viewcode-back" href="../../modules/image.html#sensingpy.image.Image.mask">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">condition</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">condition</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+        <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">fill_true</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">fill_false</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Mask image bands using condition array.</span>
 
@@ -1302,19 +1321,39 @@ document.write(`
 <span class="sd">            Boolean mask array</span>
 <span class="sd">        bands : str or List[str], optional</span>
 <span class="sd">            Band(s) to apply mask to, by default None which applies to all bands</span>
+<span class="sd">        fill_true : Any, optional</span>
+<span class="sd">            Value to set where condition is True, by default None (no change)</span>
+<span class="sd">        fill_false : Any, optional</span>
+<span class="sd">            Value to set where condition is False, by default np.nan</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        Self</span>
 <span class="sd">            Returns the Image object for method chaining</span>
-<span class="sd">        &quot;&quot;&quot;</span>
 
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; # Mask values to NaN where condition is False (default)</span>
+<span class="sd">        &gt;&gt;&gt; image.mask(water_mask)</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">        &gt;&gt;&gt; # Set values to 0 where condition is False, keep original where True</span>
+<span class="sd">        &gt;&gt;&gt; image.mask(land_mask, fill_false=0)</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">        &gt;&gt;&gt; # Set values to 1 where True, 0 where False</span>
+<span class="sd">        &gt;&gt;&gt; image.mask(binary_mask, fill_true=1, fill_false=0)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">condition_da</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">))</span>
+        
         <span class="k">if</span> <span class="n">bands</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
-                <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">))</span>
-            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">fill_false</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">condition_da</span><span class="p">,</span> <span class="n">fill_false</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fill_true</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">condition_da</span><span class="p">,</span> <span class="n">fill_true</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">condition</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="n">fill_false</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">condition_da</span><span class="p">,</span> <span class="n">fill_false</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fill_true</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="o">~</span><span class="n">condition_da</span><span class="p">,</span> <span class="n">fill_true</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
 
@@ -1325,6 +1364,8 @@ document.write(`
         <span class="n">geometries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseGeometry</span><span class="p">],</span>
         <span class="n">mask_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">fill_true</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">fill_false</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Mask image using geometries.</span>
@@ -1340,6 +1381,11 @@ document.write(`
 <span class="sd">            If True mask outside geometries, if False mask inside, by default True</span>
 <span class="sd">        bands : str or List[str], optional</span>
 <span class="sd">            Band(s) to apply mask to, by default None which applies to all bands</span>
+<span class="sd">        fill_true : Any, optional</span>
+<span class="sd">            Value to set where condition is True (inside/outside depending on mask_out),</span>
+<span class="sd">            by default None (no change)</span>
+<span class="sd">        fill_false : Any, optional</span>
+<span class="sd">            Value to set where condition is False, by default np.nan</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
@@ -1348,14 +1394,14 @@ document.write(`
 
 <span class="sd">        Examples</span>
 <span class="sd">        --------</span>
-<span class="sd">        &gt;&gt;&gt; # If mask_out=True with this pattern (where 1=inside geometry, 0=outside):</span>
-<span class="sd">        &gt;&gt;&gt; # 0 0 1 0 0</span>
-<span class="sd">        &gt;&gt;&gt; # 0 1 1 1 0</span>
-<span class="sd">        &gt;&gt;&gt; # 0 0 1 0 0</span>
-<span class="sd">        &gt;&gt;&gt; # The result will be:</span>
-<span class="sd">        &gt;&gt;&gt; # N N 5 N N  (where N=NaN, 5=original value)</span>
-<span class="sd">        &gt;&gt;&gt; # N 3 4 2 N</span>
-<span class="sd">        &gt;&gt;&gt; # N N 1 N N</span>
+<span class="sd">        &gt;&gt;&gt; # Mask outside geometries to NaN (default)</span>
+<span class="sd">        &gt;&gt;&gt; image.geometry_mask(polygons)</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">        &gt;&gt;&gt; # Mask outside geometries to 0, keep original inside</span>
+<span class="sd">        &gt;&gt;&gt; image.geometry_mask(polygons, fill_false=0)</span>
+<span class="sd">        &gt;&gt;&gt; </span>
+<span class="sd">        &gt;&gt;&gt; # Set inside to 1, outside to 0</span>
+<span class="sd">        &gt;&gt;&gt; image.geometry_mask(polygons, fill_true=1, fill_false=0)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="n">condition</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">geometry_mask</span><span class="p">(</span>
@@ -1365,7 +1411,7 @@ document.write(`
             <span class="n">invert</span><span class="o">=</span><span class="n">mask_out</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">bands</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">condition</span><span class="p">,</span> <span class="n">bands</span><span class="p">,</span> <span class="n">fill_true</span><span class="o">=</span><span class="n">fill_true</span><span class="p">,</span> <span class="n">fill_false</span><span class="o">=</span><span class="n">fill_false</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
 
@@ -1454,36 +1500,36 @@ document.write(`
 
 <div class="viewcode-block" id="Image.select">
 <a class="viewcode-back" href="../../modules/image.html#sensingpy.image.Image.select">[docs]</a>
-    <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">only_values</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">|</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Select specific bands from the image.</span>
+<span class="sd">        Select specific bands from the image and return as numpy array (copy).</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        bands : str or List[str]</span>
-<span class="sd">            Band(s) to select</span>
-<span class="sd">        only_values : bool, optional</span>
-<span class="sd">            If True return array of values, if False return DataArray, by default True</span>
+<span class="sd">            Band(s) to select. Single string for one band,</span>
+<span class="sd">            list of strings for multiple bands.</span>
 
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
-<span class="sd">        np.ndarray or xr.DataArray</span>
-<span class="sd">            Selected band data</span>
+<span class="sd">        np.ndarray</span>
+<span class="sd">            Selected band data as numpy array. For single band returns 2D array (H, W),</span>
+<span class="sd">            for multiple bands returns 3D array (N, H, W).</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; # Get single band as numpy array</span>
+<span class="sd">        &gt;&gt;&gt; blue = image.select(&#39;blue&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; blue[mask] = 0  # Does NOT modify original image</span>
+<span class="sd">        &gt;&gt;&gt; # Get multiple bands</span>
+<span class="sd">        &gt;&gt;&gt; rgb = image.select([&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;])</span>
+<span class="sd">        &gt;&gt;&gt; print(rgb.shape)  # (3, height, width)</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        __getitem__ : Get band as xarray DataArray (editable view)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-
-        <span class="k">if</span> <span class="n">only_values</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bands</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">band</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">band</span> <span class="ow">in</span> <span class="n">bands</span><span class="p">])</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">])</span>
-
-        <span class="k">return</span> <span class="n">result</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">bands</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Image.add_band">
