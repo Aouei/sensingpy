@@ -899,7 +899,13 @@ class Image(object):
         self.data = self.data.isel({"y": rows, "x": cols})
         return self
 
-    def mask(self, condition: np.ndarray, bands: str | List[str] = None) -> Self:
+    def mask(
+        self,
+        condition: np.ndarray,
+        bands: str | List[str] = None,
+        fill_true=None,
+        fill_false=np.nan,
+    ) -> Self:
         """
         Mask image bands using condition array.
 
@@ -909,19 +915,39 @@ class Image(object):
             Boolean mask array
         bands : str or List[str], optional
             Band(s) to apply mask to, by default None which applies to all bands
+        fill_true : Any, optional
+            Value to set where condition is True, by default None (no change)
+        fill_false : Any, optional
+            Value to set where condition is False, by default np.nan
 
         Returns
         -------
         Self
             Returns the Image object for method chaining
-        """
 
+        Examples
+        --------
+        >>> # Mask values to NaN where condition is False (default)
+        >>> image.mask(water_mask)
+        >>> 
+        >>> # Set values to 0 where condition is False, keep original where True
+        >>> image.mask(land_mask, fill_false=0)
+        >>> 
+        >>> # Set values to 1 where True, 0 where False
+        >>> image.mask(binary_mask, fill_true=1, fill_false=0)
+        """
+        condition_da = xr.DataArray(data=condition, dims=("y", "x"))
+        
         if bands is not None:
-            self.data[bands] = self.data[bands].where(
-                xr.DataArray(data=condition, dims=("y", "x"))
-            )
+            if fill_false is not None:
+                self.data[bands] = self.data[bands].where(condition_da, fill_false)
+            if fill_true is not None:
+                self.data[bands] = self.data[bands].where(~condition_da, fill_true)
         else:
-            self.data = self.data.where(xr.DataArray(data=condition, dims=("y", "x")))
+            if fill_false is not None:
+                self.data = self.data.where(condition_da, fill_false)
+            if fill_true is not None:
+                self.data = self.data.where(~condition_da, fill_true)
         return self
 
     def geometry_mask(
@@ -929,6 +955,8 @@ class Image(object):
         geometries: List[BaseGeometry],
         mask_out: bool = True,
         bands: str | List[str] = None,
+        fill_true=None,
+        fill_false=np.nan,
     ) -> Self:
         """
         Mask image using geometries.
@@ -944,6 +972,11 @@ class Image(object):
             If True mask outside geometries, if False mask inside, by default True
         bands : str or List[str], optional
             Band(s) to apply mask to, by default None which applies to all bands
+        fill_true : Any, optional
+            Value to set where condition is True (inside/outside depending on mask_out),
+            by default None (no change)
+        fill_false : Any, optional
+            Value to set where condition is False, by default np.nan
 
         Returns
         -------
@@ -952,14 +985,14 @@ class Image(object):
 
         Examples
         --------
-        >>> # If mask_out=True with this pattern (where 1=inside geometry, 0=outside):
-        >>> # 0 0 1 0 0
-        >>> # 0 1 1 1 0
-        >>> # 0 0 1 0 0
-        >>> # The result will be:
-        >>> # N N 5 N N  (where N=NaN, 5=original value)
-        >>> # N 3 4 2 N
-        >>> # N N 1 N N
+        >>> # Mask outside geometries to NaN (default)
+        >>> image.geometry_mask(polygons)
+        >>> 
+        >>> # Mask outside geometries to 0, keep original inside
+        >>> image.geometry_mask(polygons, fill_false=0)
+        >>> 
+        >>> # Set inside to 1, outside to 0
+        >>> image.geometry_mask(polygons, fill_true=1, fill_false=0)
         """
 
         condition = rasterio.features.geometry_mask(
@@ -969,7 +1002,7 @@ class Image(object):
             invert=mask_out,
         )
 
-        self.mask(condition, bands)
+        self.mask(condition, bands, fill_true=fill_true, fill_false=fill_false)
         return self
 
     def dropna(self) -> Self:
