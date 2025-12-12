@@ -71,13 +71,13 @@ class Image(object):
         self.data: xr.Dataset = data
         self.name: str = ""
 
-    def __getitem__(self, bands: str | List[str]) -> xr.DataArray:
+    def __getitem__(self, bands: str | List[str]) -> np.ndarray:
         """
-        Access band(s) by name using bracket notation.
+        Access band(s) by name using bracket notation and return as numpy array (copy).
 
-        Returns the underlying xarray DataArray for the specified band(s).
-        The returned DataArray provides a direct reference to the data, allowing
-        in-place modifications using xarray's advanced indexing capabilities.
+        Returns a numpy array copy of the specified band(s). The returned array
+        is independent from the original data, so modifications will not affect
+        the Image object.
 
         Parameters
         ----------
@@ -87,40 +87,42 @@ class Image(object):
 
         Returns
         -------
-        xr.DataArray
-            Reference to the band data as xarray DataArray. Modifications using
-            xarray indexing methods (like .loc[], .where()) will affect the
-            original Image.
+        np.ndarray
+            Copy of the band data as numpy array. For single band returns 2D array (H, W),
+            for multiple bands returns 3D array (N, H, W). Modifications to this array
+            will NOT affect the original Image.
 
         Examples
         --------
-        >>> # Access single band
+        >>> # Access single band as numpy array
         >>> blue_band = image['blue']
+        >>> blue_band[mask] = 0  # Does NOT modify original image
         >>> 
         >>> # Access multiple bands
         >>> rgb = image[['red', 'green', 'blue']]
+        >>> print(rgb.shape)  # (3, height, width)
         >>> 
-        >>> # Modify values using xarray's .loc[] indexing
-        >>> image['blue'].loc[mask] = 0
+        >>> # To modify the original image, use __setitem__ or add_band
+        >>> modified_blue = image['blue'].copy()
+        >>> modified_blue[mask] = 0
+        >>> image['blue'] = modified_blue  # Update original
         >>> 
-        >>> # Modify using .where()
-        >>> image['ndvi'] = image['ndvi'].where(image['ndvi'] >= 0)
-        >>> 
-        >>> # Get values as numpy array (copy)
-        >>> blue_values = image['blue'].values.copy()
+        >>> # Or use the data attribute directly for in-place modifications
+        >>> image.data['blue'].values[mask] = 0
 
         See Also
         --------
-        select : Get band data as numpy array (always returns a copy)
+        select : Equivalent method, explicitly returns numpy array copy
         __setitem__ : Set band data using bracket notation
+        add_band : Add or update a band
 
         Notes
         -----
-        To modify values in-place, use xarray's indexing methods like .loc[]
-        or .where(). Direct indexing like `image['blue'][mask] = 0` creates
-        a temporary view and won't modify the original data.
+        This method now returns a numpy array copy (via select()) instead of an
+        xarray DataArray reference. To modify the image in-place, access the
+        data attribute directly: `image.data['band'].values[mask] = value`
         """
-        return self.data[bands]
+        return self.select(bands)
 
     def __setitem__(self, key: str, value: np.ndarray | xr.DataArray) -> None:
         """
@@ -291,7 +293,7 @@ class Image(object):
         return len(self.data.data_vars)
 
     @property
-    def x_res(self) -> float | int:
+    def x_res(self) -> float:
         """
         Get pixel resolution in x direction.
 
@@ -304,7 +306,7 @@ class Image(object):
         return float(abs(self.data.x[0] - self.data.x[1]))
 
     @property
-    def y_res(self) -> float | int:
+    def y_res(self) -> float:
         """
         Get pixel resolution in y direction.
 
@@ -315,6 +317,24 @@ class Image(object):
         """
 
         return float(abs(self.data.y[0] - self.data.y[1]))
+
+    @property
+    def res(self) -> Tuple[float, float]:
+        """
+        Get pixel resolution in x and y directions as a tuple.
+
+        Returns
+        -------
+        Tuple[float, float]
+            Tuple containing (x_resolution, y_resolution) in the units
+            of the image's coordinate reference system
+
+        Examples
+        --------
+        >>> x_res, y_res = image.res
+        >>> print(f"Resolution: {x_res} x {y_res}")
+        """
+        return self.x_res, self.y_res
 
     @property
     def transform(self) -> Affine:
@@ -420,6 +440,100 @@ class Image(object):
         """
 
         return np.array([self.data[band].values.copy() for band in self.band_names])
+
+    @property
+    def attrs(self) -> dict:
+        """
+        Get the attributes dictionary of the underlying xarray Dataset.
+
+        Provides access to metadata attributes stored in the Dataset,
+        such as sensor information, acquisition time, processing history,
+        or custom metadata added by the user.
+
+        Returns
+        -------
+        dict
+            Dictionary containing all Dataset attributes
+
+        Examples
+        --------
+        >>> # Access attributes
+        >>> print(image.attrs)
+        >>> 
+        >>> # Add custom attribute
+        >>> image.attrs['sensor'] = 'Sentinel-2'
+        >>> image.attrs['acquisition_date'] = '2024-01-15'
+        >>> 
+        >>> # Check if attribute exists
+        >>> if 'crs_wkt' in image.attrs:
+        >>>     print(image.attrs['crs_wkt'])
+
+        See Also
+        --------
+        attrs_keys : Get list of attribute keys
+        attrs_values : Get list of attribute values
+        """
+        return self.data.attrs
+    
+    @property
+    def attrs_keys(self) -> list:
+        """
+        Get list of attribute keys from the underlying xarray Dataset.
+
+        Returns a list of all metadata attribute names stored in the Dataset.
+
+        Returns
+        -------
+        list
+            List of attribute key names
+
+        Examples
+        --------
+        >>> # View all attribute keys
+        >>> print(image.attrs_keys)
+        >>> ['sensor', 'acquisition_date', 'processing_level']
+        >>> 
+        >>> # Iterate through attributes
+        >>> for key in image.attrs_keys:
+        >>>     print(f"{key}: {image.attrs[key]}")
+
+        See Also
+        --------
+        attrs : Get the full attributes dictionary
+        attrs_values : Get list of attribute values
+        """
+        return list(self.data.attrs.keys())
+    
+    @property
+    def attrs_values(self) -> list:
+        """
+        Get list of attribute values from the underlying xarray Dataset.
+
+        Returns a list of all metadata attribute values stored in the Dataset,
+        in the same order as attrs_keys.
+
+        Returns
+        -------
+        list
+            List of attribute values
+
+        Examples
+        --------
+        >>> # View all attribute values
+        >>> print(image.attrs_values)
+        >>> ['Sentinel-2', '2024-01-15', 'L2A']
+        >>> 
+        >>> # Pair keys with values
+        >>> for key, value in zip(image.attrs_keys, image.attrs_values):
+        >>>     print(f"{key}: {value}")
+
+        See Also
+        --------
+        attrs : Get the full attributes dictionary
+        attrs_keys : Get list of attribute keys
+        """
+        return list(self.data.attrs.values())
+
 
     def reproject(
         self, new_crs: pyproj.CRS, interpolation: Resampling = Resampling.nearest
@@ -1089,6 +1203,9 @@ class Image(object):
         """
         Select specific bands from the image and return as numpy array (copy).
 
+        This method returns a copy of the band data as a numpy array.
+        Modifications to the returned array will not affect the original Image.
+
         Parameters
         ----------
         bands : str or List[str]
@@ -1098,21 +1215,30 @@ class Image(object):
         Returns
         -------
         np.ndarray
-            Selected band data as numpy array. For single band returns 2D array (H, W),
-            for multiple bands returns 3D array (N, H, W).
+            Copy of selected band data as numpy array:
+            - For single band: 2D array with shape (height, width)
+            - For multiple bands: 3D array with shape (n_bands, height, width)
 
         Examples
         --------
         >>> # Get single band as numpy array
         >>> blue = image.select('blue')
+        >>> print(blue.shape)  # (height, width)
         >>> blue[mask] = 0  # Does NOT modify original image
+        >>> 
         >>> # Get multiple bands
         >>> rgb = image.select(['red', 'green', 'blue'])
         >>> print(rgb.shape)  # (3, height, width)
+        >>> 
+        >>> # To modify original image, use add_band or __setitem__
+        >>> modified = image.select('blue')
+        >>> modified[mask] = 0
+        >>> image['blue'] = modified  # Update original
 
         See Also
         --------
-        __getitem__ : Get band as xarray DataArray (editable view)
+        __getitem__ : Equivalent method using bracket notation
+        add_band : Add or update a band in the image
         """
 
         if isinstance(bands, str):
