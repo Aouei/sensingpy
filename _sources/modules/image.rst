@@ -12,6 +12,25 @@ Image Class
    :show-inheritance:
    :member-order: groupwise
 
+   .. note::
+      
+      **In-place Operations**
+      
+      Most methods in the Image class support an ``inplace`` parameter (default ``True``) 
+      that controls whether operations modify the image in-place or return a modified copy:
+      
+      - ``inplace=True`` (default): Modifies the image in-place and returns self for method chaining
+      - ``inplace=False``: Returns a new Image instance without modifying the original
+      
+      Example::
+      
+         # In-place operations (default behavior)
+         image.mask(water_mask).reproject(new_crs).dropna()
+         
+         # Non-mutating operations (create copies)
+         masked = image.mask(water_mask, inplace=False)
+         reprojected = image.reproject(new_crs, inplace=False)
+
    .. rubric:: Properties
 
    .. autosummary::
@@ -23,6 +42,7 @@ Image Class
       count
       x_res
       y_res
+      res
       transform
       xs_ys
       left
@@ -31,6 +51,9 @@ Image Class
       bottom
       bbox
       values
+      attrs
+      attrs_keys
+      attrs_values
 
    .. rubric:: Band Management
 
@@ -40,6 +63,7 @@ Image Class
       select
       add_band
       drop_bands
+      keep_bands
       replace
       rename
       rename_by_enum
