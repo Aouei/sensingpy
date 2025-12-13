@@ -1415,10 +1415,47 @@ class Image(object):
         target.data = target.data.drop_vars(bands)
         return target
 
-    def keep_bands(self, bands: str | List[str], inplace: bool = True) -> Image:
+    def keep_bands(self, bands: str | List[str], inplace: bool = True) -> Self:
+        """
+        Keep only specified bands and remove all others from the image.
+
+        This is the inverse operation of drop_bands. Only the specified bands
+        will be retained in the image, and all other bands will be removed.
+
+        Parameters
+        ----------
+        bands : str or List[str]
+            Band(s) to keep. All other bands will be removed.
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
+
+        Returns
+        -------
+        Self
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance with only the specified bands.
+
+        Examples
+        --------
+        >>> # Keep only RGB bands in-place (default)
+        >>> image.keep_bands(['red', 'green', 'blue'])
+        >>> print(image.band_names)  # ['red', 'green', 'blue']
+        >>> 
+        >>> # Keep single band
+        >>> image.keep_bands('ndvi')
+        >>> 
+        >>> # Create copy with only specific bands, keep original unchanged
+        >>> rgb_only = image.keep_bands(['red', 'green', 'blue'], inplace=False)
+        >>> # Original image still has all bands
+
+        See Also
+        --------
+        drop_bands : Remove specified bands (inverse operation)
+        """
         target = self._prepare_target(inplace)
-        bands = set(target.band_names).difference(bands if isinstance(bands, list) else [bands])
-        target.drop_bands(bands)
+        bands_to_drop = set(target.band_names).difference(bands if isinstance(bands, list) else [bands])
+        target.drop_bands(list(bands_to_drop), inplace=True)
         return target
 
     def normalized_diference(self, band1: str, band2: str) -> np.ndarray:
