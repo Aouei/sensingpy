@@ -48,7 +48,18 @@ class Image(object):
     Notes
     -----
     The Image class is designed to maintain spatial reference information throughout
-    operations. Most methods modify the image in-place and return self for method chaining.
+    operations. Most methods support an `inplace` parameter (default True) that controls
+    whether operations modify the image in-place or return a modified copy. All methods
+    return self (or a copy) to enable method chaining.
+    
+    Examples
+    --------
+    >>> # In-place operations (default behavior)
+    >>> image.mask(water_mask).reproject(new_crs).dropna()
+    >>> 
+    >>> # Non-mutating operations (create copies)
+    >>> masked = image.mask(water_mask, inplace=False)
+    >>> reprojected = image.reproject(new_crs, inplace=False)
     """
 
     grid_mapping: str = "projection"
@@ -70,6 +81,23 @@ class Image(object):
         self.crs: pyproj.CRS = crs
         self.data: xr.Dataset = data
         self.name: str = ""
+
+    def _prepare_target(self, inplace: bool) -> Image:
+        """
+        Helper method to handle inplace parameter.
+
+        Parameters
+        ----------
+        inplace : bool
+            If True, returns self for in-place modification.
+            If False, returns a deep copy.
+
+        Returns
+        -------
+        Image
+            Self if inplace=True, otherwise a deep copy
+        """
+        return self if inplace else self.copy()
 
     def __getitem__(self, bands: str | List[str]) -> np.ndarray:
         """
@@ -129,7 +157,8 @@ class Image(object):
         Set band data using bracket notation (similar to xarray/numpy).
 
         This method allows setting band data directly using bracket notation,
-        making the API more intuitive for adding or updating bands.
+        making the API more intuitive for adding or updating bands. This operation
+        always modifies the image in-place.
 
         Parameters
         ----------
@@ -140,26 +169,27 @@ class Image(object):
 
         Examples
         --------
-        >>> # Add or update a band
+        >>> # Add or update a band (always in-place)
         >>> image['ndvi'] = ndvi_array
         >>> # Update existing band
         >>> image['blue'] = modified_blue_band
-        >>> # Equivalent to using add_band method
-        >>> image.add_band('ndvi', ndvi_array)
+        >>> 
+        >>> # For non-mutating operation, use add_band with inplace=False
+        >>> modified = image.add_band('ndvi', ndvi_array, inplace=False)
 
         See Also
         --------
-        add_band : Alternative method for adding bands
+        add_band : Method for adding bands with inplace control
         __getitem__ : Get band data using bracket notation
 
         Notes
         -----
         If the band name already exists, it will be updated. Otherwise, a new band
-        will be created.
+        will be created. This method always modifies the image in-place.
         """
-        self.add_band(key, value)
+        self.add_band(key, value, inplace=True)
 
-    def replace(self, old: str, new: str) -> Self:
+    def replace(self, old: str, new: str, inplace: bool = True) -> Image:
         """
         Replace occurrences of a substring in all band names with a new substring.
 
@@ -169,25 +199,35 @@ class Image(object):
             The substring to be replaced in band names
         new : str
             The substring to replace with
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance.
 
         Examples
         --------
-        >>> image.replace('B01', 'blue')  # Renames band 'B01' to 'blue'
+        >>> # In-place modification (default)
+        >>> image.replace('B01', 'blue')
+        >>> 
+        >>> # Create modified copy
+        >>> renamed = image.replace('B01', 'blue', inplace=False)
+        >>> # Original image unchanged
         """
-
+        target = self._prepare_target(inplace)
+        
         new_names = {
-            var: var.replace(old, new) for var in self.data.data_vars if old in var
+            var: var.replace(old, new) for var in target.data.data_vars if old in var
         }
 
-        self.data = self.data.rename(new_names)
-        return self
+        target.data = target.data.rename(new_names)
+        return target
 
-    def rename(self, new_names) -> Self:
+    def rename(self, new_names, inplace: bool = True) -> Image:
         """
         Rename band names using a dictionary mapping.
 
@@ -195,17 +235,30 @@ class Image(object):
         ----------
         new_names : dict
             Dictionary mapping old band names to new band names
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance.
+
+        Examples
+        --------
+        >>> # In-place modification (default)
+        >>> image.rename({'B1': 'blue', 'B2': 'green'})
+        >>> 
+        >>> # Create modified copy
+        >>> renamed = image.rename({'B1': 'blue'}, inplace=False)
+        >>> # Original image unchanged
         """
+        target = self._prepare_target(inplace)
+        target.data = target.data.rename(new_names)
+        return target
 
-        self.data = self.data.rename(new_names)
-        return self
-
-    def rename_by_enum(self, enum: enums.Enum) -> Self:
+    def rename_by_enum(self, enum: enums.Enum, inplace: bool = True) -> Image:
         """
         Rename bands using an enumeration mapping.
 
@@ -216,29 +269,38 @@ class Image(object):
         enum : enums.Enum
             Enumeration class containing band name mappings. Each enum value
             should be a List[str] of wavelength strings that map to the enum name.
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance.
 
         Examples
         --------
-        >>> # Using SENTINEL2_BANDS enum to rename bands
+        >>> # In-place modification (default)
         >>> image.rename_by_enum(SENTINEL2_BANDS)
         >>> # Renames bands like '443' to 'B1', '493' to 'B2', etc.
+        >>> 
+        >>> # Create modified copy
+        >>> renamed = image.rename_by_enum(SENTINEL2_BANDS, inplace=False)
+        >>> # Original image unchanged
 
         See Also
         --------
         enums.SENTINEL2_BANDS : Enum for Sentinel-2 band mappings
         enums.MICASENSE_BANDS : Enum for MicaSense RedEdge band mappings
         """
-
+        target = self._prepare_target(inplace)
+        
         for band in enum:
             for wavelenght in band.value:
-                self.replace(wavelenght, band.name)
+                target.replace(wavelenght, band.name, inplace=True)
 
-        return self
+        return target
 
     @property
     def band_names(self) -> List[str]:
@@ -536,8 +598,9 @@ class Image(object):
 
 
     def reproject(
-        self, new_crs: pyproj.CRS, interpolation: Resampling = Resampling.nearest
-    ) -> Self:
+        self, new_crs: pyproj.CRS, interpolation: Resampling = Resampling.nearest,
+        inplace: bool = True
+    ) -> Image:
         """
         Reproject image to new coordinate reference system.
 
@@ -560,49 +623,55 @@ class Image(object):
             - med: Median of all contributing pixels
             - q1: First quartile of all contributing pixels
             - q3: Third quartile of all contributing pixels
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance with the new CRS.
 
         Examples
         --------
-        >>> # Reproject to UTM Zone 10N
+        >>> # Reproject to UTM Zone 10N (in-place, default)
         >>> utm_crs = pyproj.CRS.from_epsg(32610)
         >>> image.reproject(utm_crs, interpolation=Resampling.bilinear)
         >>>
-        >>> # Reproject to Web Mercator for web mapping
+        >>> # Reproject to Web Mercator, keep original unchanged
         >>> webmerc_crs = pyproj.CRS.from_epsg(3857)
-        >>> image.reproject(webmerc_crs)
+        >>> reprojected = image.reproject(webmerc_crs, inplace=False)
         """
-
-        src_crs = self.crs
+        target = self._prepare_target(inplace)
+        
+        src_crs = target.crs
         dst_crs = new_crs
 
-        src_height, src_width = self.height, self.width
+        src_height, src_width = target.height, target.width
 
         dst_transform, dst_width, dst_height = calculate_default_transform(
             src_crs,
             dst_crs,
             src_width,
             src_height,
-            left=float(self.data.x.min()),
-            bottom=float(self.data.y.min()),
-            right=float(self.data.x.max()),
-            top=float(self.data.y.max()),
+            left=float(target.data.x.min()),
+            bottom=float(target.data.y.min()),
+            right=float(target.data.x.max()),
+            top=float(target.data.y.max()),
         )
 
-        self.data = self.__update_data(
-            interpolation, dst_transform, dst_width, dst_height, self.crs, dst_crs
+        target.data = target._Image__update_data(
+            interpolation, dst_transform, dst_width, dst_height, target.crs, dst_crs
         )
-        self.crs = dst_crs
+        target.crs = dst_crs
 
-        return self
+        return target
 
     def align(
-        self, reference: Image, interpolation: Resampling = Resampling.nearest
-    ) -> Self:
+        self, reference: Image, interpolation: Resampling = Resampling.nearest,
+        inplace: bool = True
+    ) -> Image:
         """
         Align image to match reference image's CRS, resolution and extent.
 
@@ -621,44 +690,46 @@ class Image(object):
             - bilinear: Bilinear interpolation (smooth, better for continuous data)
             - cubic: Cubic interpolation (smoother than bilinear)
             - lanczos: Lanczos windowed sinc interpolation (sharp edges)
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the modified Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance aligned to the reference.
 
         Examples
         --------
-        >>> # Align a Landsat image to match a Sentinel-2 reference image
+        >>> # Align a Landsat image to match a Sentinel-2 reference (in-place, default)
         >>> landsat_img.align(sentinel2_img, interpolation=Resampling.bilinear)
-        >>>
-        >>> # Check that the images now have the same dimensions
         >>> assert landsat_img.width == sentinel2_img.width
-        >>> assert landsat_img.height == sentinel2_img.height
-
-        Notes
-        -----
-        This operation modifies the original image in-place. Use the copy() method first
-        if you want to preserve the original image.
+        >>>
+        >>> # Create aligned copy, keep original unchanged
+        >>> aligned = landsat_img.align(sentinel2_img, inplace=False)
+        >>> assert aligned.width == sentinel2_img.width
+        >>> assert landsat_img.width != sentinel2_img.width  # Original unchanged
         """
-
-        if self.crs != reference.crs:
-            self.reproject(reference.crs, interpolation)
+        target = self._prepare_target(inplace)
+        
+        if target.crs != reference.crs:
+            target.reproject(reference.crs, interpolation, inplace=True)
 
         dst_transform = reference.transform
         dst_width, dst_height = reference.width, reference.height
 
         new_data_vars = {}
 
-        for var_name, var_data in self.data.data_vars.items():
+        for var_name, var_data in target.data.data_vars.items():
             dst_array = np.zeros((dst_height, dst_width), dtype=np.float32)
             dst_array[:] = np.nan
 
             dst_array, _ = reproject(
                 source=var_data.values,
                 destination=dst_array,
-                src_transform=self.transform,
-                src_crs=self.crs,
+                src_transform=target.transform,
+                src_crs=target.crs,
                 dst_transform=dst_transform,
                 dst_crs=reference.crs,
                 dst_nodata=np.nan,
@@ -669,22 +740,22 @@ class Image(object):
                 data=dst_array,
                 dims=("y", "x"),
                 coords={"y": reference.data.y, "x": reference.data.x},
-                attrs={"grid_mapping": self.grid_mapping},
+                attrs={"grid_mapping": target.grid_mapping},
             )
 
-        self.data = xr.Dataset(
+        target.data = xr.Dataset(
             data_vars=new_data_vars,
             coords={
                 "x": reference.data.x.copy(),
                 "y": reference.data.y.copy(),
-                self.grid_mapping: xr.DataArray(data=0, attrs=reference.crs.to_cf()),
+                target.grid_mapping: xr.DataArray(data=0, attrs=reference.crs.to_cf()),
             },
-            attrs=self.data.attrs,
+            attrs=target.data.attrs,
         )
 
-        self.crs = reference.crs
+        target.crs = reference.crs
 
-        return self
+        return target
 
     def merge(self, other: Image) -> Image:
         """
@@ -794,7 +865,8 @@ class Image(object):
         scale: int,
         downscale: bool = True,
         interpolation: Resampling = Resampling.nearest,
-    ) -> Self:
+        inplace: bool = True,
+    ) -> Image:
         """
         Resample image by scaling factor to change spatial resolution.
 
@@ -818,40 +890,42 @@ class Image(object):
             - cubic: Cubic interpolation (smoother than bilinear)
             - lanczos: Lanczos windowed sinc interpolation (preserves sharp edges)
             - average: Averages all pixels that contribute to the output pixel
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance with the new resolution.
 
         Examples
         --------
-        >>> # Reduce image resolution by half (4x smaller area)
+        >>> # Reduce image resolution by half (in-place, default)
         >>> image.resample(scale=2, downscale=True)
         >>> print(f"New dimensions: {image.width}x{image.height}")
         >>>
-        >>> # Double the image resolution (4x larger area)
-        >>> image.resample(scale=2, downscale=False, interpolation=Resampling.bilinear)
-        >>> print(f"New dimensions: {image.width}x{image.height}")
-
-        Notes
-        -----
-        When downscaling, higher values of scale mean coarser resolution.
-        When upscaling, higher values of scale mean finer resolution.
-        This operation modifies the image in-place.
+        >>> # Double the image resolution, keep original unchanged
+        >>> upsampled = image.resample(scale=2, downscale=False, 
+        ...                            interpolation=Resampling.bilinear,
+        ...                            inplace=False)
+        >>> print(f"Original: {image.width}x{image.height}")
+        >>> print(f"Upsampled: {upsampled.width}x{upsampled.height}")
         """
-
+        target = self._prepare_target(inplace)
+        
         if downscale:
             scale = 1 / scale
 
-        dst_transform = self.transform * Affine.scale(1 / scale, 1 / scale)
-        dst_width = int(len(self.data.x) * scale)
-        dst_height = int(len(self.data.y) * scale)
+        dst_transform = target.transform * Affine.scale(1 / scale, 1 / scale)
+        dst_width = int(len(target.data.x) * scale)
+        dst_height = int(len(target.data.y) * scale)
 
-        self.data = self.__update_data(
-            interpolation, dst_transform, dst_width, dst_height, self.crs, self.crs
+        target.data = target.__update_data(
+            interpolation, dst_transform, dst_width, dst_height, target.crs, target.crs
         )
-        return self
+        return target
 
     def __update_data(
         self,
@@ -965,7 +1039,7 @@ class Image(object):
 
         return xr.Dataset(data_vars=new_data_vars, coords=coords, attrs=self.data.attrs)
 
-    def clip(self, geometries: List[BaseGeometry]) -> Self:
+    def clip(self, geometries: List[BaseGeometry], inplace: bool = True) -> Image:
         """
         Clip image to given geometries.
 
@@ -977,11 +1051,15 @@ class Image(object):
         geometries : List[BaseGeometry]
             List of geometries to clip to. The image will be
             clipped to the combined extent of all geometries.
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance clipped to the geometries.
 
         Notes
         -----
@@ -992,26 +1070,26 @@ class Image(object):
 
         Examples
         --------
-        >>> # If an image has this pattern (where 0=outside geometry, 1=inside):
-        >>> # 0 0 0 0 0
-        >>> # 0 1 1 0 0  <- First row with values
-        >>> # 0 1 1 1 0
-        >>> # 0 0 0 0 0  <- Last row with values
-        >>> # The result will be trimmed to:
-        >>> # 1 1 0  <- Columns 1-3 only
-        >>> # 1 1 1
+        >>> # Clip in-place (default)
+        >>> image.clip([polygon])
+        >>> # Image is now smaller
+        >>> 
+        >>> # Create clipped copy, keep original unchanged
+        >>> clipped = image.clip([polygon], inplace=False)
+        >>> # Original image dimensions unchanged
         """
-
+        target = self._prepare_target(inplace)
+        
         inshape = rasterio.features.geometry_mask(
             geometries=geometries,
-            out_shape=(self.height, self.width),
-            transform=self.transform,
+            out_shape=(target.height, target.width),
+            transform=target.transform,
             invert=True,
         )
 
-        rows, cols = self.__find_empty_borders(inshape)
-        self.data = self.data.isel({"y": rows, "x": cols})
-        return self
+        rows, cols = target._Image__find_empty_borders(inshape)
+        target.data = target.data.isel({"y": rows, "x": cols})
+        return target
 
     def mask(
         self,
@@ -1019,7 +1097,8 @@ class Image(object):
         bands: str | List[str] = None,
         fill_true=None,
         fill_false=np.nan,
-    ) -> Self:
+        inplace: bool = True,
+    ) -> Image:
         """
         Mask image bands using condition array.
 
@@ -1033,36 +1112,41 @@ class Image(object):
             Value to set where condition is True, by default None (no change)
         fill_false : Any, optional
             Value to set where condition is False, by default np.nan
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance with the mask applied.
 
         Examples
         --------
-        >>> # Mask values to NaN where condition is False (default)
+        >>> # Mask values to NaN where condition is False (in-place, default)
         >>> image.mask(water_mask)
         >>> 
-        >>> # Set values to 0 where condition is False, keep original where True
-        >>> image.mask(land_mask, fill_false=0)
+        >>> # Set values to 0 where False, keep original image unchanged
+        >>> masked = image.mask(land_mask, fill_false=0, inplace=False)
         >>> 
-        >>> # Set values to 1 where True, 0 where False
+        >>> # Set values to 1 where True, 0 where False (in-place)
         >>> image.mask(binary_mask, fill_true=1, fill_false=0)
         """
+        target = self._prepare_target(inplace)
         condition_da = xr.DataArray(data=condition, dims=("y", "x"))
         
         if bands is not None:
             if fill_false is not None:
-                self.data[bands] = self.data[bands].where(condition_da, fill_false)
+                target.data[bands] = target.data[bands].where(condition_da, fill_false)
             if fill_true is not None:
-                self.data[bands] = self.data[bands].where(~condition_da, fill_true)
+                target.data[bands] = target.data[bands].where(~condition_da, fill_true)
         else:
             if fill_false is not None:
-                self.data = self.data.where(condition_da, fill_false)
+                target.data = target.data.where(condition_da, fill_false)
             if fill_true is not None:
-                self.data = self.data.where(~condition_da, fill_true)
-        return self
+                target.data = target.data.where(~condition_da, fill_true)
+        return target
 
     def geometry_mask(
         self,
@@ -1071,7 +1155,8 @@ class Image(object):
         bands: str | List[str] = None,
         fill_true=None,
         fill_false=np.nan,
-    ) -> Self:
+        inplace: bool = True,
+    ) -> Image:
         """
         Mask image using geometries.
 
@@ -1091,42 +1176,54 @@ class Image(object):
             by default None (no change)
         fill_false : Any, optional
             Value to set where condition is False, by default np.nan
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance with the mask applied.
 
         Examples
         --------
-        >>> # Mask outside geometries to NaN (default)
+        >>> # Mask outside geometries to NaN (in-place, default)
         >>> image.geometry_mask(polygons)
         >>> 
-        >>> # Mask outside geometries to 0, keep original inside
-        >>> image.geometry_mask(polygons, fill_false=0)
+        >>> # Mask outside to 0, keep original image unchanged
+        >>> masked = image.geometry_mask(polygons, fill_false=0, inplace=False)
         >>> 
-        >>> # Set inside to 1, outside to 0
+        >>> # Set inside to 1, outside to 0 (in-place)
         >>> image.geometry_mask(polygons, fill_true=1, fill_false=0)
         """
-
+        target = self._prepare_target(inplace)
+        
         condition = rasterio.features.geometry_mask(
             geometries=geometries,
-            out_shape=(self.height, self.width),
-            transform=self.transform,
+            out_shape=(target.height, target.width),
+            transform=target.transform,
             invert=mask_out,
         )
 
-        self.mask(condition, bands, fill_true=fill_true, fill_false=fill_false)
-        return self
+        target.mask(condition, bands, fill_true=fill_true, fill_false=fill_false, inplace=True)
+        return target
 
-    def dropna(self) -> Self:
+    def dropna(self, inplace: bool = True) -> Image:
         """
         Remove rows and columns that contain all NaN values only when adjacent rows/columns also contain all NaN values.
+
+        Parameters
+        ----------
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance with NaN borders removed.
 
         Notes
         -----
@@ -1135,28 +1232,23 @@ class Image(object):
 
         Examples
         --------
-        >>> # If an image has this pattern (where 0=value, N=NaN):
-        >>> # 0 0 N N N
-        >>> # 0 0 N N N
-        >>> # N N N N N  <- This row will be dropped
-        >>> # N N N N N  <- This row will be dropped
-        >>> # The rightmost 3 columns will also be dropped
-
-        >>> # If an image has this pattern (where 0=value, N=NaN):
-        >>> # 0 0 N 0 N
-        >>> # 0 0 N 0 N
-        >>> # 0 0 N 0 N
-        >>> # 0 0 N 0 N
-        >>> # Only the last column will be dropped
+        >>> # Drop NaN borders in-place (default)
+        >>> image.dropna()
+        >>> print(f"New size: {image.width}x{image.height}")
+        >>> 
+        >>> # Create copy without NaN borders, keep original unchanged
+        >>> trimmed = image.dropna(inplace=False)
+        >>> # Original image dimensions unchanged
         """
-
-        mask = np.zeros((self.height, self.width))
-        for data in self.data.data_vars.values():
+        target = self._prepare_target(inplace)
+        
+        mask = np.zeros((target.height, target.width))
+        for data in target.data.data_vars.values():
             mask = np.logical_or(mask, ~np.isnan(data.values))
 
-        rows, cols = self.__find_empty_borders(mask)
-        self.data = self.data.isel({"y": rows, "x": cols})
-        return self
+        rows, cols = target.__find_empty_borders(mask)
+        target.data = target.data.isel({"y": rows, "x": cols})
+        return target
 
     def __find_empty_borders(self, array: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
         """
@@ -1246,7 +1338,8 @@ class Image(object):
         else:
             return np.array([ self.data[band].values.copy() for band in bands ])
 
-    def add_band(self, band_name: str, data: np.ndarray | xr.DataArray) -> Self:
+    def add_band(self, band_name: str, data: np.ndarray | xr.DataArray, 
+                 inplace: bool = True) -> Image:
         """
         Add a new band to the image or update an existing band.
 
@@ -1256,30 +1349,41 @@ class Image(object):
             Name of the band to add or update
         data : np.ndarray or xr.DataArray
             Band data to add. Must match the spatial dimensions of existing bands
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance with the band added/updated.
 
         Examples
         --------
-        >>> # Add new band
+        >>> # Add new band in-place (default)
         >>> image.add_band('ndvi', ndvi_data)
-        >>> # Update existing band
+        >>> print(image.band_names)  # [..., 'ndvi']
+        >>> 
+        >>> # Create copy with new band, keep original unchanged
+        >>> with_ndvi = image.add_band('ndvi', ndvi_data, inplace=False)
+        >>> # 'ndvi' not in original image.band_names
+        >>> 
+        >>> # Update existing band (in-place)
         >>> image.add_band('blue', new_blue_data)
         """
-
+        target = self._prepare_target(inplace)
+        
         if isinstance(data, np.ndarray):
-            if band_name not in self.band_names:
-                self.data[band_name] = (("y", "x"), data)
+            if band_name not in target.band_names:
+                target.data[band_name] = (("y", "x"), data)
             else:
-                self.data[band_name].values = data
+                target.data[band_name].values = data
         else:
-            self.data[band_name] = data
-        return self
+            target.data[band_name] = data
+        return target
 
-    def drop_bands(self, bands) -> Self:
+    def drop_bands(self, bands: str | List[str], inplace: bool = True) -> Image:
         """
         Remove specified bands from the image.
 
@@ -1287,15 +1391,35 @@ class Image(object):
         ----------
         bands : str or List[str]
             Band(s) to remove
+        inplace : bool, optional
+            If True (default), modifies the image in-place and returns self.
+            If False, returns a modified copy without changing the original.
 
         Returns
         -------
         Self
-            Returns the Image object for method chaining
-        """
+            The modified Image object. Returns self if inplace=True,
+            otherwise returns a new Image instance without the dropped bands.
 
-        self.data = self.data.drop_vars(bands)
-        return self
+        Examples
+        --------
+        >>> # Drop bands in-place (default)
+        >>> image.drop_bands(['B1', 'B2'])
+        >>> print(image.band_names)  # B1, B2 removed
+        >>> 
+        >>> # Create copy without certain bands, keep original unchanged
+        >>> subset = image.drop_bands(['B1', 'B2'], inplace=False)
+        >>> # Original image still has B1, B2
+        """
+        target = self._prepare_target(inplace)
+        target.data = target.data.drop_vars(bands)
+        return target
+
+    def keep_bands(self, bands: str | List[str], inplace: bool = True) -> Image:
+        target = self._prepare_target(inplace)
+        bands = set(target.band_names).difference(bands if isinstance(bands, list) else [bands])
+        target.drop_bands(bands)
+        return target
 
     def normalized_diference(self, band1: str, band2: str) -> np.ndarray:
         """
@@ -1568,7 +1692,7 @@ class Image(object):
 
 
 def compose(
-    images: List[Image], method: Callable | np.ndarray, bands: List[str] = None
+    images: List[Image], method: Callable | np.ndarray, bands: List[str] | None = None
 ) -> Image:
     """
     Compose multiple images into one using a composition method.
