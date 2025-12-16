@@ -406,7 +406,7 @@ class ValidationPlot(object):
         ax.tick_params(axis="both", which="major", labelsize=self.tick_font_size)
         ax.tick_params(axis="both", which="minor", labelsize=self.tick_font_size)
 
-        self.add_labels(ax, title="In Situ - SDB", xlabel="Residual error (m)")
+        self.add_labels(ax, title="SDB - In Situ", xlabel="Residual error (m)")
 
         legend = "\n".join(
             [f"N = {summary.N}"]

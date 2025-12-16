@@ -12,8 +12,8 @@ class ValidationSummary:
 
     @property
     def error(self) -> np.ndarray:
-        """error = true - pred"""
-        return self.in_situ - self.model
+        """error = pred - true"""
+        return self.model - self.in_situ
 
     @property
     def MSD(self) -> float:
