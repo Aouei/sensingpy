@@ -2,13 +2,18 @@
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.packages.find]
+where = ["."]  
+include = ["sensingpy*"]
+exclude = ["sphinx*", "tests*"]
+
 [project]
 name = "sensingpy"
 version = "3.0.0"
 description = "A Python package for geospatial image processing and analysis."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { file = "LICENSE" }
+license = "GPL-3.0-or-later"
 authors = [
     { name = "Aouei", email = "sergiohercar1@gmail.com" }
 ]
