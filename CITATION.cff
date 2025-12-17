@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "sensingpy"
+license: "GPL 3"
+type: software
+abstract: "A Python package for geospatial image processing and analysis."
+message: "If you use this software, please cite it as below."
+authors:
+  - given-names: Sergio
+    family-names: Heredia
+    affiliation: "Department of Ecology and Coastal Management, Institute of Marine Sciences Andalusia (ICMAN-CSIC), Spanish National Research Council (CSIC), 11519 Puerto Real, Spain"
+    orcid: "https://orcid.org/0009-0003-9495-9625"
+  - given-names: Isabel
+    family-names: Caballero
+    affiliation: "Department of Ecology and Coastal Management, Institute of Marine Sciences Andalusia (ICMAN-CSIC), Spanish National Research Council (CSIC), 11519 Puerto Real, Spain"
+    orcid: "https://orcid.org/0009-0003-9495-9625"
+keywords:
+  - remote sensing
+  - raster
+  - Sentinel-2
