@@ -1,7 +1,8 @@
 cff-version: 1.2.0
 title: "sensingpy"
-license: "GPL 3"
+license: GPL-3.0-or-later
 type: software
+repository-code: "https://github.com/Aouei/sensingpy"
 abstract: "A Python package for geospatial image processing and analysis."
 message: "If you use this software, please cite it as below."
 authors:
@@ -12,7 +13,7 @@ authors:
   - given-names: Isabel
     family-names: Caballero
     affiliation: "Department of Ecology and Coastal Management, Institute of Marine Sciences Andalusia (ICMAN-CSIC), Spanish National Research Council (CSIC), 11519 Puerto Real, Spain"
-    orcid: "https://orcid.org/0009-0003-9495-9625"
+    orcid: "https://orcid.org/0000-0001-7485-0989"
 keywords:
   - remote sensing
   - raster
