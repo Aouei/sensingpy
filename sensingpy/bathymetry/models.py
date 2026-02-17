@@ -193,9 +193,9 @@ def optical_deep_water_model(
 
     References
     ----------
-    Caballero, I., & Stumpf, R. P. (2019). Retrieval of nearshore bathymetry from Sentinel-2A and 2B
-    satellites in South Florida coastal waters. Estuarine, Coastal and Shelf Science, 226, 106277.
-    https://doi.org/10.1016/j.ecss.2019.106277
+    Caballero I, Stumpf RP. Towards Routine Mapping of Shallow Bathymetry in Environments with Variable Turbidity: 
+    Contribution of Sentinel-2A/B Satellites Mission. Remote Sensing. 2020; 12(3):451. 
+    https://doi.org/10.3390/rs12030451 
     """
 
     ## Clear waters
