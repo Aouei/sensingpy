@@ -25,6 +25,7 @@ Specialized remote sensing analysis:
 Satellite-derived bathymetry models:
 
 - **[Stumpf Model](../notebooks/SDB_stumpf.ipynb)**: Band ratio bathymetry model
+- **[Caballero & Stumpf Model](../notebooks/SDB_caballero_stumpf.ipynb)**: Multi-image bathymetry model
 
 ## Interactive Notebooks
 
