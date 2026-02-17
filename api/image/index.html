@@ -792,6 +792,8 @@
       
         
       
+        
+      
     
     
     
@@ -854,6 +856,34 @@
     
   
     Satellite Derived Bathymetry - Stumpf Method
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notebooks/SDB_caballero_stumpf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Satellite Derived Bathymetry - Caballero &amp; Stumpf Method
   
 
     
@@ -1922,7 +1952,7 @@ of the image data</p>
 
 
                   <details class="mkdocstrings-source">
-                    <summary>Source code in <code>sensingpy\image.py</code></summary>
+                    <summary>Source code in <code>sensingpy/image.py</code></summary>
                     <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-67">67</a></span>
 <span class="normal"><a href="#__codelineno-0-68">68</a></span>
 <span class="normal"><a href="#__codelineno-0-69">69</a></span>
@@ -3090,7 +3120,7 @@ otherwise returns a new Image instance.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-192">192</a></span>
 <span class="normal"><a href="#__codelineno-0-193">193</a></span>
 <span class="normal"><a href="#__codelineno-0-194">194</a></span>
@@ -3269,7 +3299,7 @@ otherwise returns a new Image instance.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-230">230</a></span>
 <span class="normal"><a href="#__codelineno-0-231">231</a></span>
 <span class="normal"><a href="#__codelineno-0-232">232</a></span>
@@ -3443,7 +3473,7 @@ enums.MICASENSE_BANDS : Enum for MicaSense RedEdge band mappings</p>
 </details>
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-261">261</a></span>
 <span class="normal"><a href="#__codelineno-0-262">262</a></span>
 <span class="normal"><a href="#__codelineno-0-263">263</a></span>
@@ -3543,11 +3573,7 @@ enums.MICASENSE_BANDS : Enum for MicaSense RedEdge band mappings</p>
 
 
 <a href="#sensingpy.image.Image.reproject" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">reproject</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">new_crs</span><span class="p">:</span> <span class="n">CRS</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">interpolation</span><span class="p">:</span> <span class="n">Resampling</span> <span class="o">=</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">nearest</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">reproject</span><span class="p">(</span><span class="n">new_crs</span><span class="p">:</span> <span class="n">CRS</span><span class="p">,</span> <span class="n">interpolation</span><span class="p">:</span> <span class="n">Resampling</span> <span class="o">=</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">nearest</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3668,7 +3694,7 @@ otherwise returns a new Image instance with the new CRS.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-600">600</a></span>
 <span class="normal"><a href="#__codelineno-0-601">601</a></span>
 <span class="normal"><a href="#__codelineno-0-602">602</a></span>
@@ -3822,11 +3848,7 @@ otherwise returns a new Image instance with the new CRS.</p>
 
 
 <a href="#sensingpy.image.Image.align" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">align</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">reference</span><span class="p">:</span> <span class="n">Image</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">interpolation</span><span class="p">:</span> <span class="n">Resampling</span> <span class="o">=</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">nearest</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">align</span><span class="p">(</span><span class="n">reference</span><span class="p">:</span> <span class="n">Image</span><span class="p">,</span> <span class="n">interpolation</span><span class="p">:</span> <span class="n">Resampling</span> <span class="o">=</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">nearest</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -3943,7 +3965,7 @@ otherwise returns a new Image instance aligned to the reference.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-671">671</a></span>
 <span class="normal"><a href="#__codelineno-0-672">672</a></span>
 <span class="normal"><a href="#__codelineno-0-673">673</a></span>
@@ -4231,7 +4253,7 @@ If the bands of the two images do not match</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-760">760</a></span>
 <span class="normal"><a href="#__codelineno-0-761">761</a></span>
 <span class="normal"><a href="#__codelineno-0-762">762</a></span>
@@ -4449,12 +4471,7 @@ If the bands of the two images do not match</p>
 
 
 <a href="#sensingpy.image.Image.resample" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">resample</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">scale</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">downscale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">interpolation</span><span class="p">:</span> <span class="n">Resampling</span> <span class="o">=</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">nearest</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">resample</span><span class="p">(</span><span class="n">scale</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">downscale</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">interpolation</span><span class="p">:</span> <span class="n">Resampling</span> <span class="o">=</span> <span class="n">Resampling</span><span class="o">.</span><span class="n">nearest</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4592,7 +4609,7 @@ otherwise returns a new Image instance with the new resolution.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-863">863</a></span>
 <span class="normal"><a href="#__codelineno-0-864">864</a></span>
 <span class="normal"><a href="#__codelineno-0-865">865</a></span>
@@ -4738,9 +4755,7 @@ otherwise returns a new Image instance with the new resolution.</p>
 
 
 <a href="#sensingpy.image.Image.clip" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">clip</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">geometries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseGeometry</span><span class="p">],</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">clip</span><span class="p">(</span><span class="n">geometries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseGeometry</span><span class="p">],</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -4843,7 +4858,7 @@ otherwise returns a new Image instance clipped to the geometries.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1042">1042</a></span>
 <span class="normal"><a href="#__codelineno-0-1043">1043</a></span>
 <span class="normal"><a href="#__codelineno-0-1044">1044</a></span>
@@ -4959,13 +4974,7 @@ otherwise returns a new Image instance clipped to the geometries.</p>
 
 
 <a href="#sensingpy.image.Image.mask" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">mask</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">condition</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">fill_true</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">fill_false</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">mask</span><span class="p">(</span><span class="n">condition</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fill_true</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_false</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -5106,7 +5115,7 @@ otherwise returns a new Image instance with the mask applied.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1094">1094</a></span>
 <span class="normal"><a href="#__codelineno-0-1095">1095</a></span>
 <span class="normal"><a href="#__codelineno-0-1096">1096</a></span>
@@ -5232,14 +5241,7 @@ otherwise returns a new Image instance with the mask applied.</p>
 
 
 <a href="#sensingpy.image.Image.geometry_mask" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">geometry_mask</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">geometries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseGeometry</span><span class="p">],</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">mask_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">fill_true</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">fill_false</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">geometry_mask</span><span class="p">(</span><span class="n">geometries</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseGeometry</span><span class="p">],</span> <span class="n">mask_out</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">fill_true</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fill_false</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -5399,7 +5401,7 @@ otherwise returns a new Image instance with the mask applied.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1151">1151</a></span>
 <span class="normal"><a href="#__codelineno-0-1152">1152</a></span>
 <span class="normal"><a href="#__codelineno-0-1153">1153</a></span>
@@ -5615,7 +5617,7 @@ For example, if row 1 has values, row 2 is all NaN, and row 3 has values, row 2 
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1212">1212</a></span>
 <span class="normal"><a href="#__codelineno-0-1213">1213</a></span>
 <span class="normal"><a href="#__codelineno-0-1214">1214</a></span>
@@ -5800,7 +5802,7 @@ add_band : Add or update a band in the image</p>
 </details>
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1294">1294</a></span>
 <span class="normal"><a href="#__codelineno-0-1295">1295</a></span>
 <span class="normal"><a href="#__codelineno-0-1296">1296</a></span>
@@ -5906,11 +5908,7 @@ add_band : Add or update a band in the image</p>
 
 
 <a href="#sensingpy.image.Image.add_band" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_band</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">band_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">data</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">|</span> <span class="n">DataArray</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">add_band</span><span class="p">(</span><span class="n">band_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">ndarray</span> <span class="o">|</span> <span class="n">DataArray</span><span class="p">,</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6021,7 +6019,7 @@ otherwise returns a new Image instance with the band added/updated.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1341">1341</a></span>
 <span class="normal"><a href="#__codelineno-0-1342">1342</a></span>
 <span class="normal"><a href="#__codelineno-0-1343">1343</a></span>
@@ -6123,9 +6121,7 @@ otherwise returns a new Image instance with the band added/updated.</p>
 
 
 <a href="#sensingpy.image.Image.drop_bands" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">drop_bands</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">drop_bands</span><span class="p">(</span><span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6217,7 +6213,7 @@ otherwise returns a new Image instance without the dropped bands.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1386">1386</a></span>
 <span class="normal"><a href="#__codelineno-0-1387">1387</a></span>
 <span class="normal"><a href="#__codelineno-0-1388">1388</a></span>
@@ -6293,9 +6289,7 @@ otherwise returns a new Image instance without the dropped bands.</p>
 
 
 <a href="#sensingpy.image.Image.keep_bands" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">keep_bands</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">keep_bands</span><span class="p">(</span><span class="n">bands</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Self</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6397,7 +6391,7 @@ otherwise returns a new Image instance with only the specified bands.</p>
 </details>
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1418">1418</a></span>
 <span class="normal"><a href="#__codelineno-0-1419">1419</a></span>
 <span class="normal"><a href="#__codelineno-0-1420">1420</a></span>
@@ -6597,7 +6591,7 @@ in the input bands.</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1461">1461</a></span>
 <span class="normal"><a href="#__codelineno-0-1462">1462</a></span>
 <span class="normal"><a href="#__codelineno-0-1463">1463</a></span>
@@ -6699,9 +6693,7 @@ in the input bands.</p>
 
 
 <a href="#sensingpy.image.Image.extract_values" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">extract_values</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">xs</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ys</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">extract_values</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">ys</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6797,7 +6789,7 @@ If None, extracts from all bands, by default None</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1506">1506</a></span>
 <span class="normal"><a href="#__codelineno-0-1507">1507</a></span>
 <span class="normal"><a href="#__codelineno-0-1508">1508</a></span>
@@ -6899,12 +6891,7 @@ If None, extracts from all bands, by default None</p>
 
 
 <a href="#sensingpy.image.Image.interval_choice" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">interval_choice</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">band</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">interval_choice</span><span class="p">(</span><span class="n">band</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -7015,7 +7002,7 @@ If None, extracts from all bands, by default None</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1551">1551</a></span>
 <span class="normal"><a href="#__codelineno-0-1552">1552</a></span>
 <span class="normal"><a href="#__codelineno-0-1553">1553</a></span>
@@ -7085,12 +7072,7 @@ If None, extracts from all bands, by default None</p>
 
 
 <a href="#sensingpy.image.Image.arginterval_choice" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">arginterval_choice</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">band</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">arginterval_choice</span><span class="p">(</span><span class="n">band</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -7203,7 +7185,7 @@ If None, extracts from all bands, by default None</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1580">1580</a></span>
 <span class="normal"><a href="#__codelineno-0-1581">1581</a></span>
 <span class="normal"><a href="#__codelineno-0-1582">1582</a></span>
@@ -7283,12 +7265,7 @@ If None, extracts from all bands, by default None</p>
 
 
 <a href="#sensingpy.image.Image.sample_indices_by_interval" class="headerlink" title="Permanent link">&para;</a></h6>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">sample_indices_by_interval</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">band</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">sample_indices_by_interval</span><span class="p">(</span><span class="n">band</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">intervals</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">replace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -7405,7 +7382,7 @@ If None, extracts from all bands, by default None</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1614">1614</a></span>
 <span class="normal"><a href="#__codelineno-0-1615">1615</a></span>
 <span class="normal"><a href="#__codelineno-0-1616">1616</a></span>
@@ -7517,7 +7494,7 @@ If None, extracts from all bands, by default None</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1648">1648</a></span>
 <span class="normal"><a href="#__codelineno-0-1649">1649</a></span>
 <span class="normal"><a href="#__codelineno-0-1650">1650</a></span>
@@ -7589,7 +7566,7 @@ If None, extracts from all bands, by default None</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1662">1662</a></span>
 <span class="normal"><a href="#__codelineno-0-1663">1663</a></span>
 <span class="normal"><a href="#__codelineno-0-1664">1664</a></span>
@@ -7665,7 +7642,7 @@ If None, extracts from all bands, by default None</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1674">1674</a></span>
 <span class="normal"><a href="#__codelineno-0-1675">1675</a></span>
 <span class="normal"><a href="#__codelineno-0-1676">1676</a></span>
@@ -7747,7 +7724,7 @@ If None, extracts from all bands, by default None</p>
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1689">1689</a></span>
 <span class="normal"><a href="#__codelineno-0-1690">1690</a></span>
 <span class="normal"><a href="#__codelineno-0-1691">1691</a></span>
@@ -7832,11 +7809,7 @@ If None, extracts from all bands, by default None</p>
 
 
 <a href="#sensingpy.image.compose" class="headerlink" title="Permanent link">&para;</a></h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">compose</span><span class="p">(</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="n">images</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Image</span><span class="p">],</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="n">ndarray</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">bands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">compose</span><span class="p">(</span><span class="n">images</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Image</span><span class="p">],</span> <span class="n">method</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">|</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">bands</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Image</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -7958,7 +7931,7 @@ image in the list, but contains new pixel values based on the composition method
 
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>sensingpy\image.py</code></summary>
+              <summary>Source code in <code>sensingpy/image.py</code></summary>
               <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1731">1731</a></span>
 <span class="normal"><a href="#__codelineno-0-1732">1732</a></span>
 <span class="normal"><a href="#__codelineno-0-1733">1733</a></span>
