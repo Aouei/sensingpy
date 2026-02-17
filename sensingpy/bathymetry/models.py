@@ -224,10 +224,6 @@ class LinearModel(object):
     fitting the model to known depth measurements and predicting depths from
     new pseudomodel values.
 
-    Parameters
-    ----------
-    None
-
     Attributes
     ----------
     slope : float

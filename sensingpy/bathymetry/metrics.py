@@ -5,7 +5,16 @@ import numpy as np
 
 @dataclass
 class ValidationSummary:
-    """Class to estimate error and metrics from true and pred values"""
+    """
+    Class to estimate error and metrics from true and pred values.
+    
+    Attributes
+    ----------
+    model : np.ndarray
+        Predicted/modeled depth values
+    in_situ : np.ndarray
+        In-situ (ground truth) depth measurements
+    """
 
     model: np.ndarray
     in_situ: np.ndarray
