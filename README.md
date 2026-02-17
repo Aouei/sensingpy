@@ -28,3 +28,8 @@ You can also install directly from the repository URL:
 ```bash
 pip install sensingpy
 ```
+
+
+## Acknowledgements
+
+This software was developed at the [Institute of Marine Sciences of Andalusia (ICMAN-CSIC)](https://www.icman.csic.es/), Spanish National Research Council (CSIC), Puerto Real, Spain.
