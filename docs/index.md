@@ -32,9 +32,6 @@ img = reader.open("path/to/image.tif")
 # Apply preprocessing
 img_deglinted = hedley(img)
 
-# Extract water mask
-water_mask = masks.water_mask(img)
-
 # Apply bathymetry model
 bathymetry = stumpf_pseudomodel(img['blue'], img['green'])
 ```
