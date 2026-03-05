@@ -82,7 +82,11 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - admonition
@@ -112,6 +116,8 @@ nav:
       - Bathymetry:
           - Stumpf Model: notebooks/SDB_stumpf.ipynb
           - Caballero & Stumpf Model: notebooks/SDB_caballero_stumpf.ipynb
+  - Architecture:
+      - Class Diagram: architecture/class-diagram.md
   - API Reference:
       - api/index.md
       - Core Modules:
