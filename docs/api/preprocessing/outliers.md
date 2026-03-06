@@ -1,10 +1,28 @@
 # Outliers
 
-::: sensingpy.preprocessing.outliers
-    options:
-      show_source: true
-      heading_level: 2
-      members_order: source
-      show_if_no_docstring: true
-      filters:
-        - "!^_"
+`sensingpy.preprocessing.outliers` provides statistical methods for detecting
+and masking outlier pixels in raster data.
+
+---
+
+## IQR
+
+::: sensingpy.preprocessing.outliers.IQR
+
+---
+
+## Z_Score
+
+::: sensingpy.preprocessing.outliers.Z_Score
+
+---
+
+## upper_percentile
+
+::: sensingpy.preprocessing.outliers.upper_percentile
+
+---
+
+## lower_percentile
+
+::: sensingpy.preprocessing.outliers.lower_percentile

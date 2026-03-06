@@ -1,9 +1,17 @@
 # Image Module
 
-::: sensingpy.image
+`sensingpy.image` exposes the core `Image` class for handling geospatial raster
+data with metadata and coordinate systems, and the `compose` utility for
+combining multiple images.
+
+---
+
+## Image
+
+::: sensingpy.image.Image
     options:
       show_source: true
-      heading_level: 2
+      heading_level: 3
       members_order: source
       show_if_no_docstring: true
       inherited_members: false
@@ -13,3 +21,9 @@
       show_symbol_type_toc: true
       filters:
         - "!^_"
+
+---
+
+## compose
+
+::: sensingpy.image.compose

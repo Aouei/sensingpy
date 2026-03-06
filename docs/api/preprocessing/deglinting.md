@@ -1,10 +1,22 @@
 # Deglinting
 
-::: sensingpy.preprocessing.deglinting
-    options:
-      show_source: true
-      heading_level: 2
-      members_order: source
-      show_if_no_docstring: true
-      filters:
-        - "!^_"
+`sensingpy.preprocessing.deglinting` implements sun-glint correction algorithms
+for water remote sensing imagery.
+
+---
+
+## hedley
+
+::: sensingpy.preprocessing.deglinting.hedley
+
+---
+
+## lyzenga
+
+::: sensingpy.preprocessing.deglinting.lyzenga
+
+---
+
+## joyce
+
+::: sensingpy.preprocessing.deglinting.joyce
