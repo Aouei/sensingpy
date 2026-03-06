@@ -2,98 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://aouei.github.io/sensingpy/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/enums/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/image/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/masks/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/plot/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/reader/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/selector/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/bathymetry/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/bathymetry/metrics/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/bathymetry/models/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/bathymetry/plot/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/preprocessing/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/preprocessing/deglinting/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/api/preprocessing/outliers/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/architecture/class-diagram/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/notebooks/SDB_caballero_stumpf/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/notebooks/SDB_stumpf/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/notebooks/deglinting/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/notebooks/preprocessing/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/notebooks/reading_netcdf/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/notebooks/reading_tif/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/notebooks/remote_sensing_water/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
     <url>
          <loc>https://aouei.github.io/sensingpy/user_guide/</loc>
-         <lastmod>2026-03-05</lastmod>
+         <lastmod>2026-03-06</lastmod>
     </url>
 </urlset>
