@@ -1,12 +1,15 @@
 # Class Diagram
 
-This page shows the class structure of the SensingPy package.
+This page shows the class structure of the SensingPy package, organized by functional area.
+
+## Core: Image
+
+The central class of the package. Wraps geospatial raster data and exposes processing operations. It delegates sampling to the `selector` module and supports band renaming via sensor-specific enumerations.
 
 ```mermaid
 classDiagram
-    direction TB
+    direction LR
 
-    %% ── Core ──────────────────────────────────────────────────────────────
     class Image {
         +data : xr.Dataset
         +crs : pyproj.CRS
@@ -44,47 +47,14 @@ classDiagram
         +to_tif(filename)
     }
 
-    %% ── Readers ───────────────────────────────────────────────────────────
-    class ImageReader {
-        <<abstract>>
-        +read(filename) Image
+    class selector {
+        <<module>>
+        +interval_choice(array, size, intervals) np.ndarray
+        +sample_indices_by_interval(array, size, intervals) np.ndarray
+        +composite(arrays, method) np.ndarray
+        +composite_indices(arrays, method) np.ndarray
     }
 
-    class NetCDFReader {
-        +read(filename) Image
-    }
-
-    class GeoTIFFReader {
-        +read(filename) Image
-        -_prepare_coords(src, crs, grid_mapping) Dict
-        -_prepare_vars(src, coords, grid_mapping) Dict
-    }
-
-    %% ── Bathymetry ────────────────────────────────────────────────────────
-    class LinearModel {
-        +slope : float
-        +intercept : float
-        +r_square : float
-        +fit(pseudomodel, in_situ) Self
-        +predict(pseudomodel) np.ndarray
-        +predict_and_evaluate(pseudomodel, in_situ) ValidationSummary
-    }
-
-    class ValidationSummary {
-        <<dataclass>>
-        +model : np.ndarray
-        +in_situ : np.ndarray
-        +error : np.ndarray
-        +MSD : float
-        +MAE : float
-        +MedAE : float
-        +RMSE : float
-        +RMedSE : float
-        +Abs_std : float
-        +N : int
-    }
-
-    %% ── Enums ─────────────────────────────────────────────────────────────
     class SENTINEL2_BANDS {
         <<enumeration>>
         B1 : 443 nm
@@ -111,13 +81,114 @@ classDiagram
         RED_EDGE
     }
 
+    Image ..> selector : uses internally
+    Image ..> SENTINEL2_BANDS : compatible with
+    Image ..> MICASENSE_BANDS : compatible with
+```
+
+## I/O: Readers
+
+The `reader.open()` factory selects the appropriate reader based on file extension and always returns an `Image`.
+
+```mermaid
+classDiagram
+    direction LR
+
+    class ImageReader {
+        <<abstract>>
+        +read(filename) Image
+    }
+
+    class NetCDFReader {
+        +read(filename) Image
+    }
+
+    class GeoTIFFReader {
+        +read(filename) Image
+        -_prepare_coords(src, crs, grid_mapping) Dict
+        -_prepare_vars(src, coords, grid_mapping) Dict
+    }
+
+    class reader {
+        <<module>>
+        +open(filename) Image
+    }
+
     class FILE_EXTENTIONS {
         <<enumeration>>
         TIF
         NETCDF
     }
 
-    %% ── Function modules ──────────────────────────────────────────────────
+    class Image {
+    }
+
+    ImageReader <|-- NetCDFReader : extends
+    ImageReader <|-- GeoTIFFReader : extends
+    ImageReader ..> Image : creates
+    reader ..> ImageReader : delegates to
+    reader ..> FILE_EXTENTIONS : uses
+```
+
+## Bathymetry
+
+Models and functions for satellite-derived bathymetry (SDB). `LinearModel.predict_and_evaluate()` returns a `ValidationSummary` with error statistics.
+
+```mermaid
+classDiagram
+    direction LR
+
+    class LinearModel {
+        +slope : float
+        +intercept : float
+        +r_square : float
+        +fit(pseudomodel, in_situ) Self
+        +predict(pseudomodel) np.ndarray
+        +predict_and_evaluate(pseudomodel, in_situ) ValidationSummary
+    }
+
+    class ValidationSummary {
+        <<dataclass>>
+        +model : np.ndarray
+        +in_situ : np.ndarray
+        +error : np.ndarray
+        +MSD : float
+        +MAE : float
+        +MedAE : float
+        +RMSE : float
+        +RMedSE : float
+        +Abs_std : float
+        +N : int
+    }
+
+    class bathymetry_models {
+        <<module>>
+        +stumpf_pseudomodel(blue, other, n) np.ndarray
+        +multi_image_pseudomodel(p_greens, p_reds) tuple
+        +switching_model(green_model, red_model) np.ndarray
+        +optical_deep_water_model(model, blue, green, vnir) np.ndarray
+    }
+
+    class selector {
+        <<module>>
+        +interval_choice(array, size, intervals) np.ndarray
+        +sample_indices_by_interval(array, size, intervals) np.ndarray
+        +composite(arrays, method) np.ndarray
+        +composite_indices(arrays, method) np.ndarray
+    }
+
+    LinearModel ..> ValidationSummary : creates
+    bathymetry_models ..> selector : uses
+```
+
+## Preprocessing
+
+Independent utility modules that operate directly on `np.ndarray`, decoupled from the `Image` class.
+
+```mermaid
+classDiagram
+    direction LR
+
     class masks {
         <<module>>
         +is_valid(array) np.ndarray
@@ -127,14 +198,6 @@ classDiagram
         +is_lte(array, value) np.ndarray
         +is_gte(array, value) np.ndarray
         +is_in_range(array, vmin, vmax) np.ndarray
-    }
-
-    class selector {
-        <<module>>
-        +interval_choice(array, size, intervals) np.ndarray
-        +sample_indices_by_interval(array, size, intervals) np.ndarray
-        +composite(arrays, method) np.ndarray
-        +composite_indices(arrays, method) np.ndarray
     }
 
     class deglinting {
@@ -151,34 +214,6 @@ classDiagram
         +upper_percentile(data, percentile) np.ndarray
         +lower_percentile(data, percentile) np.ndarray
     }
-
-    class bathymetry_models {
-        <<module>>
-        +stumpf_pseudomodel(blue, other, n) np.ndarray
-        +multi_image_pseudomodel(p_greens, p_reds) tuple
-        +switching_model(green_model, red_model) np.ndarray
-        +optical_deep_water_model(model, blue, green, vnir) np.ndarray
-    }
-
-    class reader {
-        <<module>>
-        +open(filename) Image
-    }
-
-    %% ── Relationships ─────────────────────────────────────────────────────
-    ImageReader <|-- NetCDFReader : extends
-    ImageReader <|-- GeoTIFFReader : extends
-
-    ImageReader ..> Image : creates
-    reader ..> ImageReader : delegates to
-    reader ..> FILE_EXTENTIONS : uses
-
-    LinearModel ..> ValidationSummary : creates
-    bathymetry_models ..> selector : uses
-
-    Image ..> selector : uses internally
-    Image ..> SENTINEL2_BANDS : compatible with
-    Image ..> MICASENSE_BANDS : compatible with
 ```
 
 ## Module Overview
